@@ -1,10 +1,10 @@
-# 特性ファセット
+# プロパティファセット
 
-国際金融公社**プロパティ**は、IFCのオブジェクトにデータを添付する最も一般的な方法であり、おそらく最も使用されるIDSファセットであろう。
+国際金融公社**プロパティ**は、IFCでオブジェクトにデータを添付する最も一般的な方法であり、おそらく最も使用されるIDSファセットであろう。
 
 **プロパティ**は名前 (**ベース名**IDSでは "FireRating"）に分類される。**プロパティセット**Pset_WallCommon" のように、類似の主題ごとに整理することができます。 IFC プロパティには、次のようなものがあります。**価値観**これは特定の型であり、関連性があれば単位を表す。
 
-buildingSMARTは標準化された**プロパティセット**そして**プロパティ**のように、名前、セット、データタイプを義務付けることで、シームレスなデータ交換を支援する。 例えば、以下のようなものだ：
+buildingSMARTは標準化された**プロパティセット**そして**プロパティ**のように、名前、セット、データタイプを指定することで、シームレスなデータ交換を可能にする：
 
 | ベース名 | プロパティセット | データ型 |
 | -------------------- | ---------------------- | ------------------------------ |
@@ -40,7 +40,7 @@ IFC2X3は、buildingSMARTの標準化されたプロパティのみを持って�
 
 ## 対応物件タイプ
 
-IFC には様々なタイプのプロパティがあります。 IDS では、単純なプロパティを指定できます。[単一の値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySingleValue.htm),[境界値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyBoundedValue.htm),[リスト](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyListValue.htm),[テーブル](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyTableValue.htm)そして[列挙](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyEnumeratedValue.htm)一方[](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcComplexProperty.htm)そして[~~参考値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyReferenceValue.htm)はIDSがサポートしていない。
+IFC には様々なタイプのプロパティがあります。 IDS では、単純なプロパティを指定できます。[単一の値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySingleValue.htm),[境界値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyBoundedValue.htm),[リスト](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyListValue.htm),[テーブル](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyTableValue.htm)そして[列挙](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyEnumeratedValue.htm)一方[~~複雑な特性](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcComplexProperty.htm)そして[~~参考値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyReferenceValue.htm)はIDSがサポートしていない。
 
 リスト、テーブル、バウンデッド、列挙プロパティの解釈は、IDS要件によって以下のように変わる：
 
@@ -61,7 +61,7 @@ IFCのバウンデッド・バリュー・プロパティは、一端のみを�
 | 2 | 2 |  | ✔️ | 提供される唯一のバウンドは、指定された値と互換性がある |
 | 2 |  | 2 | ✔️ | 提供される唯一のバウンドは、指定された値と互換性がある |
 | 5 | 2 | 4 | ❌ | 下限値と上限値は指定された値を除く |
-| 5 |  | 4 | ❌ | 提供された唯一のバウンドが、指定された値と互換性がない。 |
+| 5 |  | 4 | ❌ | 提供された唯一のバウンドは、指定された値と互換性がありません。 |
 | >2と≦5 |  |  | ❌ | 下限と上限の少なくとも一方が必要 |
 | 3 |  |  | ❌ | 下限と上限の少なくとも一方が必要 |
 |  | 2 |  | ✔️ | 値の比較は行われず、少なくとも1つの値が提供される |
@@ -115,8 +115,8 @@ buildingSMARTの標準化に従うことが推奨される。**プロパティ**
 | 適用意図 | 要件 意図 | ファセットの定義 |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
 | 遮音等級を持つ壁材 | 実体（壁など）には音響等級が必要である。 | プロパティ Set="Pset_WallCommon", Name="AcousticRating" |
-| 耐火等級「2HR」の柱体 | 実体（柱など）は、耐火等級「2HR」でなければならない。 | プロパティ Set="Pset_ColumnCommon", Name="FireRating", value="2HR" |
+| 耐火等級「2HR」の柱体 | 実体（柱など）は「2HR」の防火等級を有していなければならない。 | プロパティ Set="Pset_ColumnCommon", Name="FireRating", value="2HR" |
 | 正味容積が20～100立方メートルのスラブ事業体 | 実体（スラブなど）の正味容積が20～100立方メートルであること。 | Property Set="Qto_SlabBaseQuantities", Name="NetVolume", Value="[20<=Value<=100](restrictions.md)" |
 | 現場打ちまたはプレキャストコンクリートのあらゆる要素 | 実体（スラブなど）は、鋳造方法が現場打ちまたはプレキャストに設定されていなければならない。 | プロパティ Set="Pset_ConcreteElementGeneral", Name="CastingMethod", value=["INSITU", "PRECAST"]. |
-| MyCompany_Concreteプロパティセットに格納されているA、B、Cから選択されたConcreteMixというカスタムプロパティを持つエンティティ | エンティティは、MyCompany_Concrete というプロパティセットに格納された、A、B、または C から選択された値を持つ ConcreteMix というカスタムプロパティを持つ必要があります。 | Property Set="MyCompany_Concrete", Name="ConcreteMix", value=["A", "B", "C"]]. |
+| MyCompany_Concreteプロパティセットに格納されている、A、B、Cから選択したConcreteMixというカスタムプロパティを持つすべてのエンティティ | エンティティは、MyCompany_Concrete というプロパティセットに格納された、A、B、または C から選択された値を持つ ConcreteMix というカスタムプロパティを持つ必要があります。 | Property Set="MyCompany_Concrete", Name="ConcreteMix", value=["A", "B", "C"]]. |
 

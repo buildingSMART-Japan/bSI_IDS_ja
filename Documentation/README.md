@@ -1,5 +1,5 @@
-# IDSの文書化
+# Documentation of the IDS
 
-- [ユーザーマニュアル](UserManual/)にはIDSの内容や使い方の説明がある。[README](UserManual/README.md)ファイルである。
-- [例](Examples/)いくつかのサンプル.idsファイルを含む
-- [実装者ドキュメント](ImplementersDocumentation/)ソフトウェアが数値をどのように扱うべきかなど、ソフトウェア開発者向けの技術的な説明が追加されている。[寛容](ImplementersDocumentation/tolerance.md)このフォルダには、ソフトウェア実装の読み取りとチェック機能の正しさを検証するための250以上のテストファイル（.idsと.ifc）の組も含まれています：[テストケース](ImplementersDocumentation/TestCases/).
+- [UserManual](UserManual/) contains explanation of the IDS content and how to use it. Start with the [README](UserManual/README.md) file.
+- [Examples](Examples/) contains a few sample .ids files
+- [ImplementersDocumentation](ImplementersDocumentation/) contains additional explanations of the technicalities for software developers, such as how software should handle numeric value [tolerance](ImplementersDocumentation/tolerance.md). The folder also contains a suite of over 250 test file pairs (.ids and .ifc) for verifying the correctness of the software implementation reading and checking capabilities: [TestCases](ImplementersDocumentation/TestCases/).

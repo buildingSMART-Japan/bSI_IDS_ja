@@ -37,7 +37,7 @@ SUBTYPEの値を識別するためのロジックは、値の列挙を返すこ�
   2.2 else entity's PredefinedType (if not null)
 3. TODO ElementTypeとProcessTypeについても同様のドキュメントを作成する。
 
-TODO: IFCのバリデーション・サービスにより、typeの型が指定されているときにエンティティ・レベルの型が定義できないかどうかを確認する。
+TODO: IFCのバリデーション・サービスによって、typeの型が指定されているときにエンティティ・レベルの型が定義できないかどうかを確認する。
 
 -> ユーザー定義
 -> whatever the value is in the ifc
@@ -67,20 +67,20 @@ Name and PREDEFINEDTYPE:
 
 必須
 
-NAME： Attributeは入力されるべきである（すなわち、NULLではない）（これは、NULLを受け付けるPropertyファセットとは異なる）。
+NAME： アトリビュートは入力されるべきである（すなわち、NULLではない）（これは、NULLを受け付けるプロパティファセットとは異なる）。
 NAME/VALUE: all matching attributes must match the value constraints (excludes null)
 
 禁止
 
 - NAME: 属性は入力されるべきではありません。
-- NAME / [VALUE]: すべての一致する属性は、値の制約と一致しない（NULLは有効！）。
+- NAME / [VALUE]: すべてのマッチする属性は、値の制約にマッチすることはできません（NULLは有効です！）。
   - 名前 = レッド IFC: NULL -> パス
   - 名前 = レッド IFC: グリーン -> パス
   - 名前 = 赤 IFC: 赤 -> 失敗
 
 オプション
 
-NAME / [VALUE]: 属性値はNULLか、制約にマッチする。
+NAME / [VALUE]: 属性値はNULLか、制約にマッチするか。
 
 適用範囲
 
@@ -104,7 +104,7 @@ PSETとNAMEは必須。
 
 ⚠️TODO: IFCLABEL($)は有効なIFCですか？
 
-### プロパティのファセット解釈
+### プロパティ・ファセットの解釈
 
 必須
 
@@ -139,7 +139,7 @@ SYSTEMが必須となるように仕様を変更したい（スキーマの変�
 |  | ❌ | ❌ | ❌ | ❌ | スキーマで禁止されている、空文字列を除外する監査 |
 | 価値 | ❌ | ❌ | ❌ | ❌ | スキーマで禁止されている、空文字列を除外する監査 |
 | システム | ✅ | ❌ | ✅ | ✅ |  |
-| SYSTEM / [VALUE] | ✅ | ✅ | ✅ | ✅ |  |
+| システム / [値］ | ✅ | ✅ | ✅ | ✅ |  |
 
 Optional = If the applicable element has classifications at least one should match the value/system.
 
@@ -198,12 +198,12 @@ Optional is intended to help provide a closed list of values (useful for bim aut
 
 オプション
 
-- 値なし：絶対に失敗しないので、IDSでは許可されない（監査ツールはエラーとしてフラグを立てる）
+- 値なし：失敗することはないため、IDSでは許可されない（監査ツールはエラーとしてフラグを立てる）。
 - 値: 材料が存在する場合、少なくとも1つの材料が値の制約に一致する必要があります。
 
 禁止
 
-- 値なし：エンティティに関連付けられる材料がない。
+- 値なし：エンティティに関連する材料がない。
 - 値: 値に一致する材料はない（材料はnull値を持つことができる）
   - IDS：木材、IFC素材なし→合格
   - IDS: Wood, IFC = null name -> パス
@@ -213,7 +213,7 @@ Optional is intended to help provide a closed list of values (useful for bim aut
 適用範囲
 
 - 値なし：NULLではなく、任意の値の重要な関連付けが少なくとも1つ、エンティ ティに見つかった。
-- 値：IDSの値制約に一致する材料関連が少なくとも1つ見つかった（ヌルを除く）
+- 値：IDSの値制約に一致する材料関連付けが少なくとも1つ見つかった（NULLを除く）
   - バリューは、ある要素に関連するさまざまな形の素材定義の名前をすべて調べます：
     e.g. MaterialLayerSet -> Name + all the associated material names
 
@@ -241,7 +241,7 @@ REQUIRED:
 
 オプション：
 
-- IDS Entity: IfcWall: 要素に一致する関係がある場合、ターゲットはEntityに一致する必要がある。
+- IDS Entity: IfcWall: 要素に一致する関係がある場合、ターゲットは Entity と一致する必要がある。
   - IFC ENtityはリレーションを持ち、それは壁でなければならない（ただし、リレーションは任意）。
   - IFCのスラブ開口部→失敗（エンティティが壁にぶつかることとは無関係）
   - 壁のIFC開口部→パス
@@ -260,14 +260,14 @@ REQUIRED:
 
 ### 制限クローン
 
-自分たちで紡ぐ`xs:restriction`代替案として、ベースタイプと埋め込み xml エンティティに関するいくつかの問題を取り除くことができる。
+自分たちで紡ぐ`xs:restriction`代替案として、basetypeと埋め込みxmlエンティティに関するいくつかの問題を取り除くことができる。
 
 値に対する制限の特別なケースは、次のようないくつかのシナリオを明示的に許可／不許可にする機会を与えてくれる。
 
-- ゼロ
+- 空
   - ヌルでなければならない
   - NULLは不可
-  - NULLは可能な値の1つとして受け入れられる。
+  - NULLは可能な値の1つとして受け入れられる
 - 該当なし？
 - 利用できないとして該当なし？
 

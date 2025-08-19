@@ -9,7 +9,7 @@
 1. 関連する[ドキュメントファイル](scripts.md).
 1. 最小化されたIFCファイルで、結果のIDSと照合して検証する必要がある。
 
-## スクリプト・ドキュメント
+## ドキュメンテーション・スクリプト
 
 ドキュメンテーション・スクリプトのスニペットは以下のようなものだ：
 
@@ -45,7 +45,7 @@ This line is optional, when the schema is omitted, the default schemas of the ID
 次の行がトークスの一つである場合`Optional`,`Required`あるいは`Prohibited`IDSの適用範囲を定義する。
 This line is optional, when omitted, the default cardinality is set to `Required`. Note that the capitalization of this line matters.
 
-### 適用ファセット
+### 適用面
 
 それに続く各行は、適用可能なファセットとして解釈される。`Requirements:`トークンに遭遇した場合
 

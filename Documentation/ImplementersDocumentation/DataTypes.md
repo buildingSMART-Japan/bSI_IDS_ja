@@ -4,7 +4,7 @@
 
 プロパティのdataTypesは、以下の表に従って任意の値を設定することができる。
 
-テーブルのカラムは、スキーマのバージョンと要求される型に応じて、型の妥当性を決定する。`xs:base`タイプ`xs:restriction`を制約する。
+テーブルのカラムは、スキーマのバージョンと要求される型に応じて、型の妥当性を決定する。`xs:base`タイプ`xs:restriction`という制約がある。
 
 | データ型 | Ifc2x3 | Ifc4 | Ifc4x3 | 制限塩基タイプ |
 | --------------------------------------------- | ------ | ------ | ------ | --------------------- |
@@ -23,7 +23,7 @@
 | ifcalignmenthorizontalsegmenttypeenum（イフカライメントホライズン水平セグメントタイプ番号 | ❌ | ❌ | ✔️ | xs:string |
 | ifcalignmenttypeenum | ❌ | ❌ | ✔️ | xs:string |
 | ifcalignmentverticalsegmenttypeenum | ❌ | ❌ | ✔️ | xs:string |
-| 物質量が測定された場合 | ✔️ | ✔️ | ✔️ | xs:double |
+| 物質量測定値 | ✔️ | ✔️ | ✔️ | xs:double |
 | ifcanalysismodeltypeenum | ✔️ | ✔️ | ✔️ | xs:string |
 | ifcanalysistheoryタイプenum | ✔️ | ✔️ | ✔️ | xs:string |
 | 角速度測定 | ✔️ | ✔️ | ✔️ | xs:double |
@@ -34,8 +34,8 @@
 | ifcassemblyplaceenum | ✔️ | ✔️ | ✔️ | xs:string |
 | ifcaudiovisualappliancetypeenum | ❌ | ✔️ | ✔️ | xs:string |
 | ifcbeamtypeenum | ✔️ | ✔️ | ✔️ | xs:string |
-| IFCベアリングタイプ | ❌ | ❌ | ✔️ | xs:string |
-| ifcbenchmarksum | ✔️ | ✔️ | ✔️ | xs:string |
+| ifcbearingtypeenum | ❌ | ❌ | ✔️ | xs:string |
+| ifcbenchmarkenum | ✔️ | ✔️ | ✔️ | xs:string |
 | IFCBINARY | ❌ | ✔️ | ✔️ |  |
 | ifcboilertypeenum | ✔️ | ✔️ | ✔️ | xs:string |
 | IFCBOOLEAN | ✔️ | ✔️ | ✔️ | xs:boolean |
@@ -179,7 +179,7 @@
 | ifcinorexternalenum | ✔️ | ✔️ | ✔️ | xs:string |
 | ifcinventorytypeenum | ✔️ | ✔️ | ✔️ | xs:string |
 | 濃度測定 | ✔️ | ✔️ | ✔️ | xs:double |
-| 等温水分容量測定 | ✔️ | ✔️ | ✔️ | xs:double |
+| 等温水分容量測定法 | ✔️ | ✔️ | ✔️ | xs:double |
 | ifcjunctionboxypeenum | ✔️ | ✔️ | ✔️ | xs:string |
 | イフッカータイプ | ❌ | ❌ | ✔️ | xs:string |
 | イフキネマチック粘度計 | ✔️ | ✔️ | ✔️ | xs:double |
@@ -264,7 +264,7 @@
 | ifcprojectionelementtypeenum | ❌ | ✔️ | ✔️ | xs:string |
 | ifcprojectorderrecordtypeenum | ✔️ | ❌ | ❌ | xs:string |
 | ifcprojectordertypeenum | ✔️ | ✔️ | ✔️ | xs:string |
-| ifcpropertysetmplatetypeenum | ❌ | ✔️ | ✔️ | xs:string |
+| ifcpropertysettemplatetypeenum | ❌ | ✔️ | ✔️ | xs:string |
 | ifcpropertysourceenum | ✔️ | ❌ | ❌ | xs:string |
 | ifcprotectivedevicetrippingunittypeenum | ❌ | ✔️ | ✔️ | xs:string |
 | ifcprotectivedevicetypeenum | ✔️ | ✔️ | ✔️ | xs:string |

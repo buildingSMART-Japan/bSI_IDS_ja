@@ -17,6 +17,6 @@ IFCベースの情報伝達仕様を定義するための、buildingSMARTによ�
 
 以下は最新の所在地である：
 
-- ファイル図：[スキーマ/ids.xsd](/Schema/ids.xsd)
+- スキーマファイル：[スキーマ/ids.xsd](/Schema/ids.xsd)
 - ユーザーマニュアル[ドキュメント/ユーザーマニュアル](/Documentation/UserManual/README.md)
 - 実装者のドキュメント：[/Documentation/ImplementersDocumentation/](/Documentation/ImplementersDocumentation/)

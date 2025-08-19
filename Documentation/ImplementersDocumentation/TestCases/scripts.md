@@ -331,7 +331,7 @@ Attribute: ''NumberOfRisers'',''42.0''
 
 ### 無効な属性名は常に失敗する
 
-IFCWALL タイプのエンティティは ActingRole 属性を持ちません。
+IFCWALL型のエンティティはActingRole属性を持ちません。
 
 ``` ids attribute/invalid-invalid_attribute_names_always_fail.ids
 Invalid attribute names always fail
@@ -520,7 +520,7 @@ Requirements:
 Attribute: ''DiffuseColour'',''Foobar''
 ```
 
-### 値の制限を使用することができる 1/3
+### 値による制限もある
 
 ``` ids attribute/pass-value_restrictions_may_be_used_1_3.ids
 Value restrictions may be used 1/3
@@ -549,7 +549,7 @@ Attribute: ''Name'',Enumeration(''Foo'',''Bar'')
 
 ## 分類
 
-### データのない分類ファセットは、どの分類にもマッチする 1/2
+### データのないクラシフィケーションファセットは、どのクラシフィケーション1/2にもマッチする。
 
 ``` ids classification/fail-a_classification_facet_with_no_data_matches_any_classification_1_2.ids
 A classification facet with no data matches any classification 1/2
@@ -558,7 +558,7 @@ Requirements:
 Classification: Pattern(''\w+'')
 ```
 
-### データのない分類ファセットは、どの分類にもマッチする 2/2
+### データのないクラシフィケーション・ファセットが、どのクラシフィケーションにもマッチする 2/2
 
 ``` ids classification/pass-a_classification_facet_with_no_data_matches_any_classification_2_2.ids
 A classification facet with no data matches any classification 2/2
@@ -576,7 +576,7 @@ Requirements:
 Classification: Prohibited,Pattern(''\w+'')
 ```
 
-### 禁止された分類参照は、必須ファセットの反対を返す
+### 禁止されたクラシフィケーションの参照は、必須ファセットの反対を返す。
 
 ``` ids classification/fail-a_prohibited_classification_reference_returns_the_opposite_of_a_required_facet.ids
 A prohibited classification reference returns the opposite of a required facet
@@ -621,7 +621,7 @@ Requirements:
 Classification: Optional,Pattern(''\w+''),''ExpectedValue''
 ```
 
-### オプションの分類値は、マッチしない場合に失敗します。
+### オプションの分類値は、一致しない場合に失敗します。
 
 ``` ids classification/fail-an_optional_classification_value_fails_if_no_match.ids
 An optional classification value fails if no match
@@ -759,7 +759,7 @@ Requirements:
 Classification: ''Foobar''
 ```
 
-### システムは4/5で正確に一致すること
+### システムは4/5を正確に満たすべきである
 
 ``` ids classification/pass-systems_should_match_exactly_4_5.ids
 Systems should match exactly 4/5
@@ -777,7 +777,7 @@ Requirements:
 Classification: ''Foobar''
 ```
 
-### 完全な分類が使用されている場合、値はサブリファレンスと一致する（例：EF_25_10はEF_25_10_25、EF_25_10_30などと一致するはず）
+### 完全な分類が使用されている場合、値はサブリファレンスと一致する（例えば、EF_25_10はEF_25_10_25、EF_25_10_30などと一致するはずである）。
 
 ``` ids classification/pass-values_match_subreferences_if_full_classifications_are_used__e_g__ef_25_10_should_match_ef_25_10_25__ef_25_10_30__etc_.ids
 Values match subreferences if full classifications are used (e.g. EF_25_10 should match EF_25_10_25, EF_25_10_30, etc)
@@ -1377,7 +1377,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### 任意の素材を持つ要素は、空の素材ファセットを渡します。
+### 任意のマテリアルを持つ要素は、空のマテリアルファセットを渡します。
 
 ``` ids material/pass-elements_with_any_material_will_pass_an_empty_material_facet.ids
 Elements with any material will pass an empty material facet
@@ -2985,7 +2985,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,xs:double MaxInclusive(''0.'')
 ```
 
-### 浮動小数点の範囲がゼロより小さい場合の比較許容誤差。
+### ゼロより小さい浮動小数点レンジの比較許容範囲。
 
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_range_lower_than_zero_inclusive.ids
 Comparison tolerance for floating point range lower than zero inclusive pass

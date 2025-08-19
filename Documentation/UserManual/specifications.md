@@ -7,7 +7,7 @@ Every **Specification** has three main parts:
 1. **説明**その根拠についての説明**仕様**そして、それを達成するための方法を説明する。
   This part is designed for humans to read and understand why information is being requested.
 
-  このフィールドはまた、様々な適用可能性のファセットの根拠を説明するために使用され、どのように個別ではなく、全体として資産に関連するデータ契約を識別するために役立つかを説明するために使用される。 逆に、このフィールドは`description`各要件ファセットに関するデータは、ユーザーが必要とする個々の情報の目的を理解するのに役立つはずです。
+  このフィールドはまた、様々な適用可能性のファセットの根拠を説明するために使用され、どのように個別ではなく、全体として資産に関連するデータ契約を識別するために役立つかを説明するために使用されます。 逆に、このフィールドは`description`各要件ファセットに関するデータは、ユーザーが必要とする個々の情報の目的を理解するのに役立つはずです。
 
 1. **適用性**指定しようとしているモデルのサブセットを特定する。
   There are many different types of objects in IFC models, but each **Specification** only applies to a subset.
@@ -18,7 +18,7 @@ Every **Specification** has three main parts:
 
  1. **説明**壁の防火等級は建築基準法に適合するために重要である。
  1. **適用性**この仕様はすべての壁面に適用されます。
- 1. **必要条件**前述の壁材は、防火性能を有していなければならない。
+ 1. **必要条件**前述の壁材は、防火等級に適合していなければならない。
 
 ## 仕様書は情報をどのように記述できるか
 
@@ -27,7 +27,7 @@ A **Facet** describes its information precisely using fixed **Facet Parameters**
 
 を使用する。**ファセット**で使用されている。**適用性**セクションでは、モデルの関連部分を特定するために使用する情報について説明する。
 
-を使用する。**ファセット**で使用されている。**必要条件**セクションで、モデル部品が以下に準拠するために満たさなければならない情報制約を記述する。**仕様**.
+を使用する。**ファセット**で使用されている。**必要条件**セクションで、モデル部品が以下に準拠するために満たさなければならない情報制約を記述しています。**仕様**.
 
 ![IDSの構造](Graphics/ids-structure.png)
 
@@ -53,9 +53,9 @@ For example, you would use a **Complex Restriction** to specify that a fire rati
 
 | 意図 | 適用性 | 必要条件 |
 | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 外壁の耐力壁には、法令に適合する耐火等級が必要である。 | <ul><li>**Entity Facet** (**IFCクラス**はIfcWall)</li><li>**Property Facet** (**プロパティセット**はPset_WallCommon、**名前**はLoadBearing、**値**はTRUE)</li></ul>。 | <ul><li>***Property Facet** (**Property Set** is Pset_WallCommon, **Name** is FireRating)</li></ul> |
-| 寝室は最低10m2以上の広さが必要 | <ul><li>**Entity Facet** (**IFCクラス**はIfcSpace)</li><li>**Attribute Facet** (**Description**は "BEDROOM "というテキストを含むこと)</li></ul>。 | <ul><li>***Property Facet** (**Property Set** is Qto_SpaceBaseQuantities, **Name** is NetFloorArea, **Value** is >= 10)</li></ul> |
-| すべてのレンガ壁の種類を分類し、承認された命名規則に従わなければならない。 | <ul><li>**Entity Facet** (**IFCクラス**はIfcWallType)</li><li>**Material Facet** (**値**はレンガ)</li></ul>。 | <ul><li>**Classification Facet** (**System** is Uniclass 2015, **Value** must start with EF_25_10)</li><li>**Attribute Facet** (**Name** is Name, **Value** must be letters "WT" followed by 2 numbers, such as WT01, WT02, etc.)</li></ul>. |
+| 外壁の耐力壁には、法令に適合する耐火等級が必要である。 | <ul><li>**Entity Facet** (**IFCクラス**はIfcWall)</li><li>**プロパティファセット** (**プロパティセット**はPset_WallCommon、**名前**はLoadBearing、**値はTRUE)</li></ul>。 | <ul><li>**プロパティファセット**（**プロパティセット**はPset_WallCommon、**名前**はFireRating）</li></ul>。 |
+| 寝室は最低10m2以上の広さが必要 | <ul><li>**Entityファセット** (**IFCクラス**はIfcSpace)</li><li>**アトリビュートファセット** (**説明**は "BEDROOM "というテキストを含むこと)</li></ul>。 | <ul><li>**Property Facet** (**Property Set** is Qto_SpaceBaseQuantities, **Name** is NetFloorArea, **Value** is >= 10)</li></ul>. |
+| すべてのレンガ壁の種類を分類し、承認された命名規則に従わなければならない。 | <ul><li>**Entity Facet** (**IFCクラス**はIfcWallType)</li><li>**マテリアルファセット** (**値**はレンガ)</li></ul>。 | <ul><li>**Classification Facet** (**System** is Uniclass 2015, **Value** must start with EF_25_10)</li><li>**Attribute Facet** (**Name** is Name, **Value** must be a letters "WT" followed by 2 numbers, such as WT01, WT02, etc.)</li></ul>. |
 
 To see the full capabilities of what each information each **Facet** can specify, see the sections below for more detail.
 

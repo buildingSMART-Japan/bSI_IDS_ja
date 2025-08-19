@@ -14,7 +14,7 @@ The second and third columns define the properties of matching IFC2X3 entity and
 | IfcController | IfcDistributionControl要素 | IfcControllerType |
 | IfcFlowInstrument | IfcDistributionControl要素 | IfcFlowInstrumentType |
 | Ifcセンサー | IfcDistributionControl要素 | IfcSensorType |
-| IfcAirToAirHeatRecovery | Ifcエネルギー変換装置 | IfcAirToAirHeatRecoveryタイプ |
+| IfcAirToAirHeatRecovery（エア・トゥ・エア・ヒートリカバリー | Ifcエネルギー変換装置 | IfcAirToAirHeatRecoveryタイプ |
 | Ifcボイラー | Ifcエネルギー変換装置 | IfcBoilerType |
 | イフチラー | Ifcエネルギー変換装置 | IfcChillerType |
 | イフコイル | Ifcエネルギー変換装置 | コイルタイプ |
@@ -26,7 +26,7 @@ The second and third columns define the properties of matching IFC2X3 entity and
 | Ifc蒸発冷却器 | Ifcエネルギー変換装置 | Ifc蒸発冷却器タイプ |
 | Ifcエバポレーター | Ifcエネルギー変換装置 | IfcEvaporatorType |
 | Ifc熱交換器 | Ifcエネルギー変換装置 | IfcHeatExchangerType |
-| IfcHumidify | Ifcエネルギー変換装置 | IfcHumidifierType |
+| Ifc加湿器 | Ifcエネルギー変換装置 | IfcHumidifierType |
 | IfcMotorConnection | Ifcエネルギー変換装置 | IfcMotorConnectionType |
 | IfcTransformer | Ifcエネルギー変換装置 | IfcTransformerType |
 | IfcTubeバンドル | Ifcエネルギー変換装置 | IfcTubeBundleType |
