@@ -4,10 +4,10 @@ IDSファイルは、XSDで定義されたスキーマを持つ、単なるXML�
 
 IDS は、XSD ベースの検証チェックに合格すれば有効であるとみなされます。 公開 IDS テンプレートの buildingSMART ディレクトリで利用可能なすべてのサンプル IDS ファイルは、有効であることが保証されています。
 
-1. [最新のIDS XSDスキーマをダウンロードする](https://github.com/buildingSMART/IDS/blob/master/Development/ids.xsd)
+1. [最新のIDS XSDスキーマをダウンロードする](../../Schema/ids.xsd)
 2. IDSのサンプルファイルは`Documentation/ImplementersDocumentation/TestCases`フォルダ
 
-XSDの検証を実行できる、自由に利用できるオンラインツールやプログラミングライブラリは数多くあります。
+XSDの検証を実行できる、自由に利用できるオンラインツールやプログラミングライブラリは数多くある。
 However, a valid IDS file requires more than bare XML schema compliance; buildingSMART provides an [IDS auditing tool](https://github.com/buildingSMART/IDS-Audit-tool/) to help ensure that the IDS files that you produce or receive are fully valid. The same tool is also available at [Xbim IDS auditing service](https://www.xbim.it/ids), which is executed locally in your web browser and does not upload your IDS files to any server.
 
 ## オーサリングIDS
@@ -39,7 +39,7 @@ IDSチェックを行うソフトウェア**マスト**で利用可能なIFC/IDS
 
 加えて、ユーザーには以下の機能も提供することを強く推奨する：
 
-- IDS の監査結果は BCF-XML 形式で保存されるか、BCF-API を介して OpenCDE に接続されることが意図されています。しかし、BCF でのこれらの結果のフォーマットと全体的な構造は、現在指定されていません。
+- IDS の監査結果は BCF-XML 形式で保存されるか、BCF-API を介して OpenCDE に接続されることが意図されています。しかし、BCF でのこれらの結果のフォーマットと全体的な構造化は、現在指定されていません。
 - ソフトウェアがIDS仕様で指定されたIFCバージョンを解析できない場合は、ユーザーにその制限を知らせるべきである。
 - 要件がオプションであるが、代わりに必須であれば失敗する場合、チェッカーツールはエラーを記録してはならないが、補助的な警告や推奨を提供することができる。
 
