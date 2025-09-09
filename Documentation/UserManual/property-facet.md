@@ -4,7 +4,7 @@
 
 **プロパティ**は名前 (**ベース名**IDSでは "FireRating"）に分類される。**プロパティセット**Pset_WallCommon" のように、類似の主題ごとに整理することができます。 IFC プロパティには、次のようなものがあります。**価値観**これは特定の型であり、関連性があれば単位を表す。
 
-buildingSMARTは標準化された**プロパティセット**そして**プロパティ**のように、名前、セット、データタイプを指定することで、シームレスなデータ交換を可能にする：
+buildingSMARTは標準化された**プロパティセット**そして**プロパティ**のように、名前、セット、データタイプを義務付けることで、シームレスなデータ交換を支援する。 例えば、以下のようなものだ：
 
 | ベース名 | プロパティセット | データ型 |
 | -------------------- | ---------------------- | ------------------------------ |
@@ -21,7 +21,7 @@ This is known as the **Applicable Entity**.
 When specifying **Properties** in an IDS, it is important to consider which objects they can apply to.
 All sorts of objects can have **Properties** applied, not only physical objects like doors, windows, and slabs, but also non-physical objects like tasks, materials, structural profile cross sections, or labour resources.
 
-特別な**プロパティ**として知られている。**数量**一方**プロパティ**オブジェクトに関する任意の情報を指す、**数量**とは、長さ、幅、高さ、表面積、正味体積など、物体の計算上の寸法のことである。
+特別な**プロパティ**として知られている。**数量**一方**プロパティ**オブジェクトに関する任意の情報を指す、**数量**は、長さ、幅、高さ、表面積、正味体積など、具体的に計算された物体の寸法を指す。
 IFC makes a distinction between **Properties** and **Quantities**, but in IDS they are interchangeable, and you are allowed to specify **Quantities** just the same as a **Property** with this facet.
 Just like **Properties**, **Quantities** are grouped into **Quantity Sets** and have a **Value**.
 
@@ -40,7 +40,7 @@ IFC2X3は、buildingSMARTの標準化されたプロパティのみを持って�
 
 ## 対応物件タイプ
 
-IFC には様々なタイプのプロパティがあります。 IDS では、単純なプロパティを指定できます。[単一の値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySingleValue.htm),[境界値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyBoundedValue.htm),[リスト](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyListValue.htm),[テーブル](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyTableValue.htm)そして[列挙](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyEnumeratedValue.htm)一方[~~複雑な特性](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcComplexProperty.htm)そして[~~参考値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyReferenceValue.htm)はIDSがサポートしていない。
+IFC には様々なタイプのプロパティがあります。 IDS では、単純なプロパティを指定できます。[単一の値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySingleValue.htm),[境界値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyBoundedValue.htm),[リスト](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyListValue.htm),[テーブル](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyTableValue.htm)そして[列挙](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyEnumeratedValue.htm)一方[](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcComplexProperty.htm)そして[~~参考値](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertyReferenceValue.htm)はIDSがサポートしていない。
 
 リスト、テーブル、バウンデッド、列挙プロパティの解釈は、IDS要件によって以下のように変わる：
 
@@ -61,7 +61,7 @@ IFCのバウンデッド・バリュー・プロパティは、一端のみを�
 | 2 | 2 |  | ✔️ | 提供される唯一のバウンドは、指定された値と互換性がある |
 | 2 |  | 2 | ✔️ | 提供される唯一のバウンドは、指定された値と互換性がある |
 | 5 | 2 | 4 | ❌ | 下限値と上限値は指定された値を除く |
-| 5 |  | 4 | ❌ | 提供された唯一のバウンドは、指定された値と互換性がありません。 |
+| 5 |  | 4 | ❌ | 提供された唯一のバウンドが、指定された値と互換性がない。 |
 | >2と≦5 |  |  | ❌ | 下限と上限の少なくとも一方が必要 |
 | 3 |  |  | ❌ | 下限と上限の少なくとも一方が必要 |
 |  | 2 |  | ✔️ | 値の比較は行われず、少なくとも1つの値が提供される |
@@ -102,13 +102,14 @@ buildingSMARTの標準化に従うことが推奨される。**プロパティ**
 
 ## パラメータ
 
-| パラメータ | 必須 | 制限あり | 許容値 | 意味 |
-| ---------------- | -------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **プロパティセット** | ✔️ | ✔️ | カスタムまたはbuildingSMARTで標準化されたプロパティセット名。 標準化された名前は "Pset_"または "Qto_"で始まる必要があり、IFCドキュメントに記載されている。 | オブジェクトに指定されたプロパティが設定されている。 |
-| **ベース名** | ✔️ | ✔️ | 任意のテキストプロパティ名。 buildingSMARTの標準プロパティ名は、buildingSMARTのドキュメントに記載されています。 | このプロパティは、指定されたプロパティセットの中に存在し、空でない値を持たなければならない。 |
-| **データ型** | ❌ | ✔️ | 参照されるスキーマ・バージョンと互換性のある有効なデータ型。 | IDSで指定される単位は[IDS単位表](units.md)を使用しますが、プロジェクトではどの単位を使用してもよいため、プロジェクトの値は比較の前にSI単位に変換する必要があります。 ユーザー・インターフェースでは、開発者やユーザーが好む単位を表示することが許可されています。 |
-| **価値** | ❌ | ✔️ | プロパティのデータ型に適した任意の値。 指定がない場合は、空でない任意の値が許可されます。 メジャー・タイプの値は、[IDS 単位テーブル](units.md) で定義されている単位に従って格納されます。 | 詳細は[DataType documentation](../ImplementersDocumentation/DataTypes.md#xml-base-types)を参照。 |
-| **ウリ** | ❌ | ❌ | このリソースは、名前と定義を含み、ISO 23386に準拠することが望ましい。 | 有効なURIのソースの一つは[the bSDD](https://search.bsdd.buildingsmart.org/)である。"Fire Rating "のURIの例は、[https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/FireRating](https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/FireRating)である。 |
+| パラメータ | 必須 | 制限あり | 意味 |
+| --------------- | -------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **プロパティセット** | ✔️ | ✔️ | 標準的なIFCまたはカスタムのプロパティセット名（テキスト）。 標準的な名前は "Pset_"または "Qto_"で始まる必要があり、IFCのドキュメントに記載されています。 |
+| **ベース名** | ✔️ | ✔️ | 標準またはカスタムのプロパティ名（テキスト）。 標準化されたbuildingSMARTプロパティ名は、IFCドキュメントおよびbSDDに記載されています。 プロパティは、指定されたプロパティセットに存在し、空でない値を持つ必要があります。 |
+| **データ型** | ❌ | ✔️ | 参照されるスキーマのバージョンと互換性のある有効なデータ型で、大文字小文字で表現される。 IDSで指定される単位は[IDS単位テーブル](units.md)を使用するが、プロジェクトはどの単位を使用してもよいので、プロジェクトの値は比較の前にSI単位に変換する必要がある。 ユーザーインターフェースは、開発者やユーザーが好む単位を表示することが許可されている。 |
+| **価値** | ❌ | ✔️ | プロパティのデータ型に適した任意の値。 指定がない場合は、空でない任意の値が許可されます。 メジャー・タイプの値は、[IDS units table](units.md) で定義されている単位に従って格納されます。 プロパティの値は一致する必要があります。詳細については、[DataType documentation](../ImplementersDocumentation/DataTypes.md#xml-base-types) を参照してください。 |
+| **ウリ** | ❌ | ❌ | プロパティの統一資源識別子（Uniform Resource Identifier）。解釈の一貫性を確保するために、プロパティの標準化された定義を参照するために使用される。 ターゲット・リソースは、名前と定義を含み、ISO 12006-3およびISO 23386に準拠することが望ましい。 これは、IDSチェックの対象とならないオプション属性である。IFCモデルは、同じURIまたは任意のURIを持つ必要はない。有効なURIの1つのソースは、[bSDD](https://search.bsdd.buildingsmart.org/)であり、URIの例は、「火災格付け」のものである：[https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/FireRating](https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/FireRating)。 |
+|  |  |  |  |
 
 ## Examples
 
@@ -120,3 +121,37 @@ buildingSMARTの標準化に従うことが推奨される。**プロパティ**
 | 現場打ちまたはプレキャストコンクリートのあらゆる要素 | 実体（スラブなど）は、鋳造方法が現場打ちまたはプレキャストに設定されていなければならない。 | プロパティ Set="Pset_ConcreteElementGeneral", Name="CastingMethod", value=["INSITU", "PRECAST"]. |
 | MyCompany_Concreteプロパティセットに格納されている、A、B、Cから選択したConcreteMixというカスタムプロパティを持つすべてのエンティティ | エンティティは、MyCompany_Concrete というプロパティセットに格納された、A、B、または C から選択された値を持つ ConcreteMix というカスタムプロパティを持つ必要があります。 | Property Set="MyCompany_Concrete", Name="ConcreteMix", value=["A", "B", "C"]]. |
 
+## Properties
+
+### 必須項目
+
+両方`propertySet`そして`baseName`は必須である。`dataType*`そして`value`は任意であるが`value`を提供する必要がある。`dataType*`オプションの属性`uri`は単なるメタデータであり、IDSのチェック対象ではない。
+
+## プロパティ・ファセットの解釈
+
+### 適用性
+
+| プロパティセット | ベース名 | データタイプ | 価値 | IDSの解釈 |
+| ------------ | --------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------- |
+| マイセット | マイ・プロップ | - | - | 値に関係なく、セット *My_Set* 内のプロパティ *My_Prop* が入力されているすべてのエンティティに適用されます。 |
+| マイセット | マイ・プロップ | IFCTEXT | テスト | セット *My_Set* 内で、値 *Test* を持つプロパティ *My_Prop* を持つすべてのエンティティに適用されます。 |
+
+### Requirements
+
+| IDSカーディナリティ | プロパティセット | ベース名 | データタイプ | 価値 | コンフィギュレーションを許可しますか？ | IDSの解釈 |
+| --------------- | ------------ | --------- | ---------- | ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 必須 | マイセット | マイ・プロップ | - | - | ✅ | 適用可能なオブジェクトは、*My_Set*内に*My_Prop*プロパティを持つ必要がある。 |
+| 必須 | マイセット | マイ・プロップ | IFCTEXT | - | ✅ | (上記と同様) + データ型 *IFCTEXT* の場合。 |
+| 必須 | マイセット | マイ・プロップ | IFCTEXT | テスト | ✅ | (上記と同様) + 値 *Test*. |
+| 必須 | マイセット | マイ・プロップ | - | テスト | ❌ | 値を指定する場合は、データ型の指定が必要。 |
+| オプション | マイセット | マイ・プロップ | - | - | ❌ | オプションは意味をなさない。 |
+| オプション | マイセット | マイ・プロップ | IFCTEXT | - | ✅ | 該当するオブジェクトに *My_Set* で設定されている *My_Prop* プロパティがある場合、それは *IFCTEXT* データ型である必要があります。 プロパティがない場合は許可されます。 |
+| オプション | マイセット | マイ・プロップ | IFCTEXT | テスト | ✅ | (上記のように) +値が*Test*と等しくなるようにする。 プロパティの欠如は許される。 |
+| オプション | マイセット | マイ・プロップ | - | テスト | ❌ | 値を指定する場合は、データ型の指定が必要。 |
+| 禁止 | マイセット | マイ・プロップ | - | - | ✅ | プロパティ*My_Prop*は、値に関係なく、たとえ空であっても存在してはならない。 |
+| 禁止 | マイセット | マイ・プロップ | IFCTEXT | - | ❌ | プロパティ全体を禁止するか、REQUIRED/OPTIONALで値を指定する。 |
+| 禁止 | マイセット | マイ・プロップ | IFCTEXT | テスト | ❌ | プロパティ全体を禁止するか、REQUIRED/OPTIONALで値を指定する。 |
+| 禁止 | マイセット | マイ・プロップ | - | テスト | ❌ | 値を指定する場合は、データ型の指定が必要。 |
+
+<!-- For an evaluation of the rationale, see [these minutes](https://github.com/buildingSMART/IDS/issues/206#issuecomment-1820696088). -->
+\* フィールドはXML属性
