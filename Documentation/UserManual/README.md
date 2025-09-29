@@ -27,7 +27,7 @@ IDSファイル作成ツールとモデルチェックツールは、多くの[�
 以上です！その他、サンプルIDSファイルは、[Examplesに](../Examples)あります。ヘルプが必要な場合は、[buildingSMARTフォーラムに](https://forums.buildingsmart.org/)お気軽にお問い合わせください。
 
 ## IDS についてもっと知る
- 1. [ **スペックの**仕組み](specifications.md)
+ 1. [ **仕様の**仕組み](specifications.md)
 
  1. [優れた**仕様の**メタデータを指定するためのガイドライン](ids-metadata.md)
 
