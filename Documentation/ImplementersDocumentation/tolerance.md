@@ -1,17 +1,15 @@
 # IDSにおける許容値
-
 ## 平等の寛容
-
 丸め誤差のため、浮動小数点数(ids:simpleValueとxs:restrictionではdouble)の等値性については常に許容値を考慮しなければならない。
 
 平方メートルで表される電線の面積のような低い数値と、鉄道の長さのような高い数値の両方をサポートするために、IDSは公式に従って相対成分と固定成分の両方を使用する：
 
-`x == v ⇒ (v - abs(v) × ϵ - ϵ) < x < (v + abs(v) × ϵ + ϵ)`
-with a tolerance value being: `ϵ = 1.0e⁻⁶`
+`x == v ⇒ (v - abs(v) × ϵ - ϵ) < x < (v + abs(v) × ϵ + ϵ)`  
+である：`ϵ = 1.0e⁻⁶`
 
 以下の表は、公差内の値の特徴的な範囲を示している：
 
-| v | 下界<br>`(v - abs(v) × ε - ε) | 上界<br>`(v + abs(v) × ε + ε) | 絶対デルタ |
+| <nobr>v</nobr> | <nobr>下界</nobr><br>`(v - abs(v) × ε - ε)` | <nobr>上</nobr>界<br>`(v + abs(v) × ε + ε)` | <nobr>絶対</nobr>デルタ    |
 | ---------: | ------------------------------------: | ------------------------------------: | -------------: |
 | 100000.0 | 99999.899999 | 100000.100001 | 0.200002 |
 | 10000.0 | 9999.989999 | 10000.010001 | 0.020002 |
@@ -40,27 +38,25 @@ with a tolerance value being: `ϵ = 1.0e⁻⁶`
 | -1000.0 | -1000.0010010000 | -999.998999 | 0.002002 |
 | -10000.0 | -10000.0100010000 | -9999.989999 | 0.020002 |
 | -100000.0 | -100000.1000010000 | -99999.899999 | 0.200002 |
-| -1000000.0 | -1000001.0000010000 | -999998.999999 | 2.000002 |
+| -1000000.0 | -1000001.0000010000 * | -999998.999999 | 2.000002 |
 
-\* If the least significant digits are beyond the precision of a IEEE74 double (approximately 17 digits), it might result in a false positive. For example, -1000001.00000100001 would still pass as being equal to -1000000.0, even though being below the lower bound.
+\* 最下位桁がIEEE74 doubleの精度(約17桁)を超えている場合、誤検出となる可能性があります。例えば、-1000001.00000100001 は下限を下回っているにもかかわらず、-1000000.0 と等しいとみなされます。
 
 これは丸め誤差に特化したものであり、ユーザーが明確な範囲を指定する必要がある構造関連の公差には適用されないからである。
 
 ## レンジ
+**公差は範囲には適用されない**。したがって、範囲（最小排他/最小包含/最大排他/最大包含）で使用される値は、明示的に比較されなければならない。例えば
 
-**許容範囲はレンジには適用されない**したがって、範囲（minExclusive/minInclusive/maxExclusive/maxInclusive）で使用される値は、明示的に比較されるべきである。 例えば、以下のように：
-
-|  | >1.0 | >=1.0 | <1.0 |
+|  | &gt;<nobr>1</nobr>.0 | <nobr>&gt;=1</nobr>.0 | <nobr>&lt;1</nobr>.0 |
 | ---------: | ---: | ----: | ---: |
-| 0.99999999 | 失敗 | 失敗 | パス |
+| 0.99999999 | 失敗　　　　　 | 失敗　　　　　 | パス　　　　　 |
 | 1.00000000 | 失敗 | パス | 失敗 |
 | 1.00000001 | パス | パス | 失敗 |
 
-This approach allows for specifying a custom tolerance in cases where the general rule is not applicable. For example:
+このアプローチでは、一般的なルールが適用できない場合にカスタム公差を指定することができる。例えば
 
-- `(v - 1e-10) <= x <= (v + 1e-10)`チェック`x`等しい`v`をカスタム許容誤差1e-10で指定したもので、デフォルトの式よりはるかに正確です。
-- `v <= x <= v`チェック`x`は正確に等しい`v`容赦なく
+- `(v - 1e-10) <= x <= (v + 1e-10)` は、`x` が`v` と等しいかどうかをチェックします。カスタムの許容誤差は1e-10で、デフォルトの計算式よりもはるかに正確です。
+- `v <= x <= v`、`x` が公差なしでと正確に等しいことをチェックする。`v`
 
 ## 備考
-
-注：これらの協定の歴史は、以下を参照されたい。[78号](https://github.com/buildingSMART/IDS/issues/78),[36号](https://github.com/buildingSMART/IDS/issues/36)そして[要約 by @giuseppeverduciALMA](https://github.com/buildingSMART/IDS/blob/0d50fd8f2dbd5b388f6fafb67da255cc3ce2b4ca/Documentation/tolerance.md).
+注：これらの合意の歴史は、[78号](https://github.com/buildingSMART/IDS/issues/78)、[36号](https://github.com/buildingSMART/IDS/issues/36)、そして[@giuseppeverduciALMAによる要約で](https://github.com/buildingSMART/IDS/blob/0d50fd8f2dbd5b388f6fafb67da255cc3ce2b4ca/Documentation/tolerance.md)たどることができる。

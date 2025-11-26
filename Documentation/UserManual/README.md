@@ -18,7 +18,7 @@ IDSファイル作成ツールとモデルチェックツールは、多くの[�
 
  1. [IDSファイルのサンプルを](../Examples/IDS_wooden-windows.ids)ダウンロードする。
 
- 1. [ IFC ](../Examples/IDS_wooden-windows_IFC.ifc)、IDSと照合するための[サンプルモデルを](../Examples/IDS_wooden-windows_IFC.ifc)ダウンロードしてください。
+ 1. IDSと照合するための[IFCサンプルモデルを](../Examples/IDS_wooden-windows_IFC.ifc)ダウンロードしてください。
 
  1. IDSとIFC の両方をソフトウェアにロードし、チェック・プロセスを開始する。
 

@@ -1,5 +1,5 @@
 # リポジトリポリシー
-## ブランチ
+## 枝
 主な作業ブランチは`development` で、開発中の最新の標準提案の状態が表示される。バージョンブランチは、`ver` で始まるブランチ、例えば`ver/1.1.x` にあります。標準の公式バージョンは、例えば`1.0.0` のようにタグでマークされており、[GitHubのrealesesでも](https://github.com/buildingSMART/IDS/releases)見ることができる。 
 
 <img src="Graphics/branch-policy.svg" alt="branch-policy" width="600"/>

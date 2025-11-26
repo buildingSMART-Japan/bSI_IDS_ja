@@ -1,67 +1,66 @@
 # エンティティ・ファセット
-IFCモデルのすべてのインスタンスは、"IFCクラス"（EXPRESSエンティティとしても知られています）を持っています。たとえば、壁のインスタンスは IFC クラス IfcWall を持ちます、ドアのインスタンスは IFC クラス IfcDoor を持ちます。個々の建築要素を表していないインスタンスにもクラスがあります。たとえば、プロジェクトには IfcProject クラスがあり、窓タイプには IfcWindowType クラスがあり、コスト項目には IfcCostItem クラスがあります。
+IFC モデル内のすべてのインスタンスは、"IFC クラス"（EXPRESS エンティティとしても知られる）を持つ。例えば、壁のインスタンスはIFC クラスIfcWall を持ち、ドアのインスタンスはIFC クラスIfcDoor を持つ。個々の建物要素を表さないインスタンスもクラスを持ちます。例えば、プロジェクトはクラスIfcProject を持ち、窓タイプはクラスIfcWindowType を持ち、コスト項目はクラスIfcCostItem を持ちます。
 
-クラスはインスタンスを分類するためだけのものではない。どのような種類のプロパティやリレーションシップを持つことができるかを示すものでもあります。例えば、IfcWallクラスのインスタンスは耐火等級プロパティを持つことができますが、IfcGridのインスタンスは持つことができません。
+クラスはインスタンスを分類するためだけのものではない。クラスは、どのような種類のプロパティや関係を持つことができるかを示すものでもある。例えば、IfcWall クラスのインスタンスは耐火等級プロパティを持つことができますが、IfcGrid のインスタンスは持つことができません。
 
-仕様を記述する上で最も重要なことの1つは、その仕様が適切な IFC クラスに適用されることを確認することです。通常、すべての**仕様**書には、**適用**セクションで使用される**エンティティ・ファセットが**あります。
+仕様書を作成する上で最も重要なことの1つは、その仕様書が適切なIFC クラスに適用されることを確認することです。通常、すべての**仕様**書には、**適用**セクションで使用される**エンティティ・ファセットが**あります。
 
-IFC スキーマのバージョン間にはクラスの違いがあります。最近のIFCスキーマには、より豊富で多様なIFCクラスが含まれています：
+IFC スキーマのバージョン間にはクラスの違いがあります。最近のIFC スキーマには、より豊富で多様なIFC クラスが含まれています：
 
-- [IFC4X3_ADD2 IFCクラス名のリスト](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/annex-b1.html)
-- [IFC4 IFC クラス名のリスト](https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2_TC1/HTML/link/alphabeticalorder-entities.htm)
-- [IFC2X3 IFC クラス名のリスト](https://standards.buildingsmart.org/IFC/RELEASE/IFC2x3/TC1/HTML/alphabeticalorder_entities.htm)
+- [IFC4X3_ADD2 IFC クラス名一覧](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/annex-b1.html)
+- [IFC4 IFC クラス名一覧](https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2_TC1/HTML/link/alphabeticalorder-entities.htm)
+- [IFC2X3 IFC クラス名一覧](https://standards.buildingsmart.org/IFC/RELEASE/IFC2x3/TC1/HTML/alphabeticalorder_entities.htm)
 
-クラスによっては、オプションで「**定義済みタイプ（Predefined Type**）」を持つこともあります。これは、IFC3 クラス**名に加えて**、さらに細かく分類したものです。例えば、IfcWallのインスタンスは、SHEARまたは**PARTITIONINGの定義済みタイプを**持つ可能性があります。IFCのクラス**名が**IFC標準によって指定されているのに対し、**定義済みタイプは**標準によって指定できますが、ユーザーによって定義されたカスタム値を含むこともあります。[IFC Predefined Typeの使用](#ifc-predefined-types)方法については、以下を参照してください。
+いくつかのクラスは、オプションで「**定義済みタイプ**」を持つこともできる。これは、IFC Class**Name（**クラス**名**）に加えて、さらなるレベルの分類です。例えば、IfcWall のインスタンスは、SHEAR または PARTITIONING の**Predefined Type**を持つことができる。IFC Class**Nameが** IFC 標準によって指定されるのに対し、**Predefined Typeは**標準によって指定されるだけでなく、ユーザーによって定義されたカスタム値を含むこともできます。[ IFC Predefined Typeの使い方については](#ifc-predefined-types)、以下をご覧ください。
 
 ## パラメータ
-| <nobr>パラメータ</nobr> | <nobr>必須</nobr> | <nobr>制限</nobr>あり | <nobr>意味</nobr> |
+| <nobr>パラメータ</nobr>     | <nobr>必須</nobr>       | <nobr>制限</nobr>あり         | <nobr>意味</nobr> |
 | -------------------------------------- | -------- | -------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **氏名**(`name`) | ✔️　　　　　 | ✔️　　　　　 | IFC スキーマの有効な IFC クラス。IFC クラスと完全に一致する必要があります。大文字で表します。 |
-| **定義済みタイプ**(`predefinedType`) | ❌ | ✔️ | IFC スキーマの有効な定義済み型、または任意のカスタム・テキスト値。Predefined Typeは正確に一致する必要があります。大文字で表します。 |
+| **氏名**(`name`) | ✔️　　　　　 | ✔️　　　　　 | IFC スキーマの有効なIFC クラス。IFC クラスは正確に一致しなければならない。大文字で表現します。 |
+| **定義済みタイプ**(`predefinedType`) | ❌ | ✔️ | IFC スキーマの有効な定義済みタイプ、または任意のカスタム・テキスト値。Predefined Typeは正確に一致しなければならない。大文字で表現する。 |
 
 ## エンティティ・ファセットの解釈
 ### 適用性
-| <nobr>団体</nobr>名 | エンティティ<nobr>定義済み</nobr>タイプ | IDSの<nobr>解釈</nobr> |
+| <nobr>団体</nobr>名 | エンティティ<nobr>定義済み</nobr>タイプ | IDSの<nobr>解釈</nobr>         |
 | ----------- | ---------------------- | ------------------------------------------------------- |
-| IFCWINDOW | -　　　　　　 | すべての*IfcWindow*エンティティに適用されます。 |
-| IFCWINDOW | スカイライト | *IfcWindowの*すべての*天窓*タイプのエンティティに適用されます。 |
+| IFCWINDOW | -　　　　　　 | すべての事業体に適用される。 *IfcWindow*すべての事業体に適用されます。 |
+| IFCWINDOW | スカイライト | すべての *IfcWindow*タイプのすべてのエンティティに適用される。 |
 
 ### 必要条件
-| IDS<nobr>カーディナリティ</nobr> | <nobr>団体</nobr>名 | エンティティ<nobr>定義済み</nobr>タイプ | <nobr>コンフィギュレーションを</nobr>許可しますか？ | IDSの<nobr>解釈</nobr> |
+| IDS<nobr>カーディナリティ</nobr> | <nobr>団体</nobr>名 | エンティティ<nobr>定義済み</nobr>タイプ | <nobr>コンフィギュレーションを</nobr>許可しますか？ | IDSの<nobr>解釈</nobr>         |
 | --------------- | ----------- | ---------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------- |
-| 必須　　　　　 | IFCWINDOW | -　　　　　　 | ✅　　　　　　 | 適用可能なオブジェクトは、エンティティ IFCWINDOW でなければなりません。 |
-| 必須 | IFCWINDOW | スカイライト | ✅ | 適用可能なオブジェクトは、エンティティIFCWINDOWと定義済みのタイプSKYLIGHTでなければなりません。 |
-| オプション | IFCWINDOW |    | ❌ | オプションは意味をなさない。 |
-| オプション | IFCWINDOW | スカイライト | ✅ | 該当するオブジェクトがIFCWINDOWエンティティの場合、それはSKYLIGHT定義済みタイプも持っていなければなりません。 |
-| 禁止 | IFCWINDOW |    | ✅ | 適用可能なオブジェクトは、IFCWINDOW エンティティであることはできません。 |
-| 禁止 | IFCWINDOW | スカイライト | ✅ | 適用可能なオブジェクトは、IFCWINDOWエンティティ（またはそれ以外）であることができますが、SKYLIGHTの定義済みタイプの場合はできません。 |
+| 必須　　　　　 | IFCWINDOW | -　　　　　　 | ✅　　　　　　 | 該当するオブジェクトは、IFCWINDOW のエンティティでなければならない。 |
+| 必須 | IFCWINDOW | スカイライト | ✅ | 適用可能なオブジェクトは、エンティティIFCWINDOW 、定義済みのタイプSKYLIGHTでなければならない。 |
+| オプション | IFCWINDOW |  | ❌ | オプションは意味をなさない。 |
+| オプション | IFCWINDOW | スカイライト | ✅ | 該当するオブジェクトがIFCWINDOW エンティティの場合、SKYLIGHTの定義済みタイプも持っていなければならない。 |
+| 禁止 | IFCWINDOW |  | ✅ | 適用されるオブジェクトは、IFCWINDOW エンティティであることはできない。 |
+| 禁止 | IFCWINDOW | スカイライト | ✅ | 適用可能なオブジェクトは、IFCWINDOW （またはそれ以外）のエンティティにすることができますが、SKYLIGHTの定義済みタイプである場合はできません。 |
 
-## IFC 定義済みの型
-IFC スキーマ・ドキュメントには、標準の定義済み型のリストが含まれています。以下は、IFC4X3_ADD2 スキーマで有効な**定義済み**型のリストを見つける方法です。この手順は、すべての IFC バージョンで同様です。
+## IFC 定義済みタイプ
+IFC スキーマ・ドキュメントには、標準的な定義済み型のリストが含まれています。以下は、スキーマで有効な**定義済み**型のリストを見つける方法です。 IFC4X3_ADD2スキーマで有効な定義済み型のリストを見つける方法を示します。この手順は、すべてのIFC バージョンで同様です。
 
- 1. 指定する IFC クラスのドキュメント・ページを参照します。上記のIFCクラス名のリストからアクセスできます。例えば、[これはIfcWallのドキュメント・ページです](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcWall.htm)。
+ 1. 指定するIFC クラスのドキュメント・ページを参照する。上記のIFC クラス名の一覧からアクセスできます。例えば、[これはIfcWall のドキュメント・ページ](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcWall.htm)です。
 
  1. ドキュメントの**Attributes**セクションまでスクロールダウンし、**PredefinedType**属性を見つけてください。
 
- 1. **PredefinedType**属性の横にある列挙リンクをクリックすると、有効な値のリストが表示されます。例えば、IfcWallの場合、リンクをクリックすると[IfcWallTypeEnumのドキュメントが](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcWallTypeEnum.htm)表示されます。
+ 1. **PredefinedType**属性の隣にある列挙リンクをクリックすると、有効な値のリストが表示されます。例えば、IfcWall の場合、リンクをクリックすると、[ IfcWallTypeEnum のドキュメントが](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcWallTypeEnum.htm)表示されます。
 
  1. 有効な**定義済み型の**リストは表に示されている。
 
-**定義済みタイプが**必要な場合は、標準のリストから選択することを強く推奨する。ただし、プロジェクトに適用されない場合は、任意のカスタム値を指定することができます。
+**定義済みタイプが**必要な場合は、標準のリストから選択することを強く推奨する。しかし、プロジェクトに適用されない場合は、任意のカスタム値を指定することができます。
 
 ### IFC ファイルの`predefinedType` を識別するためのロジック：
-- **IF：** [オブジェクトが](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm) [型によって](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)定義されている ([IfcRelDefinesByType](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRelDefinesByType.htm)関係を検索)
-  - **IF：** その[型オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)、`USERDEFINED` ➡️ ✅ その[型オブジェクトの](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm) `ElementType` 属性に、定義済みの型の値を持つ`PredefinedType` を持つ。
-  - **ELSE IF：** その[型オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)、`USERDEFINED` ➡️ ✅以外の値を持つ`PredefinedType` を持つ。事前定義された型の値は、その[型オブジェクトの](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm) `PredefinedType` 属性にある。
-  - **ELSE：** [型オブジェクトが](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)定義済みの型を定義していない。⬇️
-- **ELSE：**
+- **IF**: [オブジェクトが](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm) [型によって](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)定義されている（relationshipを探す [IfcRelDefinesByType](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRelDefinesByType.htm)関係)
+  - **IF**: [型オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)、値`USERDEFINED` ➡️✅を持つ`PredefinedType` 。事前定義された型の値は、その[型オブジェクトの](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm) `ElementType` 属性にある。
+  - **ELSE IF**:その[型オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)、`USERDEFINED` ➡️ ✅以外の値を持つ`PredefinedType` を持つ。事前定義された型の値は、その[型オブジェクトの](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm) `PredefinedType` 属性にある。
+  - **ELSE**: [型オブジェクトが](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)定義済みの型を定義していない。⬇️
+- **ELSE**：
   - **IF：** `ObjectType` [オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm)、値`USERDEFINED` ➡️ を持つ`PredefinedType` を持つ。
-  - **ELSE IF：** [オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm) `USERDEFINED` 以外の値を持つ`PredefinedType` を持つ ➡️ ✅ 定義済みの型の値は、その[オブジェクトの](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm) `PredefinedType` 属性にある。
-  - **ELSE：** [オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm)定義済みの型を持たない。🔚
+  - **ELSE IF**: [オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm) `USERDEFINED` 以外の値を持つ`PredefinedType` を持つ ➡️ ✅ 定義済みの型の値は、その[オブジェクトの](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm) `PredefinedType` 属性にある。
+  - **ELSE**: [オブジェクトは](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm)定義済みの型を持たない。🔚
 
-
-### IFC 定義済みの型の使用例
-| IDS<nobr>エンティティ</nobr> | IDS<nobr>定義済み</nobr>タイプ | IFC<nobr>Entity</nobr> | IFC<nobr>定義済み</nobr>タイプ | IFC<nobr>Element/Object</nobr> Type | <nobr>IFCxIDS</nobr>Result |
+### IFC 定義済みタイプの使用例
+| IDS<nobr>エンティティ</nobr> | IDS<nobr>定義済み</nobr>タイプ | IFC <nobr>エンティティ</nobr> | IFC <nobr>定義済み</nobr>タイプ | IFC <nobr>要素/オブジェクトの</nobr>タイプ | <nobr>IFCxIDS</nobr>結果 |
 | ---------- | ------------------- | ---------- | ------------------- | ----------------------- | -------------- |
 | IFCWALL | ユーザー定義　 | IFCWALL | ユーザー定義　 | -　　　　　　 | ✅　　　　　　 |
 | IFCWALL | ユーザー定義 | IFCWALL | ユーザー定義 | FOO | ✅ |
@@ -69,211 +68,210 @@ IFC スキーマ・ドキュメントには、標準の定義済み型のリス�
 | IFCWALL | FOO | IFCWALL | FOO | - | ✅ |
 
 
-## IFC2X3 の特殊ケース
-IFC2X3のいくつかの出現エンティティは、タイプオブジェクトによってさらに指定されます。  
-この定義は、IfcFlowTerminalの出現インスタンスと、IfcAirTerminalTypeのタイプ・インスタンスによって、IFC2X3でエンコードされています。  
+## 特別なケースIFC2X3
+IFC2X3 のいくつかの出現エンティティは、そのタイプオブジェクトによってさらに指定される。  
+この定義は、IfcFlowTerminal の出現インスタンスと、IfcAirTerminalType の型インスタンスによって、IFC2X3 でエンコードされている。  
 エンティティ・ファセットには、タイプ・エンティティ名をさらに指定するパラメータがない。  
-この場合、IDSはIFC4で紹介されている規約に従っており、IDSに基づくチェックはスキーマに依存しない。  
-指定された例では、チェックされるエンティティの**名前は**IfcAirTerminal（タイプなし）でなければならず、指定されたマッピング・テーブルによって解決されなければならない。  
+この場合、IDSはIFC4 で紹介されている慣例に従う。  
+指定された例では、チェックされるエンティティの**名前は** IfcAirTerminal （タイプなし）でなければならず、指定されたマッピングテーブルによって解決されなければならない。  
 全リストはこの[表に](./Documentation/ImplementersDocumentation/ifc2x3-occurrence-type-mapping-table.md)ある。
 
 ## 継承
 IDS のエンティティ・ファセット解釈には、自動継承はない。つまり、すべてのエンティティを明示的に列挙する必要がある。これにより、正確で曖昧さのない仕様が可能になる。
 
-たとえば、すべての IfcElement オブジェクトに適用される要件を作成するにはIfcWall、IfcDoorなど、すべてのIfcElementサブエンティティをリストする必要があります。また、IfcElementは抽象エンティティであるため、リストされるべきではありません。
+たとえば、すべてのIfcElement オブジェクトに適用される要件を作成するには、IfcWall やIfcDoor など、すべてのIfcElement サブエンティティをリストする必要があります。また、IfcElement は抽象エンティティであり、インスタンス化できないため、モデルには表示されない。
 
-IfcElement、IfcBuiltElement、IfcFlowSegment、またはその他の一般的に使用されるサブエンティティを、ユーザーやソフトウェア実装者が指定できるように、以下の表に示します。
+ユーザーやソフトウェア実装者が、IfcElement 、IfcBuiltElement 、IfcFlowSegment などのよく使われるサブエンティティをすべて指定できるように、以下の表を用意した。
 
-### 異なる IfcElement バージョンのサブエンティティ IFC
-|    | <nobr>IFC2X3</nobr> | <nobr>IFC4</nobr> | <nobr>IFC4X3</nobr> |
+### IfcElement IFC 、異なるバージョンのサブ・エンティティ
+|  | <nobr>IFC2X3</nobr> | <nobr>IFC4</nobr> | <nobr>IFC4X3</nobr> |
 |-----------------------------------------------------|--------|------|--------|
 | IfcElement | ⚠️　　　　　 | ⚠️　　　　　 | ⚠️　　　　　 |
-| ── IfcBuildingElement | ⚠️ | ⚠️ |    |
-| ── IfcBuiltElement |    |    | ✅ |
+| ── IfcBuildingElement | ⚠️ | ⚠️ |  |
+| ── IfcBuiltElement |  |  | ✅ |
 | ──── IfcBeam | ✅ | ✅ | ✅ |
-| ────── IfcBeamStandardCase |    | 🚫 | 🚫 |
-| ──── IfcBearing |    |    | ✅ |
+| ────── IfcBeamStandardCase |  | 🚫 | 🚫 |
+| ──── IfcBearing |  |  | ✅ |
 | ──── IfcBuildingElementProxy | ✅ | ✅ | ✅ |
-| ──── IfcChimney |    | ✅ | ✅ |
+| ──── IfcChimney |  | ✅ | ✅ |
 | ──── IfcColumn | ✅ | ✅ | ✅ |
-| ──────   IfcColumnStandardCase |    | 🚫 |    |
-| ──── IfcCourse |    |    | ✅ |
+| ──────   IfcColumnStandardCase |  | 🚫 |  |
+| ──── IfcCourse |  |  | ✅ |
 | ──── IfcCovering | ✅ | ✅ | ✅ |
 | ──── IfcCurtainWall | ✅ | ✅ | ✅ |
-| ──── IfcDeepFoundation |    |    | ✅ |
-| ────── IfcCaissonFoundation |    |    | ✅ |
+| ──── IfcDeepFoundation |  |  | ✅ |
+| ────── IfcCaissonFoundation |  |  | ✅ |
 | ────── IfcPile | ✅ | ✅ | ✅ |
 | ──── IfcDoor | ✅ | ✅ | ✅ |
-| ────── IfcDoorStandardCase |    | 🚫 |    |
-| ──── IfcEarthworksElement |    |    | ✅ |
-| ────── IfcEarthworksFill |    |    | ✅ |
-| ────── IfcReinforcedSoil |    |    | ✅ |
+| ────── IfcDoorStandardCase |  | 🚫 |  |
+| ──── IfcEarthworksElement |  |  | ✅ |
+| ────── IfcEarthworksFill |  |  | ✅ |
+| ────── IfcReinforcedSoil |  |  | ✅ |
 | ──── IfcFooting | ✅ | ✅ | ✅ |
-| ──── IfcKerb |    |    | ✅ |
+| ──── IfcKerb |  |  | ✅ |
 | ──── IfcMember | ✅ | ✅ | ✅ |
-| ──────   IfcMemberStandardCase |    | 🚫 |    |
-| ──── IfcMooringDevice |    |    | ✅ |
-| ──── IfcNavigationElement |    |    | ✅ |
-| ──── IfcPavement |    |    | ✅ |
+| ──────   IfcMemberStandardCase |  | 🚫 |  |
+| ──── IfcMooringDevice |  |  | ✅ |
+| ──── IfcNavigationElement |  |  | ✅ |
+| ──── IfcPavement |  |  | ✅ |
 | ──── IfcPlate | ✅ | ✅ | ✅ |
-| ────── IfcPlateStandardCase |    | 🚫 |    |
-| ──── IfcRail |    |    | ✅ |
+| ────── IfcPlateStandardCase |  | 🚫 |  |
+| ──── IfcRail |  |  | ✅ |
 | ──── IfcRailing | ✅ | ✅ | ✅ |
 | ──── IfcRamp | ✅ | ✅ | ✅ |
 | ──── IfcRampFlight | ✅ | ✅ | ✅ |
 | ──── IfcRoof | ✅ | ✅ | ✅ |
-| ──── IfcShadingDevice |    | ✅ | ✅ |
+| ──── IfcShadingDevice |  | ✅ | ✅ |
 | ──── IfcSlab | ✅ | ✅ | ✅ |
-| ────── IfcSlabElementedCase |    | 🚫 |    |
-| ────── IfcSlabStandardCase |    | 🚫 |    |
+| ────── IfcSlabElementedCase |  | 🚫 |  |
+| ────── IfcSlabStandardCase |  | 🚫 |  |
 | ──── IfcStair | ✅ | ✅ | ✅ |
 | ──── IfcStairFlight | ✅ | ✅ | ✅ |
-| ──── IfcTrackElement |    |    | ✅ |
+| ──── IfcTrackElement |  |  | ✅ |
 | ──── IfcWall | ✅ | ✅ | ✅ |
-| ────── IfcWallElementedCase |    | 🚫 |    |
-| ────── IfcWallStandardCase |    | 🚫 | 🚫 |
+| ────── IfcWallElementedCase |  | 🚫 |  |
+| ────── IfcWallStandardCase |  | 🚫 | 🚫 |
 | ──── IfcWindow | ✅ | ✅ | ✅ |
-| ──────   IfcWindowStandardCase |    | 🚫 |    |
+| ──────   IfcWindowStandardCase |  | 🚫 |  |
 | ── IfcDistributionElement | ✅ | ✅ | ✅ |
 | ────   IfcDistributionFlowElement | ✅ | ✅ | ✅ |
-| ──────   IfcEnergyConversionDevice | ⚠️ | ✅ |    |
-| ──────── IfcCoolingTower |    | ✅ | ✅ |
-| ────────   IfcAirToAirHeatRecovery | ✅ | ✅ |    |
-| ──────── IfcBoiler |    | ✅ | ✅ |
-| ──────── IfcBurner |    | ✅ | ✅ |
-| ──────── IfcChiller |    | ✅ | ✅ |
-| ──────── IfcCoil |    | ✅ | ✅ |
-| ──────── IfcCondenser |    | ✅ | ✅ |
-| ──────── IfcCooledBeam |    | ✅ | ✅ |
-| ────────   IfcElectricGenerator |    | ✅ | ✅ |
-| ──────── IfcElectricMotor |    | ✅ | ✅ |
-| ──────── IfcEngine |    | ✅ | ✅ |
-| ────────   IfcEvaporativeCooler | ✅ | ✅ |    |
-| ──────── IfcEvaporator |    | ✅ | ✅ |
-| ──────── IfcHeatExchanger |    | ✅ | ✅ |
-| ──────── IfcHumidifier |    | ✅ | ✅ |
-| ────────   IfcMotorConnection |    | ✅ | ✅ |
-| ──────── IfcSolarDevice |    | ✅ | ✅ |
-| ──────── IfcTransformer |    | ✅ | ✅ |
-| ──────── IfcTubeBundle |    | ✅ | ✅ |
-| ────────   IfcUnitaryEquipment | ✅ | ✅ |    |
-| ──────   IfcDistributionChamberElement | ✅ | ✅ |    |
+| ──────   IfcEnergyConversionDevice | ⚠️ | ✅ |  |
+| ──────── IfcCoolingTower |  | ✅ | ✅ |
+| ────────   IfcAirToAirHeatRecovery | ✅ | ✅ |  |
+| ──────── IfcBoiler |  | ✅ | ✅ |
+| ──────── IfcBurner |  | ✅ | ✅ |
+| ──────── IfcChiller |  | ✅ | ✅ |
+| ──────── IfcCoil |  | ✅ | ✅ |
+| ──────── IfcCondenser |  | ✅ | ✅ |
+| ──────── IfcCooledBeam |  | ✅ | ✅ |
+| ────────   IfcElectricGenerator |  | ✅ | ✅ |
+| ──────── IfcElectricMotor |  | ✅ | ✅ |
+| ──────── IfcEngine |  | ✅ | ✅ |
+| ────────   IfcEvaporativeCooler | ✅ | ✅ |  |
+| ──────── IfcEvaporator |  | ✅ | ✅ |
+| ──────── IfcHeatExchanger |  | ✅ | ✅ |
+| ──────── IfcHumidifier |  | ✅ | ✅ |
+| ────────   IfcMotorConnection |  | ✅ | ✅ |
+| ──────── IfcSolarDevice |  | ✅ | ✅ |
+| ──────── IfcTransformer |  | ✅ | ✅ |
+| ──────── IfcTubeBundle |  | ✅ | ✅ |
+| ────────   IfcUnitaryEquipment | ✅ | ✅ |  |
+| ──────   IfcDistributionChamberElement | ✅ | ✅ |  |
 | ────── IfcFlowController | ✅ | ⚠️ | ✅ |
-| ──────── IfcAirTerminalBox |    | ✅ | ✅ |
-| ──────── IfcDamper |    | ✅ | ✅ |
-| ────────   IfcDistributionBoard |    |    | ✅ |
+| ──────── IfcAirTerminalBox |  | ✅ | ✅ |
+| ──────── IfcDamper |  | ✅ | ✅ |
+| ────────   IfcDistributionBoard |  |  | ✅ |
 | ────────   IfcElectricDistributionBoard | ✅ | 🚫 | 🚫 |
-| ────────   IfcElectricTimeControl | ✅ | ✅ |    |
-| ──────── IfcFlowMeter |    | ✅ | ✅ |
-| ────────   IfcProtectiveDevice |    | ✅ | ✅ |
-| ────────   IfcSwitchingDevice |    | ✅ | ✅ |
-| ──────── IfcValve |    | ✅ | ✅ |
+| ────────   IfcElectricTimeControl | ✅ | ✅ |  |
+| ──────── IfcFlowMeter |  | ✅ | ✅ |
+| ────────   IfcProtectiveDevice |  | ✅ | ✅ |
+| ────────   IfcSwitchingDevice |  | ✅ | ✅ |
+| ──────── IfcValve |  | ✅ | ✅ |
 | ────── IfcFlowFitting | ✅ | ⚠️ | ✅ |
-| ────────   IfcCableCarrierFitting | ✅ | ✅ |    |
-| ──────── IfcCableFitting |    | ✅ | ✅ |
-| ──────── IfcDuctFitting |    | ✅ | ✅ |
-| ──────── IfcJunctionBox |    | ✅ | ✅ |
-| ──────── IfcPipeFitting |    | ✅ | ✅ |
+| ────────   IfcCableCarrierFitting | ✅ | ✅ |  |
+| ──────── IfcCableFitting |  | ✅ | ✅ |
+| ──────── IfcDuctFitting |  | ✅ | ✅ |
+| ──────── IfcJunctionBox |  | ✅ | ✅ |
+| ──────── IfcPipeFitting |  | ✅ | ✅ |
 | ────── IfcFlowMovingDevice | ✅ | ⚠️ | ✅ |
-| ──────── IfcCompressor |    | ✅ | ✅ |
-| ──────── IfcFan |    | ✅ | ✅ |
-| ──────── IfcPump |    | ✅ | ✅ |
+| ──────── IfcCompressor |  | ✅ | ✅ |
+| ──────── IfcFan |  | ✅ | ✅ |
+| ──────── IfcPump |  | ✅ | ✅ |
 | ────── IfcFlowSegment | ✅ | ⚠️ | ✅ |
-| ────────   IfcCableCarrierSegment | ✅ | ✅ |    |
-| ──────── IfcCableSegment |    | ✅ | ✅ |
-| ────────   IfcConveyorSegment |    | ✅ |    |
-| ──────── IfcDuctSegment |    | ✅ | ✅ |
-| ──────── IfcPipeSegment |    | ✅ | ✅ |
+| ────────   IfcCableCarrierSegment | ✅ | ✅ |  |
+| ──────── IfcCableSegment |  | ✅ | ✅ |
+| ────────   IfcConveyorSegment |  | ✅ |  |
+| ──────── IfcDuctSegment |  | ✅ | ✅ |
+| ──────── IfcPipeSegment |  | ✅ | ✅ |
 | ────── IfcFlowStorageDevice | ✅ | ⚠️ | ✅ |
-| ────────   IfcElectricFlowStorageDevice | ✅ | ✅ |    |
-| ──────── IfcTank |    | ✅ | ✅ |
+| ────────   IfcElectricFlowStorageDevice | ✅ | ✅ |  |
+| ──────── IfcTank |  | ✅ | ✅ |
 | ────── IfcFlowTerminal | ✅ | ⚠️ | ✅ |
-| ──────── IfcAirTerminal |    | ✅ | ✅ |
-| ────────   IfcAudioVisualAppliance | ✅ | ✅ |    |
-| ────────   IfcCommunicationsAppliance | ✅ | ✅ |    |
-| ────────   IfcElectricAppliance |    | ✅ | ✅ |
-| ────────   IfcFireSuppressionTerminal | ✅ | ✅ |    |
-| ──────── IfcLamp |    | ✅ | ✅ |
-| ──────── IfcLightFixture |    | ✅ | ✅ |
-| ──────── IfcLiquidTerminal |    |    | ✅ |
-| ──────── IfcMedicalDevice |    | ✅ | ✅ |
-| ────────   IfcMobileTelecommunicationsAppliance |    | ✅ |    |
-| ──────── IfcOutlet |    | ✅ | ✅ |
-| ────────   IfcSanitaryTerminal |    | ✅ | ✅ |
-| ──────── IfcSignal |    |    | ✅ |
-| ──────── IfcSpaceHeater |    | ✅ | ✅ |
-| ──────── IfcStackTerminal |    | ✅ | ✅ |
-| ──────── IfcWasteTerminal |    | ✅ | ✅ |
+| ──────── IfcAirTerminal |  | ✅ | ✅ |
+| ────────   IfcAudioVisualAppliance | ✅ | ✅ |  |
+| ────────   IfcCommunicationsAppliance | ✅ | ✅ |  |
+| ────────   IfcElectricAppliance |  | ✅ | ✅ |
+| ────────   IfcFireSuppressionTerminal | ✅ | ✅ |  |
+| ──────── IfcLamp |  | ✅ | ✅ |
+| ──────── IfcLightFixture |  | ✅ | ✅ |
+| ──────── IfcLiquidTerminal |  |  | ✅ |
+| ──────── IfcMedicalDevice |  | ✅ | ✅ |
+| ────────   IfcMobileTelecommunicationsAppliance |  | ✅ |  |
+| ──────── IfcOutlet |  | ✅ | ✅ |
+| ────────   IfcSanitaryTerminal |  | ✅ | ✅ |
+| ──────── IfcSignal |  |  | ✅ |
+| ──────── IfcSpaceHeater |  | ✅ | ✅ |
+| ──────── IfcStackTerminal |  | ✅ | ✅ |
+| ──────── IfcWasteTerminal |  | ✅ | ✅ |
 | ──────   IfcFlowTreatmentDevice | ✅ | ⚠️ | ✅ |
-| ──────── IfcDuctSilencer |    | ✅ | ✅ |
-| ────────   IfcElectricFlowTreatmentDevice |    | ✅ |    |
-| ──────── IfcFilter |    | ✅ | ✅ |
-| ──────── IfcInterceptor |    | ✅ | ✅ |
+| ──────── IfcDuctSilencer |  | ✅ | ✅ |
+| ────────   IfcElectricFlowTreatmentDevice |  | ✅ |  |
+| ──────── IfcFilter |  | ✅ | ✅ |
+| ──────── IfcInterceptor |  | ✅ | ✅ |
 | ────   IfcDistributionControlElement | ✅ | ✅ | ✅ |
-| ────── IfcActuator |    | ✅ | ✅ |
-| ────── IfcAlarm |    | ✅ | ✅ |
-| ────── IfcController |    | ✅ | ✅ |
-| ────── IfcFlowInstrument |    | ✅ | ✅ |
-| ──────   IfcProtectiveDeviceTrippingUnit | ✅ | ✅ |    |
-| ────── IfcSensor |    | ✅ | ✅ |
-| ──────   IfcUnitaryControlElement |    | ✅ | ✅ |
-| ── IfcCivilElement |    | ✅ | 🚫 |
+| ────── IfcActuator |  | ✅ | ✅ |
+| ────── IfcAlarm |  | ✅ | ✅ |
+| ────── IfcController |  | ✅ | ✅ |
+| ────── IfcFlowInstrument |  | ✅ | ✅ |
+| ──────   IfcProtectiveDeviceTrippingUnit | ✅ | ✅ |  |
+| ────── IfcSensor |  | ✅ | ✅ |
+| ──────   IfcUnitaryControlElement |  | ✅ | ✅ |
+| ── IfcCivilElement |  | ✅ | 🚫 |
 | ── IfcElementAssembly | ✅ | ✅ | ✅ |
-| ──   IfcBuildingElementComponent | ✅ |    |    |
-| ── IfcElementComponent |    | ⚠️ | ⚠️ |
-| ──── IfcBuildingElementPart |    | ✅ | ✅ |
-| ──── IfcDiscreteAccessory |    | ✅ | ✅ |
-| ──── IfcFastener |    | ✅ | ✅ |
-| ────   IfcImpactProtectionDevice |    |    | ✅ |
-| ──── IfcMechanicalFastener |    | ✅ | ✅ |
-| ──── IfcReinforcingElement |    | ⚠️ | ⚠️ |
-| ────── IfcReinforcingBar |    | ✅ | ✅ |
-| ────── IfcReinforcingMesh |    | ✅ | ✅ |
-| ────── IfcTendon |    | ✅ | ✅ |
-| ────── IfcTendonAnchor |    | ✅ | ✅ |
-| ────── IfcTendonConduit |    |    | ✅ |
-| ──── IfcSign |    |    | ✅ |
-| ──── IfcVibrationDamper |    |    | ✅ |
-| ──── IfcVibrationIsolator |    | ✅ | ✅ |
+| ──   IfcBuildingElementComponent | ✅ |  |  |
+| ── IfcElementComponent |  | ⚠️ | ⚠️ |
+| ──── IfcBuildingElementPart |  | ✅ | ✅ |
+| ──── IfcDiscreteAccessory |  | ✅ | ✅ |
+| ──── IfcFastener |  | ✅ | ✅ |
+| ────   IfcImpactProtectionDevice |  |  | ✅ |
+| ──── IfcMechanicalFastener |  | ✅ | ✅ |
+| ──── IfcReinforcingElement |  | ⚠️ | ⚠️ |
+| ────── IfcReinforcingBar |  | ✅ | ✅ |
+| ────── IfcReinforcingMesh |  | ✅ | ✅ |
+| ────── IfcTendon |  | ✅ | ✅ |
+| ────── IfcTendonAnchor |  | ✅ | ✅ |
+| ────── IfcTendonConduit |  |  | ✅ |
+| ──── IfcSign |  |  | ✅ |
+| ──── IfcVibrationDamper |  |  | ✅ |
+| ──── IfcVibrationIsolator |  | ✅ | ✅ |
 | ── IfcFeatureElement | ✅ | ⚠️ | ⚠️ |
 | ────   IfcFeatureElementAddition | ✅ | ⚠️ | ⚠️ |
 | ────── IfcProjectionElement | ✅ | ✅ | ✅ |
 | ────   IfcFeatureElementSubtraction | ✅ | ⚠️ | ⚠️ |
-| ────── IfcEarthworksCut |    |    | ✅ |
+| ────── IfcEarthworksCut |  |  | ✅ |
 | ────── IfcOpeningElement | ✅ | ✅ | ✅ |
-| ────── IfcVoidingFeature |    | ✅ | ✅ |
-| ──── IfcSurfaceFeature |    | ✅ | ✅ |
+| ────── IfcVoidingFeature |  | ✅ | ✅ |
+| ──── IfcSurfaceFeature |  | ✅ | ✅ |
 | ── IfcFurnishingElement | ✅ | ✅ | ✅ |
-| ──── IfcFurniture |    | ✅ | ✅ |
-| ────   IfcSystemFurnitureElement |    | ✅ | ✅ |
-| ── IfcGeographicElement |    | ✅ | ✅ |
-| ── IfcGeotechnicalElement |    |    | ⚠️ |
-| ──── IfcGeotechnicalAssembly |    |    | ⚠️ |
-| ────── IfcBorehole |    |    | ✅ |
-| ────── IfcGeomodel |    |    | ✅ |
-| ────── IfcGeoslice |    |    | ✅ |
-| ──── IfcGeotechnicalStratum |    |    | ✅ |
-| ── IfcTransportationDevice |    |    | ⚠️ |
+| ──── IfcFurniture |  | ✅ | ✅ |
+| ────   IfcSystemFurnitureElement |  | ✅ | ✅ |
+| ── IfcGeographicElement |  | ✅ | ✅ |
+| ── IfcGeotechnicalElement |  |  | ⚠️ |
+| ──── IfcGeotechnicalAssembly |  |  | ⚠️ |
+| ────── IfcBorehole |  |  | ✅ |
+| ────── IfcGeomodel |  |  | ✅ |
+| ────── IfcGeoslice |  |  | ✅ |
+| ──── IfcGeotechnicalStratum |  |  | ✅ |
+| ── IfcTransportationDevice |  |  | ⚠️ |
 | ──── IfcTransportElement | ✅ | ✅ | ✅ |
-| ──── IfcVehicle |    |    | ✅ |
+| ──── IfcVehicle |  |  | ✅ |
 | ── IfcVirtualElement | ✅ | ✅ | ✅ |
-| ── IfcElectricalElement | 🚫 |    |    |
-| ── IfcEquipmentElement | ✅ |    |    |
+| ── IfcElectricalElement | 🚫 |  |  |
+| ── IfcEquipmentElement | ✅ |  |  |
 
-
-✅ - IFC バージョンに含まれます。  
+✅ - IFC バージョンに含まれる。  
 ⚠️ - 含まれているが抽象的。  
 🚫 - 非推奨
 
-### IfcElementのサブ・エンティティをIFCの異なるバージョンで一覧表示。
-以下に、IfcElementのサブエンティティのリストを、IDSファイルにコピー・ペーストしやすい形式で示します。リストには、わかりやすくするためにTypeオブジェクトは含まれていません。
+### 異なるIFC バージョンにおけるIfcElement サブ・エンティティのリスト
+以下に、IfcElement のサブエンティティのリストを、IDSファイルにコピーペーストしやすい形で示します。このリストには、わかりやすくするためにタイプオブジェクトは含まれていません。
 
-**IFC4X3 のカンマ区切りの IfcElement サブエンティティ：**
+**コンマで区切られたIfcElement のサブエンティティIFC4X3**：
 ```
 IFCACTUATOR,IFCAIRTERMINAL,IFCAIRTERMINALBOX,IFCAIRTOAIRHEATRECOVERY,IFCALARM,IFCAUDIOVISUALAPPLIANCE,IFCBEAM,IFCBEARING,IFCBOILER,IFCBOREHOLE,IFCBUILDINGELEMENTPART,IFCBUILDINGELEMENTPROXY,IFCBUILTELEMENT,IFCBURNER,IFCCABLECARRIERFITTING,IFCCABLECARRIERSEGMENT,IFCCABLEFITTING,IFCCABLESEGMENT,IFCCAISSONFOUNDATION,IFCCHILLER,IFCCHIMNEY,IFCCOIL,IFCCOLUMN,IFCCOMMUNICATIONSAPPLIANCE,IFCCOMPRESSOR,IFCCONDENSER,IFCCONTROLLER,IFCCONVEYORSEGMENT,IFCCOOLEDBEAM,IFCCOOLINGTOWER,IFCCOURSE,IFCCOVERING,IFCCURTAINWALL,IFCDAMPER,IFCDEEPFOUNDATION,IFCDISCRETEACCESSORY,IFCDISTRIBUTIONBOARD,IFCDISTRIBUTIONCHAMBERELEMENT,IFCDISTRIBUTIONCONTROLELEMENT,IFCDISTRIBUTIONELEMENT,IFCDISTRIBUTIONFLOWELEMENT,IFCDOOR,IFCDUCTFITTING,IFCDUCTSEGMENT,IFCDUCTSILENCER,IFCEARTHWORKSCUT,IFCEARTHWORKSELEMENT,IFCEARTHWORKSFILL,IFCELECTRICAPPLIANCE,IFCELECTRICFLOWSTORAGEDEVICE,IFCELECTRICFLOWTREATMENTDEVICE,IFCELECTRICGENERATOR,IFCELECTRICMOTOR,IFCELECTRICTIMECONTROL,IFCELEMENTASSEMBLY,IFCENERGYCONVERSIONDEVICE,IFCENGINE,IFCEVAPORATIVECOOLER,IFCEVAPORATOR,IFCFAN,IFCFASTENER,IFCFILTER,IFCFIRESUPPRESSIONTERMINAL,IFCFLOWCONTROLLER,IFCFLOWFITTING,IFCFLOWINSTRUMENT,IFCFLOWMETER,IFCFLOWMOVINGDEVICE,IFCFLOWSEGMENT,IFCFLOWSTORAGEDEVICE,IFCFLOWTERMINAL,IFCFLOWTREATMENTDEVICE,IFCFOOTING,IFCFURNISHINGELEMENT,IFCFURNITURE,IFCGEOGRAPHICELEMENT,IFCGEOMODEL,IFCGEOSLICE,IFCGEOTECHNICALSTRATUM,IFCHEATEXCHANGER,IFCHUMIDIFIER,IFCIMPACTPROTECTIONDEVICE,IFCINTERCEPTOR,IFCJUNCTIONBOX,IFCKERB,IFCLAMP,IFCLIGHTFIXTURE,IFCLIQUIDTERMINAL,IFCMECHANICALFASTENER,IFCMEDICALDEVICE,IFCMEMBER,IFCMOBILETELECOMMUNICATIONSAPPLIANCE,IFCMOORINGDEVICE,IFCMOTORCONNECTION,IFCNAVIGATIONELEMENT,IFCOPENINGELEMENT,IFCOUTLET,IFCPAVEMENT,IFCPILE,IFCPIPEFITTING,IFCPIPESEGMENT,IFCPLATE,IFCPROJECTIONELEMENT,IFCPROTECTIVEDEVICE,IFCPROTECTIVEDEVICETRIPPINGUNIT,IFCPUMP,IFCRAIL,IFCRAILING,IFCRAMP,IFCRAMPFLIGHT,IFCREINFORCEDSOIL,IFCREINFORCINGBAR,IFCREINFORCINGMESH,IFCROOF,IFCSANITARYTERMINAL,IFCSENSOR,IFCSHADINGDEVICE,IFCSIGN,IFCSIGNAL,IFCSLAB,IFCSOLARDEVICE,IFCSPACEHEATER,IFCSTACKTERMINAL,IFCSTAIR,IFCSTAIRFLIGHT,IFCSURFACEFEATURE,IFCSWITCHINGDEVICE,IFCSYSTEMFURNITUREELEME,IFCTANK,IFCTENDON,IFCTENDONANCHOR,IFCTENDONCONDUIT,IFCTRACKELEMENT,IFCTRANSFORMER,IFCTRANSPORTELEMENT,IFCTUBEBUNDLE,IFCUNITARYCONTROLELEMENT,IFCUNITARYEQUIPMENT,IFCVALVE,IFCVEHICLE,IFCVIBRATIONDAMPER,IFCVIBRATIONISOLATOR,IFCVIRTUALELEMENT,IFCVOIDINGFEATURE,IFCWALL,IFCWASTETERMINAL,IFCWINDOW
 ```
 
-<details><summary>✂️  IDS エンティティ・ファセットとしての IFC4X3 の IfcElement サブエンティティ</summary>
+<details><summary>✂️  IDS エンティティ・ファセットとしての IFC4X3 の IfcElement サブエンティティ。</summary>
 
 ```
 <ids:entity>
@@ -432,12 +430,12 @@ IFCACTUATOR,IFCAIRTERMINAL,IFCAIRTERMINALBOX,IFCAIRTOAIRHEATRECOVERY,IFCALARM,IF
 ```
 </details>
 
-**コンマで区切られた IfcElement のサブエンティティ IFC4：**
+**コンマで区切られたIfcElement のサブエンティティIFC4**：
 ```
 IFCBEAM,IFCACTUATOR,IFCAIRTERMINAL,IFCAIRTERMINALBOX,IFCAIRTOAIRHEATRECOVERY,IFCALARM,IFCAUDIOVISUALAPPLIANCE,IFCBOILER,IFCBUILDINGELEMENTPART,IFCBUILDINGELEMENTPROXY,IFCBURNER,IFCCABLECARRIERFITTING,IFCCABLECARRIERSEGMENT,IFCCABLEFITTING,IFCCABLESEGMENT,IFCCHILLER,IFCCHIMNEY,IFCCIVILELEMENT,IFCCOIL,IFCCOLUMN,IFCCOMMUNICATIONSAPPLIANCE,IFCCOMPRESSOR,IFCCONDENSER,IFCCONTROLLER,IFCCOOLEDBEAM,IFCCOOLINGTOWER,IFCCOVERING,IFCCURTAINWALL,IFCDAMPER,IFCDISCRETEACCESSORY,IFCDISTRIBUTIONCHAMBERELEMENT,IFCDISTRIBUTIONCONTROLELEMENT,IFCDISTRIBUTIONELEMENT,IFCDISTRIBUTIONFLOWELEMENT,IFCDOOR,IFCDUCTFITTING,IFCDUCTSEGMENT,IFCDUCTSILENCER,IFCELECTRICAPPLIANCE,IFCELECTRICDISTRIBUTIONBOARD,IFCELECTRICFLOWSTORAGEDEVICE,IFCELECTRICGENERATOR,IFCELECTRICMOTOR,IFCELECTRICTIMECONTROL,IFCELEMENTASSEMBLY,IFCENGINE,IFCEVAPORATIVECOOLER,IFCEVAPORATOR,IFCFAN,IFCFASTENER,IFCFILTER,IFCFIRESUPPRESSIONTERMINAL,IFCFLOWINSTRUMENT,IFCFLOWMETER,IFCFOOTING,IFCFURNISHINGELEMENT,IFCFURNITURE,IFCGEOGRAPHICELEMENT,IFCHEATEXCHANGER,IFCHUMIDIFIER,IFCINTERCEPTOR,IFCJUNCTIONBOX,IFCLAMP,IFCLIGHTFIXTURE,IFCMECHANICALFASTENER,IFCMEDICALDEVICE,IFCMEMBER,IFCMOTORCONNECTION,IFCOPENINGELEMENT,IFCOUTLET,IFCPILE,IFCPIPEFITTING,IFCPIPESEGMENT,IFCPLATE,IFCPROJECTIONELEMENT,IFCPROTECTIVEDEVICE,IFCPROTECTIVEDEVICETRIPPINGUNIT,IFCPUMP,IFCRAILING,IFCRAMP,IFCRAMPFLIGHT,IFCREINFORCINGBAR,IFCREINFORCINGMESH,IFCROOF,IFCSANITARYTERMINAL,IFCSENSOR,IFCSHADINGDEVICE,IFCSLAB,IFCSOLARDEVICE,IFCSPACEHEATER,IFCSTACKTERMINAL,IFCSTAIR,IFCSTAIRFLIGHT,IFCSURFACEFEATURE,IFCSWITCHINGDEVICE,IFCSYSTEMFURNITUREELEME,IFCTANK,IFCTENDON,IFCTENDONANCHOR,IFCTRANSFORMER,IFCTRANSPORTELEMENT,IFCTUBEBUNDLE,IFCUNITARYCONTROLELEMENT,IFCUNITARYEQUIPMENT,IFCVALVE,IFCVIBRATIONISOLATOR,IFCVIRTUALELEMENT,IFCVOIDINGFEATURE,IFCWALL,IFCWASTETERMINAL,IFCWINDOW
 ```
 
-<details><summary>✂️  IFC4 内の IfcElement のサブエンティティを IDS エンティティ・ファセットとする。</summary>
+<details><summary>✂️  IDS エンティティ・ファセットとして IFC4 内の IfcElement サブエンティティ</summary>
 
 ```
 <ids:entity>
@@ -560,12 +558,12 @@ IFCBEAM,IFCACTUATOR,IFCAIRTERMINAL,IFCAIRTERMINALBOX,IFCAIRTOAIRHEATRECOVERY,IFC
 ```
 </details>
 
-**カンマ区切りの IfcElement IFC2X3 のサブエンティティ：**
+**コンマで区切られたIfcElement のサブエンティティIFC2X3**：
 ```
 IFCELEMENT,IFCBUILDINGELEMENT,IFCBUILDINGELEMENTPROXY,IFCCOVERING,IFCBEAM,IFCCOLUMN,IFCCURTAINWALL,IFCDOOR,IFCMEMBER,IFCRAILING,IFCRAMP,IFCRAMPFLIGHT,IFCWALL,IFCSLAB,IFCSTAIRFLIGHT,IFCWINDOW,IFCSTAIR,IFCROOF,IFCPILE,IFCFOOTING,IFCBUILDINGELEMENTCOMPONENT,IFCPLATE,IFCFURNISHINGELEMENT,IFCDISTRIBUTIONELEMENT,IFCDISTRIBUTIONFLOWELEMENT,IFCFLOWFITTING,IFCFLOWSEGMENT,IFCFLOWCONTROLLER,IFCFLOWTERMINAL,IFCFLOWMOVINGDEVICE,IFCENERGYCONVERSIONDEVICE,IFCFLOWSTORAGEDEVICE,IFCFLOWTREATMENTDEVICE,IFCDISTRIBUTIONCHAMBERELEMENT,IFCDISTRIBUTIONCONTROLELEMENT,IFCTRANSPORTELEMENT,IFCEQUIPMENTELEMENT,IFCFEATUREELEMENT,IFCFEATUREELEMENTADDITION,IFCPROJECTIONELEMENT,IFCFEATUREELEMENTSUBTRACTION,IFCOPENINGELEMENT,IFCELEMENTASSEMBLY,IFCVIRTUALELEMENT
 ```
 
-<details><summary>✂️  IfcElement IDS エンティティ・ファセットとしての IFC2X3 のサブエンティティ</summary>
+<details><summary>✂️  IDS エンティティ・ファセットとして IFC2X3 の IfcElement サブエンティティ。</summary>
 
 ```
 <ids:entity>

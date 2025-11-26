@@ -3,9 +3,9 @@
 
 可能であれば、テスト・スイートへの貢献はプル・リクエストとして行うべきである。
 
-各試験は2つのパートで構成される：
+各試験は2つの部分から構成される：
 
-1. 関連する[ドキュメントファイルの](scripts.md)エントリ。
+1. 関連する[ドキュメント・](scripts.md)ファイルのエントリ。
 
 1. 最小化されたIFC ファイルで、結果のIDSと照合して検証する必要がある。
 
@@ -27,7 +27,7 @@ Attribute: ''LayerOn''
 
 ` ids ` 、ローカルファイル名で始まる各コードブロックは、IDSに変換される。
 
-[三重のバックスティックの](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#fenced-code-blocks)中のスクリプトの構文は以下の通り：
+[三重のバックティック](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#fenced-code-blocks)内のスクリプトの構文は以下の通り：
 
 ### タイトル
 最初の行は、常にIDSのタイトルと含まれる仕様名として解釈される。
@@ -40,7 +40,7 @@ Attribute: ''LayerOn''
 以下の行が、`Optional` 、`Required` 、`Prohibited` のいずれかのトークンである場合、IDSの適用可能なカーディナリティを定義する。  
 この行は省略可能で、省略された場合、デフォルトのカーディナリティは`Required` に設定される。この行の大文字小文字は重要であることに注意。
 
-### 適用ファセット
+### 適用面
 後続の各行は、`Requirements:` トークンに遭遇するまで、適用可能なファセットとして解釈される。
 
 ### 要件ファセット
