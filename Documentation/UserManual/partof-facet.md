@@ -15,11 +15,11 @@ IFC のオブジェクトは、他のオブジェクトに対して複数の関�
 ![Example of part of identification](Graphics/partof-Relations.png)
 
 ## パラメータ
-| Parameter    | Required | Type            | Meaning                                                                                                                                                                                                                                                                                     |
+| パラメータ | 必須 | タイプ | 意味 |
 | ------------ | -------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Entity**   | ✔️     | An entity facet | Any valid IDS `entityType`, nested in the XML (e.g. "IFCSYSTEM"). The IFC class of the larger object matches the required entity. Expressed in UPPERCASE.                                                                                                                                   |
-| **Relation** | ❌       | string          | One relationship chosen from the 6 supported types listed above. If omitted any valid IFC relationship structure that directly or indirectly, and transitively (recursively) has to be evaluated, if specified only the given type must be evaluated (recursively). Expressed in UPPERCASE. |
-                                                                                                                                                                                                       
+| **エンティティ** | ✔️ | エンティティ・ファセット | XML 内にネストされた有効な IDS`entityType`(例. "IFCSYSTEM").大きなオブジェクトのIFC クラスが、必要なエンティティに一致する。大文字で表現する。 |
+| **関係** | ❌ | ストリング | 上記の6つのサポートされる型から選択された1つの関係。省略された場合は、直接または間接的に、そして推移的に（再帰的に）評価されなければならない有効なIFC 関係構造がすべて評価されます。指定された場合は、指定された型のみが（再帰的に）評価されなければなりません。大文字で表現する。 |
+
 
 ## 一部の'ファセット解釈
 ### 適用性
