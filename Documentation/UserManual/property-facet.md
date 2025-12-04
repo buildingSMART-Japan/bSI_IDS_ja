@@ -108,13 +108,14 @@ IDSは現在、すべてのメジャーベースの値をSI単位に基づいて
 |  |  |  |  |
 
 ## 例
-| <nobr>適用</nobr>意図          | <nobr>要件</nobr>意図        | ファセットの<nobr>定義</nobr>   |
+| 適用意図 | 要件意図 | ファセットの定義 |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| 遮音等級を持つ壁材 | 実体（壁など）には音響等級が必要である。 | プロパティセット"Pset_WallCommon"名前="AcousticRating" |
-| 耐火等級"2HRの"柱体 | 実体（柱など）は耐火等級"2HR"でなければならない。 | プロパティセット"Pset_ColumnCommon"名前"=FireRating,"値"=2HR |
-| 正味容積が20～100立方メートルのスラブ事業体 | 実体（スラブなど）の正味容積が20～100立方メートルであること。 | プロパティセット"Qto_SlabBaseQuantities"名前="NetVolume", 値="[20](restrictions.md)"&lt;=値&lt;=100 |
-| 現場打ちまたはプレキャストコンクリートのあらゆる要素 | 実体（スラブなど）は、鋳造方法が現場打ちまたはプレキャストに設定されていなければならない。 | プロパティセット"Pset_ConcreteElementGeneral"Name="CastingMethod"、value="[INSITU"、"PRECAST"]。 |
-| MyCompany_Concrete プロパティセットに格納されている、A、B、C から選択した ConcreteMix というカスタムプロパティを持つすべてのエンティティ | エンティティは、ConcreteMixというカスタムプロパティを持っていなければなりません。MyCompany_Concrete | プロパティセット"MyCompany_Concrete"Name=ConcreteMix", value="[A"、"B"、"C"]。 |
+| 遮音等級を持つ壁材 | 実体（壁など）には音響等級が必要である。 | プロパティセット=Pset_"WallCommon、"名前"=AcousticRating |
+| 耐火等級"2HRの"柱体 | 実体（柱など）は耐火等級"2HR"でなければならない。 | プロパティ"Set=Pset_ColumnCommon, "Name=FireRating", "value=2HR" |
+| 正味容積が20～100立方メートルのスラブ事業体 | 実体（スラブなど）の正味容積が20～100立方メートルであること。 | プロパティ"Set=Qto_SlabBaseQuantities, "Name=NetVolume","[Value=20&lt;=Value&lt;=100](restrictions.md)" |
+| 現場打ちまたはプレキャストコンクリートのあらゆる要素 | 実体（スラブなど）は、鋳造方法が現場打ちまたはプレキャストに設定されていなければならない。 | プロパティ"Set=Pset_ConcreteElementGeneral, "Name"=CastingMethod, value="[INSITU", "PRECAST"]。 |
+| MyCompany_Concreteプロパティセットに格納されている、A、B、Cから選択したConcreteMixというカスタムプロパティを持つすべてのエンティティ | エンティティは、MyCompany_Concreteというプロパティセットに格納された、A、B、または C から選択された値を持つ ConcreteMix というカスタムプロパティを持つ必要があります。 | プロパティ"Set=MyCompany_Concrete, "Name=ConcreteMix", value="[A", "B", "C"]. |
+
 
 
 ## プロパティ
