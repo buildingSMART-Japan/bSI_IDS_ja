@@ -10,7 +10,7 @@ IFC の壁、ドア、窓などの要素は、それらに関連する**マテ�
 | **Uri** | ❌ | ❌ | 資料の統一資源識別子。解釈の一貫性を確保するために、材料の標準化された定義を参照するために使用される。対象となるリソースは、名前と定義を含み、ISO 12006-3 と ISO 23386 に準拠することが望ましい。これは、IDS のチェックの対象とならないオプションの属性である。IFC モデルが、同じ Uri または任意の Uri を持つ必要はない。有効な Uri のソースの一つは[bSDD](https://search.bsdd.buildingsmart.org/) であり、URI の例は"Plywood: [https://identifier.buildingsmart.org/uri/cei-bois.org/wood/1.0.0/class/8dca70a2-01a2-489b-9381-fbeff09db8dc](https://identifier.buildingsmart.org/uri/cei-bois.org/wood/1.0.0/class/8dca70a2-01a2-489b-9381-fbeff09db8dc) のものである[。](https://identifier.buildingsmart.org/uri/cei-bois.org/wood/1.0.0/class/8dca70a2-01a2-489b-9381-fbeff09db8dc) |
 |  |  |  |  |
 
-\* のオプション属性である。 [IfcMaterial](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterial.htm)IFC では、'コンクリート'、'鋼鉄'、'アルミニウム'、'ブロック'、'レンガ'、'石'、'木材'、'ガラス'、'石膏'、'プラスチック'、土'のいずれかを推奨している。
+\* 材料カテゴリーは[IfcMaterial](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterial.htm)のオプション属性であり、IFCでは'コンクリート、'スチール'、'アルミニウム'、'ブロック'、'レンガ'、'石'、'木'、'ガラス'、'石膏'、'プラスチック'、土'のいずれかを推奨している。
 
 `value` フィールドはオプションである。オプション属性`uri` はメタデータにすぎず、IDSチェックの対象ではない。
 
