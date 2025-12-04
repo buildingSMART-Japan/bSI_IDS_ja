@@ -84,7 +84,7 @@ Attribute: ''LayerOn''
 17:33:57 [DBG] Done
 ```
 
-`Extra IDS report generated:` ：
+`Extra IDS report generated:`テキストは、HTMLレポートが含まれていることを示す
 
 1. 変換されたスクリプトIDSの構文
 
