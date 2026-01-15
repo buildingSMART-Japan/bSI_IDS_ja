@@ -12,7 +12,7 @@
 # 情報デリバリー仕様標準
 <img src="Documentation/UserManual/Graphics/IDS-logo-with-letters.png" alt="IDS Logo" width="300"/>
 
-buildingSMART による、IFC ベースの情報配信仕様を定義するための、コンピュータが解釈可能な XML ベースの標準。このリポジトリは、ユースケースを収集し、XMLの例を含むXSDを開発し、公開している。
+buildingSMARTが提供する、IFCベースの情報伝達仕様を定義するためのコンピュータ解釈可能なXMLベースの標準。このリポジトリは、ユースケースを収集し、XMLの例を含むXSDを開発し、公開しています。
 
 以下は最新の所在地である：
 

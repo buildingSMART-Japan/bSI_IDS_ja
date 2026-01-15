@@ -24,7 +24,7 @@ IFCで定義されている型の全リストは、IFCのドキュメントに�
 | 電気抵抗測定 | 電気抵抗 | オーム | Ω | Ω | (2, 1, -3, -2, 0, 0, 0) | IfcUnitEnum.ELECTRICRESISTANCEUNIT | IfcSIUnitName.OHM |
 | 電圧測定 | 電圧 | ボルト | V | V | (2, 1, -3, -1, 0, 0, 0) | IfcUnitEnum.ELECTRICVOLTAGEUNIT | IfcSIUnitName.VOLT |
 | エネルギー測定 | エネルギー | ジュール | J | J | (2, 1, -2, 0, 0, 0, 0) | IfcUnitEnum.ENERGYUNIT | IfcSIUnitName.ジュール |
-| イフフォースメジャー | フォース | ニュートン | N | N | (1, 1, -2, 0, 0, 0, 0) | IfcUnitEnum.FORCEUNIT | IfcSIUnitName.ニュートン |
+| ifc力測定 | フォース | ニュートン | N | N | (1, 1, -2, 0, 0, 0, 0) | IfcUnitEnum.FORCEUNIT | IfcSIUnitName.ニュートン |
 | 周波数測定 | 頻度 | ヘルツ | ヘルツ | ヘルツ | (0, 0, -1, 0, 0, 0, 0) | IfcUnitEnum.FREQUENCYUNIT | IfcSIUnitName.HERTZ |
 | 熱流束密度測定 | 熱流束密度 |  |  | W / m2 | (0, 1, -3, 0, 0, 0, 0) | IfcDerivedUnitEnum.HEATFLUXDENSITYUNIT。 |  |
 | もしものときの計量 | 暖房 |  |  | J / Kg | (2, 0, -2, 0, 0, 0, 0) | IfcDerivedUnitEnum.HEATINGVALUEUNIT。 |  |
@@ -32,11 +32,11 @@ IFCで定義されている型の全リストは、IFCのドキュメントに�
 | インダクタンス測定 | インダクタンス | ヘンリー | H | Wb / A | (2, 1, -2, -2, 0, 0, 0) | IfcUnitEnum.INDUCTANCEUNIT | IfcSIUnitName.ヘンリー |
 | イフコンテジェカウントレートメジャー | カウント率 |  |  | 1 / s | (0, 0, -1, 0, 0, 0, 0) | IfcDerivedUnitEnum.INTEGERCOUNTRATEUNIT。 |  |
 | 濃度測定 | イオン濃度測定 |  |  | mol / m3 | (-3, 1, 0, 0, 0, 0, 0) | IfcDerivedUnitEnum.IONCONCENTRATIONUNIT。 |  |
-| 等温水分容量測定法 | 磯熱水分率 |  |  | m3 / kg | (3, -1, 0, 0, 0, 0, 0) | IfcDerivedUnitEnum.ISOTHERMALMOISTURECAPACITYUNIT。 |  |
+| 等温水分容量測定 | 磯熱水分率 |  |  | m3 / kg | (3, -1, 0, 0, 0, 0, 0) | IfcDerivedUnitEnum.ISOTHERMALMOISTURECAPACITYUNIT。 |  |
 | イフキネマチック粘度計 | 動粘度 |  |  | m2 / s | (2, 0, -1, 0, 0, 0, 0) | IfcDerivedUnitEnum.KINEMATICVISCOSITYUNIT。 |  |
 | イフクロングスメジャー | 長さ | メーター | m | m | (1, 0, 0, 0, 0, 0, 0) | IfcUnitEnum.LENGTHUNIT | IfcSIUnitName.METRE |
-| イフクリニアフォースメジャー | 直線力 |  |  | N / m | (0, 1, -2, 0, 0, 0, 0) | IfcDerivedUnitEnum.LINEARFORCEUNIT。 |  |
-| イフクリニアルモーメント測定 | 線形モーメント |  |  | N m / m | (1, 1, -2, 0, 0, 0, 0) | IfcDerivedUnitEnum.LINEARMOMENTUNIT。 |  |
+| イフクリニアフォースメジャー | 直線力 |  |  | N / m | (0, 1, -2, 0, 0, 0, 0) | ifcDerivedUnitEnum.LINEARFORCEUNIT |  |
+| もし直線要素測定 | 線形モーメント |  |  | N m / m | (1, 1, -2, 0, 0, 0, 0) | IfcDerivedUnitEnum.LINEARMOMENTUNIT。 |  |
 | もし線形剛性測定 | 線形剛性 |  |  | N / m | (0, 1, -2, 0, 0, 0, 0) | IfcDerivedUnitEnum.LINEARSTIFFNESSUNIT。 |  |
 | もし直線速度測定 | スピード |  |  | m / s | (1, 0, -1, 0, 0, 0, 0) | IfcDerivedUnitEnum.LINEARVELOCITYUNIT。 |  |
 | 光束測定器 | 光束 | 内腔 | lm | lm | (0, 0, 0, 0, 0, 0, 1) | IfcUnitEnum.LUMINOUSFLUXUNIT。 | IfcSIUnitName.LUMEN |
@@ -68,7 +68,7 @@ IFCで定義されている型の全リストは、IFCのドキュメントに�
 | 回転質量測定 | 回転質量 |  |  | kg m2 | (2, 1, 0, 0, 0, 0, 0) | IfcDerivedUnitEnum.ROTATIONALMASSUNIT。 |  |
 | 回転剛性測定 | 回転剛性 |  |  | N m / rad | (2, 1, -2, 0, 0, 0, 0) | IfcDerivedUnitEnum.ROTATIONALSTIFFNESSUNIT。 |  |
 | イフカセクショナルアインテグラルメジャー | 区間積分 |  |  | m5 | (5, 0, 0, 0, 0, 0, 0) | ifcDerivedUnitEnum.SECTIONALAREAINTEGRALUNIT |  |
-| IFCセクションモジュラス測定 | 断面係数 |  |  | m3 | (3, 0, 0, 0, 0, 0, 0) | IfcDerivedUnitEnum.SECTIONMODULUSUNIT |  |
+| IFCセクションモジュラス測定 | 断面係数 |  |  | m3 | (3, 0, 0, 0, 0, 0, 0) | ifcDerivedUnitEnum.SECTIONMODULUSUNIT |  |
 | 弾性係数測定 | せん断弾性率 |  |  | N / m2 | (-1, 1, -2, 0, 0, 0, 0) | IfcDerivedUnitEnum.SHEARMODULUSUNIT。 |  |
 | イフチ固体角測定 | ソリッドアングル | ステラジアン | sr | sr | (0, 0, 0, 0, 0, 0, 0) | IfcUnitEnum.SOLIDANGLEUNIT | ifcSIUnitName.STERADIAN |
 | 音圧レベル測定 | 音響パワーレベル（対数基準 1e-12 W） | デシベルSWL | db | db | (0, 0, 0, 0, 0, 0, 0) | IfcDerivedUnitEnum.SOUNDPOWERLEVELUNIT |  |

@@ -5,15 +5,15 @@
 
 これは、IFC検証の期待される動作を記述するためのものであり、期待される実装から曖昧さを取り除くために、すべての標準的なケースとエッジケースをカバーする必要がある。
 
-テストケースは、テーマ（属性、エンティティなど）ごとにフォルダに分類され、一致するIFC/IDS カップルの検証結果に応じて、3 つのグループ（pass、fail、invalid-）に分類されます。
+テストケースは、テーマ別（属性、エンティティなど）にフォルダ分けされ、一致するIFC/IDSカップルの検証結果に応じて、3つのグループ（合格、不合格、無効など）に整理される。
 
 | ファイル名接頭辞 | 記述 |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | pass- | すべての要件を満たす |
 | fail- | 少なくとも1つの要件が不合格 |
-| invalid- | 少なくとも1つの要件が fail- （無効なファイルは監査ツールに準拠していないため、IFC の内容に関係なく要件を満たすことができなかった）。 |
+| invalid- | 少なくとも1つの要件が不合格（無効なファイルは監査ツールに準拠していないため、IFCの内容に関係なく、要件を満たすことができない） |
 
-IDSファイルは、このスクリプトのデータから、リポジトリ内の`CreateTestCases` ターゲットを実行して生成される。
+IDS ファイルは、リポジトリ内の`CreateTestCases`ターゲットを実行するスクリプトのデータから生成されます。
 
 IFCファイルは、以前に[IfcOpenShellリポジトリで](https://blenderbim.org/docs-python/ifctester.html)行われた作業からインポートされ、適切な場所に追加されました。
 
@@ -35,7 +35,7 @@ Requirements:
 Attribute: ''Name''
 ```
 
-### オプションの属性は、指定された場合に通過します
+### オプションの属性は、指定された場合に渡されます
 ``` ids attribute/pass-an_optional_attribute_passes_if_specified.ids
 An optional attribute passes if specified
 Entity: ''IFCWALL''
@@ -43,7 +43,7 @@ Requirements:
 Attribute: Optional,''Name'', ''Foobar''
 ```
 
-### オプションの属性で、null の場合は pass- となる
+### オプションの属性は、NULLの場合に渡されます
 ``` ids attribute/pass-an_optional_attribute_passes_if_null.ids
 An optional attribute passes if null
 Entity: ''IFCWALL''
@@ -51,7 +51,7 @@ Requirements:
 Attribute: Optional,''Name'', ''Foobar''
 ```
 
-### オプションの属性は、空の場合は fail- となる
+### オプションの属性は、空の場合は失敗します
 ``` ids attribute/fail-an_optional_attribute_fails_if_empty.ids
 An optional attribute fails if empty
 Entity: ''IFCWALL''
@@ -67,7 +67,7 @@ Requirements:
 Attribute: ''Description'',''Foobar''
 ```
 
-### オブジェクトを参照する属性は、次のように渡す必要があります
+### オブジェクトを参照する属性は
 ``` ids attribute/pass-attributes_referencing_an_object_should_pass.ids
 Attributes referencing an object should pass
 IFC4
@@ -92,7 +92,7 @@ Requirements:
 Attribute: ''Name'',''Foobar''
 ```
 
-### 真偽値falseを持つ属性はパスする必要があります
+### 真偽値がfalseの属性はパスする必要があります
 ``` ids attribute/pass-attributes_with_a_boolean_false_should_pass.ids
 Attributes with a boolean false should pass
 IFC4
@@ -110,7 +110,7 @@ Requirements:
 Attribute: ''IsCritical''
 ```
 
-### 論理的に未知の属性は常に失敗します
+### 論理的に未知の属性は常に失敗する
 ``` ids attribute/fail-attributes_with_a_logical_unknown_always_fail.ids
 Attributes with a logical unknown always fail
 Entity: ''IFCPRESENTATIONLAYERWITHSTYLE''
@@ -134,7 +134,7 @@ Requirements:
 Attribute: ''DiffuseColour''
 ```
 
-### 文字列値を持つ属性は、次のように渡す必要があります
+### 文字列値を持つ属性は
 ``` ids attribute/pass-attributes_with_a_string_value_should_pass.ids
 Attributes with a string value should pass
 Entity: ''IFCWALL''
@@ -142,7 +142,7 @@ Requirements:
 Attribute: ''Name''
 ```
 
-### 持続時間がゼロの属性はパスしなければならない
+### 持続時間がゼロの属性はパスすべきである
 ``` ids attribute/pass-attributes_with_a_zero_duration_should_pass.ids
 Attributes with a zero duration should pass
 IFC4
@@ -151,7 +151,7 @@ Requirements:
 Attribute: ''ScheduleDuration''
 ```
 
-### 数字がゼロの属性には意味があり、パスすべきです
+### 数字がゼロの属性は意味があり、パスすべきである
 ``` ids attribute/pass-attributes_with_a_zero_number_have_meaning_and_should_pass.ids
 Attributes with a zero number have meaning and should pass
 Entity: ''IFCQUANTITYCOUNT''
@@ -167,7 +167,7 @@ Requirements:
 Attribute: ''RelatingPriorities''
 ```
 
-### 空集合を持つ属性は常に失敗する
+### 空の集合を持つ属性は常に失敗する
 ``` ids attribute/fail-attributes_with_an_empty_set_always_fail.ids
 Attributes with an empty set always fail
 Entity: ''IFCPRESENTATIONLAYERWITHSTYLE''
@@ -408,8 +408,8 @@ Requirements:
 Attribute: ''RefractionIndex'',''1.2345E3''
 ```
 
-### 値が整数の場合にfloatを指定するのは無効
-属性名`NumberOfRiser` は、IFC4では `NumberOfRisers` にリネームされていることに注意。
+### 値が整数である場合にfloatを指定するのは無効である
+属性名`NumberOfRiser`は、IFC4では`NumberOfRisers`に改名されていることに注意。
 
 ``` ids attribute/invalid-specifying_a_float_when_the_value_is_an_integer_is_invalid.ids
 Specifying a float when the value is an integer is invalid
@@ -530,7 +530,7 @@ Requirements:
 Classification: Pattern(''\w+'')
 ```
 
-### 要求される分類システムは、一致するものがなければ fail- となる
+### 要求される分類システムは、一致するものがなければ失敗する
 ``` ids classification/fail-a_required_classification_system_fails_if_no_match.ids
 A required classification system fails if no match
 Entity: ''IFCSLAB''
@@ -538,7 +538,7 @@ Requirements:
 Classification: ''Foobar1''
 ```
 
-### オプションの分類値は、指定された場合に通過します
+### オプションの分類値は、指定された場合に渡されます
 ``` ids classification/pass-an_optional_classification_value_passes_if_specified.ids
 An optional classification value passes if specified
 Entity: ''IFCWALL''
@@ -546,7 +546,7 @@ Requirements:
 Classification: Optional,Pattern(''\w+''),''ExpectedValue''
 ```
 
-### nullの場合、オプションの分類値がpass-されます
+### nullの場合、オプションの分類値が渡される
 ``` ids classification/pass-an_optional_classification_value_passes_if_null.ids
 An optional classification value passes if null
 Entity: ''IFCWALL''
@@ -554,7 +554,7 @@ Requirements:
 Classification: Optional,Pattern(''\w+''),''ExpectedValue''
 ```
 
-### オプションの分類値は、マッチしない場合は fail- となる
+### オプションの分類値は、マッチしない場合に失敗します
 ``` ids classification/fail-an_optional_classification_value_fails_if_no_match.ids
 An optional classification value fails if no match
 Entity: ''IFCWALL''
@@ -578,7 +578,7 @@ Requirements:
 Classification: ''Foobar'',''1''
 ```
 
-### 外部分類参照を持つルート化されていないリソースもパスする必要があります
+### 外部分類参照を持つルート化されていないリソースも、次のように渡す必要があります
 ifc4以降、IFCEXTERNALREFERENCERELATIONSHIPは IFCEXTERNALREFERENCEを任意のIFCRESOURCEOBJECTSELECTに関連付けることができる。
 
 ``` ids classification/pass-non_rooted_resources_that_have_external_classification_references_should_also_pass.ids
@@ -710,7 +710,7 @@ Classification: Pattern(''\w+''),''1''
 ```
 
 ## エンティティ
-### 一致するエンティティは、以下をパスする必要がある
+### 一致するエンティティは
 ``` ids entity/pass-a_matching_entity_should_pass.ids
 A matching entity should pass
 Entity: ''IFCWALL''
@@ -762,8 +762,8 @@ Entity: ''IFCWALLTYPE'',''USERDEFINED''
 ```
 
 ### 定義済みの型は、ユーザー定義のオブジェクト型を指定することができる
-列挙でカスタムが許可されている場合、このカスタムサブタイプは許可されるべきである。  
-IfcWallは2X3ではpredefinedTypeを持たないため、テストケースはIFC4に制約される。
+列挙の中でカスタムが許可されている場合、このカスタムSubTypeは許可されるべきである。IfcWallは2X3ではpredefinedTypeを持たないので、テストケースはIFC4に制約される。
+
 
 ``` ids entity/pass-a_predefined_type_may_specify_a_user_defined_object_type.ids
 A predefined type may specify a user-defined object type
@@ -791,7 +791,7 @@ Requirements:
 Entity: ''IFCWALL'',''SOLIDWALL''
 ```
 
-### 指定されたクラスに一致しないエンティティは fail- する
+### 指定されたクラスに一致しないエンティティは失敗する
 ``` ids entity/invalid-an_entity_not_matching_the_specified_class_should_fail.ids
 An entity not matching the specified class should fail
 Entity: ''IFCSLAB''
@@ -799,7 +799,7 @@ Requirements:
 Entity: ''IFCWALL''
 ```
 
-### 一致するエンティティは、定義済みの型に関係なく通過しなければならない
+### 一致するエンティティは、定義済みの型に関係なくパスする必要があります
 ``` ids entity/pass-an_matching_entity_should_pass_regardless_of_predefined_type.ids
 An matching entity should pass regardless of predefined type
 Entity: ''IFCWALL''
@@ -855,7 +855,7 @@ Requirements:
 Entity: ''IfcWall''
 ```
 
-### 継承された定義済み型は、以下を渡す必要がある
+### 継承された定義済み型は
 ``` ids entity/pass-inherited_predefined_types_should_pass.ids
 Inherited predefined types should pass
 IFC4
@@ -872,7 +872,7 @@ Requirements:
 Entity: ''IFCRABBIT''
 ```
 
-### オーバーライドされた定義済みの型は、以下を渡す必要がある
+### オーバーライドされた定義済みの型は
 ``` ids entity/pass-overridden_predefined_types_should_pass.ids
 Overridden predefined types should pass
 IFC4
@@ -968,7 +968,7 @@ Attribute: ''Name'',''Waldo''
 Attribute: ''Description'',''Foobar''
 ```
 
-### 何も該当しない場合でも、オプション仕様は通過する可能性がある
+### 該当するものがない場合でも、オプション仕様で合格となる場合がある
 ``` ids ids/pass-optional_specifications_may_still_pass_if_nothing_is_applicable.ids
 Optional specifications may still pass if nothing is applicable
 Optional
@@ -978,7 +978,7 @@ Requirements:
 Attribute: ''Name'',''Waldo''
 ```
 
-### 要件が指定されている場合、無効となる禁止仕様
+### 要件が指定されている場合、禁止仕様は無効となる
 ``` ids ids/invalid-prohibited_specifications_invalid_if_requirements_are_specified.ids
 Prohibited specifications invalid if requirements are specified
 Prohibited
@@ -988,7 +988,7 @@ Requirements:
 Attribute: ''Name'',''Waldo''
 ```
 
-### 禁止仕様は、適用可能性が一致すれば fail- となる
+### 禁止仕様は、適用可能性が一致すれば不合格となる
 ``` ids ids/fail-prohibited_specifications_fails_if_the_applicability_matches.ids
 Prohibited specifications fails if the applicability matches
 Prohibited
@@ -996,7 +996,7 @@ IFC2X3
 Entity: ''IFCWALL''
 ```
 
-### 禁止仕様は、適用範囲が一致しなければpass-する
+### 禁止仕様に該当しない場合は合格
 ``` ids ids/pass-prohibited_specifications_passes_if_the_applicability_does_not_matches.ids
 Prohibited specifications passes if the applicability does not matches
 Prohibited
@@ -1033,7 +1033,7 @@ Attribute: ''Name'',''Waldo''
 Attribute: Optional,''Description'',''Foobar''
 ```
 
-### 仕様のバージョンは純粋なメタデータであり、合否には影響しない
+### 仕様のバージョンは純粋なメタデータであり、合否結果には影響しない
 ``` ids ids/pass-specification_version_is_purely_metadata_and_does_not_impact_pass_or_fail_result.ids
 Specification version is purely metadata and does not impact pass or fail result
 Optional
@@ -1044,7 +1044,7 @@ Attribute: ''Name'',''Waldo''
 ```
 
 ## 材料
-### データのない構成要素セットは、値チェックに失敗する
+### データのない構成要素セットは値チェックに失敗する
 ``` ids material/fail-a_constituent_set_with_no_data_will_fail_a_value_check.ids
 A constituent set with no data will fail a value check
 Entity: ''IFCWALL''
@@ -1052,7 +1052,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### 素材カテゴリーは値チェックに合格する可能性がある
+### 素材カテゴリーは値チェックを通過する可能性がある
 ``` ids material/pass-a_material_category_may_pass_the_value_check.ids
 A material category may pass the value check
 Entity: ''IFCWALL''
@@ -1092,7 +1092,7 @@ Requirements:
 Material: 
 ```
 
-### 指定された場合、オプションで材料がpass-される
+### 指定された場合、オプションの材料が渡される
 ``` ids material/pass-an_optional_material_passes_if_specified.ids
 An optional material passes if specified
 Entity: ''IFCWALL''
@@ -1100,7 +1100,7 @@ Requirements:
 Material: Optional,''Foo''
 ```
 
-### NULLの場合、オプションの材料がpass-される
+### NULLの場合、オプションの素材が渡される
 ``` ids material/pass-an_optional_material_passes_if_null.ids
 An optional material passes if null
 Entity: ''IFCWALL''
@@ -1108,7 +1108,7 @@ Requirements:
 Material: Optional,''Foo''
 ```
 
-### にマッチする値がない場合、オプションの材料は fail- となる
+### オプションの材料は、マッチする値がなければ失敗する
 ``` ids material/fail-an_optional_material_fails_if_no_value_matches.ids
 An optional material fails if no value matches
 Entity: ''IFCWALL''
@@ -1124,7 +1124,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### 小選挙区セット内の小選挙区名はすべて、値チェックを通過する
+### 小選挙区セット内の小選挙区名はすべて値チェックを通過する
 ``` ids material/pass-any_constituent_name_in_a_constituent_set_will_pass_a_value_check.ids
 Any constituent Name in a constituent set will pass a value check
 Entity: ''IFCWALL''
@@ -1140,7 +1140,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### レイヤーセット内のレイヤー名はすべて値チェックを通過します
+### レイヤーセットに含まれるレイヤー名はすべて、値チェックを通過します
 ``` ids material/pass-any_layer_name_in_a_layer_set_will_pass_a_value_check.ids
 Any layer Name in a layer set will pass a value check
 Entity: ''IFCWALL''
@@ -1156,7 +1156,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### レイヤーセット内のマテリアル・カテゴリは、値チェックを通過します
+### レイヤーセット内のマテリアル・カテゴリーが値チェックを通過する
 ``` ids material/pass-any_material_category_in_a_layer_set_will_pass_a_value_check.ids
 Any material Category in a layer set will pass a value check
 Entity: ''IFCWALL''
@@ -1164,7 +1164,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### リスト内のどの材料カテゴリーも値チェックを通過します
+### リスト内のどの材料カテゴリーも値チェックを通過する
 ``` ids material/pass-any_material_category_in_a_list_will_pass_a_value_check.ids
 Any material Category in a list will pass a value check
 Entity: ''IFCWALL''
@@ -1172,7 +1172,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### プロファイルセット内のどの材料カテゴリーも、値チェックをパスします
+### プロファイルセット内のどの材料カテゴリーも値チェックを通過します
 ``` ids material/pass-any_material_category_in_a_profile_set_will_pass_a_value_check.ids
 Any material category in a profile set will pass a value check
 Entity: ''IFCWALL''
@@ -1180,7 +1180,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### 構成要素セット内の材料名はすべて値チェックを通過する
+### 構成要素セット内の材料名はすべて、値チェックを通過します
 ``` ids material/pass-any_material_name_in_a_constituent_set_will_pass_a_value_check.ids
 Any material Name in a constituent set will pass a value check
 Entity: ''IFCWALL''
@@ -1188,7 +1188,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### レイヤーセットの材料名はすべて値チェックを通過します
+### レイヤーセットに含まれる材料名はすべて値チェックを通過します
 ``` ids material/pass-any_material_name_in_a_layer_set_will_pass_a_value_check.ids
 Any material Name in a layer set will pass a value check
 Entity: ''IFCWALL''
@@ -1196,7 +1196,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### リスト内の材料名はすべて値チェックを通過します
+### リスト内の材料名はすべて、値チェックを通過します
 ``` ids material/pass-any_material_name_in_a_list_will_pass_a_value_check.ids
 Any material Name in a list will pass a value check
 Entity: ''IFCWALL''
@@ -1204,7 +1204,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### プロファイルセット内の材料名はすべて値チェックを通過します
+### プロファイル・セット内の材料名はすべて値チェックを通過します
 ``` ids material/pass-any_material_name_in_a_profile_set_will_pass_a_value_check.ids
 Any material Name in a profile set will pass a value check
 Entity: ''IFCWALL''
@@ -1228,7 +1228,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### 任意のマテリアルを持つ要素は、空のマテリアルファセットを渡す
+### 任意のマテリアルを持つ要素は、空のマテリアルファセットを渡します
 ``` ids material/pass-elements_with_any_material_will_pass_an_empty_material_facet.ids
 Elements with any material will pass an empty material facet
 Entity: ''IFCWALL''
@@ -1244,7 +1244,7 @@ Requirements:
 Material: 
 ```
 
-### データのない材料は値チェックに失敗します
+### データのない材料は値チェックに失敗する
 ``` ids material/fail-material_with_no_data_will_fail_a_value_check.ids
 Material with no data will fail a value check
 Entity: ''IFCWALL''
@@ -1268,7 +1268,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### レイヤーセット名は値チェックを通過します
+### レイヤーセット名は値チェックを通過する
 ``` ids material/pass-a_layer_set_name_will_pass_a_value_check.ids
 A layer set name will pass the value check
 Entity: ''IFCWALL''
@@ -1318,7 +1318,7 @@ Requirements:
 PartOf: Pattern(''.*''),IFCRELASSIGNSTOGROUP
 ```
 
-### 非集約要素は、集約関係に失敗する
+### 非集約要素は集約関係に失敗する
 ``` ids partof/fail-a_non_aggregated_element_fails_an_aggregate_relationship.ids
 A non aggregated element fails an aggregate relationship
 Entity: ''IFCWALL''
@@ -1326,7 +1326,7 @@ Requirements:
 PartOf: Pattern(''.*''),IFCRELAGGREGATES
 ```
 
-### グループ化されていない要素は、グループ関係に失敗する
+### グループ化されていない要素はグループ関係に失敗する
 ``` ids partof/fail-a_non_grouped_element_fails_a_group_relationship.ids
 A non grouped element fails a group relationship
 Entity: ''IFCELEMENTASSEMBLY''
@@ -1398,7 +1398,7 @@ Requirements:
 PartOf: Pattern(''.*''),IFCRELCONTAINEDINSPATIALSTRUCTURE
 ```
 
-### 含まれる要素はすべて包含関係を通過する 2/2
+### 含まれる要素はすべて包含関係をパスする 2/2
 ``` ids partof/pass-any_contained_element_passes_a_containment_relationship_2_2.ids
 Any contained element passes a containment relationship 2/2
 Entity: ''IFCELEMENTASSEMBLY''
@@ -1406,7 +1406,7 @@ Requirements:
 PartOf: Pattern(''.*''),IFCRELCONTAINEDINSPATIALSTRUCTURE
 ```
 
-### ネストされた一部のパーツは、ネスト関係をパスする
+### ネストされた一部のパートはネスト関係をパスする
 ``` ids partof/pass-any_nested_part_passes_a_nest_relationship.ids
 Any nested part passes a nest relationship
 Entity: ''IFCDISCRETEACCESSORY''
@@ -1432,7 +1432,7 @@ Requirements:
 PartOf: ''IFCFURNITURE'',IFCRELNESTS
 ```
 
-### 集約された一部の部分は、集約された関係をパスする
+### 集約された一部の部分は、集約された関係を渡す
 ``` ids partof/pass-the_aggregated_part_passes_an_aggregate_relationship.ids
 The aggregated part passes an aggregate relationship
 Entity: ''IFCWALL''
@@ -1558,7 +1558,7 @@ PartOf: ''IFCFURNITURE'',''WATERBOTTLE'',IFCRELNESTS
 ```
 
 ## プロパティ
-### 論理的な未知数は一致しないとみなされ、通過しない
+### 論理的な未知数は一致しないとみなされ、パスしない
 IFCDURATIONはIFC2x3では使用できません。
 
 ``` ids property/fail-a_logical_unknown_is_considered_false_and_will_not_pass.ids
@@ -1601,7 +1601,7 @@ Requirements:
 Property: Prohibited,''Foo_Bar'',''Foo''
 ```
 
-### falseに設定されたプロパティは、依然として値とみなされ、名前チェックを通過します
+### falseに設定されたプロパティは、依然として値とみなされ、名前チェックを通過する
 ``` ids property/pass-a_property_set_to_false_is_still_considered_a_value_and_will_pass_a_name_check.ids
 A property set to false is still considered a value and will pass a name check
 Entity: ''IFCWALL''
@@ -1609,7 +1609,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCBOOLEAN
 ```
 
-### trueに設定されたプロパティは名前チェックを通過する
+### trueに設定されたプロパティは、名前チェックをパスする
 ``` ids property/pass-a_property_set_to_true_will_pass_a_name_check.ids
 A property set to true will pass a name check
 Entity: ''IFCWALL''
@@ -1625,7 +1625,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLABEL
 ```
 
-### 持続時間がゼロの場合はパス-パス
+### 持続時間がゼロであれば合格
 IFCDURATIONはIFC2x3では使用できません。
 
 ``` ids property/pass-a_zero_duration_will_pass.ids
@@ -1684,7 +1684,7 @@ Requirements:
 Property: Pattern(''Foo_.*''),''Foo'',IFCLABEL
 ```
 
-### 空の文字列はマッチしないとみなされ、パスしません
+### 空の文字列はマッチしないとみなされ、通過しません
 ``` ids property/fail-an_empty_string_is_considered_false_and_will_not_pass.ids
 An empty string is considered not matching and will not pass
 Entity: ''IFCWALL''
@@ -1692,7 +1692,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLABEL
 ```
 
-### オプションのファセットは、 の結果にかかわらず常にpass-となる 1/2
+### オプションのファセットは、 の結果にかかわらず常にパスする 1/2
 ``` ids property/pass-an_optional_facet_always_passes_regardless_of_outcome_1_2.ids
 An optional facet always passes regardless of outcome 1/2
 Entity: ''IFCWALL''
@@ -1708,7 +1708,7 @@ Requirements:
 Property: Optional,''Foo_Bar'',''Bar'',IFCLABEL
 ```
 
-### バウンデッドプロパティで一致する値はすべて を通過する 1/4
+### バウンデッド・プロパティで一致する値はすべて、 を通過します 1/4
 ``` ids property/pass-any_matching_value_in_a_bounded_property_will_pass_1_4.ids
 Any matching value in a bounded property will pass 1/4
 Entity: ''IFCWALL''
@@ -1716,7 +1716,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLENGTHMEASURE,''1''
 ```
 
-### バウンデッドプロパティで一致する値はすべて をパスする 2/4
+### バウンデッド・プロパティで一致する値はすべて をパスする 2/4
 ``` ids property/pass-any_matching_value_in_a_bounded_property_will_pass_2_4.ids
 Any matching value in a bounded property will pass 2/4
 Entity: ''IFCWALL''
@@ -1724,7 +1724,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLENGTHMEASURE,''5''
 ```
 
-### バウンデッド・プロパティで一致する値はすべて をパスする 3/4
+### バウンデッド・プロパティで一致する値はすべて、 を通過する 3/4
 ``` ids property/pass-any_matching_value_in_a_bounded_property_will_pass_3_4.ids
 Any matching value in a bounded property will pass 3/4
 Entity: ''IFCWALL''
@@ -1740,7 +1740,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLENGTHMEASURE,''2''
 ```
 
-### リスト・プロパティ内の一致する値はすべてパスする 1/3
+### リスト・プロパティで一致する値があれば、 を通過します 1/3
 ``` ids property/pass-any_matching_value_in_a_list_property_will_pass_1_3.ids
 Any matching value in a list property will pass 1/3
 Entity: ''IFCWALL''
@@ -1748,7 +1748,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLABEL,''X''
 ```
 
-### リストプロパティで一致する値はすべて を通過する 2/3
+### リスト・プロパティ内の一致する値はすべて、 を通過する 2/3
 ``` ids property/pass-any_matching_value_in_a_list_property_will_pass_2_3.ids
 Any matching value in a list property will pass 2/3
 Entity: ''IFCWALL''
@@ -1797,7 +1797,7 @@ Requirements:
 Property: ''Pset_WallCommon'',''Status'',IFCLABEL,''EXISTING''
 ```
 
-### 列挙されたプロパティに一致する値があれば、 を通過する 2/3
+### 列挙されたプロパティに一致する値があれば、 を通過します 2/3
 ``` ids property/pass-any_matching_value_in_an_enumerated_property_will_pass_2_3.ids
 Any matching value in an enumerated property will pass 2/3
 IFC4
@@ -1806,7 +1806,7 @@ Requirements:
 Property: ''Pset_WallCommon'',''Status'',IFCLABEL,''DEMOLISH''
 ```
 
-### 列挙されたプロパティに一致する値がない場合は失敗する 3/3
+### 列挙されたプロパティに一致する値がない場合、失敗します 3/3
 ``` ids property/fail-no_matching_value_in_an_enumerated_property_will_fail_3_3.ids
 No matching value in an enumerated property will fail 3/3
 IFC4
@@ -1895,7 +1895,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCDURATION,''PT16H''
 ```
 
-### 一致するpsetを持つがプロパティを持たない要素も失敗-
+### 一致するpsetを持つがプロパティを持たない要素も失敗する
 ``` ids property/fail-elements_with_a_matching_pset_but_no_property_also_fail.ids
 Elements with a matching pset but no property also fail
 Entity: ''IFCWALL''
@@ -2072,7 +2072,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLABEL,''Bar''
 ```
 
-### NULL値を持つプロパティは失敗します
+### NULL値を持つプロパティは失敗する
 ``` ids property/fail-properties_with_a_null_value_fail.ids
 Properties with a null value fail
 Entity: ''IFCWALL''
@@ -2120,7 +2120,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLABEL
 ```
 
-### 値の指定は、異なる値に対しては fail- となる
+### 異なる値に対して値を指定しても失敗する
 ``` ids property/fail-specifying_a_value_fails_against_different_values.ids
 Specifying a value fails against different values
 Entity: ''IFCWALL''
@@ -2161,10 +2161,10 @@ Property: ''Foo_Bar'',''Foo'',IFCLENGTHMEASURE,''2''
 ```
 
 ### プロパティは、関連するオブジェクト・タイプに関連付けることができる
-監査ツールは、予約接頭辞`Pset_` で始まるプロパティを適切なオブジェクトに制限します、  
-が、関連するタイプに関連付けることもできる。例えば `Pset_WallCommon`について `IFCWALLTYPE`.
+監査ツールは、予約接頭辞`Pset_`で始まるプロパティを、該当するオブジェクトに制限しますが、関連する型に関連付けることもできます。例えば `Pset_WallCommon``IFCWALLTYPE`。
 
-提供されたIFC は、プロパティセットの 1 つが無効な値`FOOBAR` を定義しているため、失敗します。
+
+提供されたIFCは、プロパティセットの1つが無効な値`FOOBAR`定義しているため、失敗します。
 
 ``` ids property/fail-properties_can_be_associated_to_relevant_object_types.ids
 Properties can be associated to relevant object types
@@ -2378,7 +2378,7 @@ Attribute: ''Name'',Pattern(''[a-z]{3}[0-9]{2}'') Pattern(''[A-Z]{3}[0-9]{2}'')
 ```
 
 ## 寛容
-### 浮動小数点正数の下界パスの比較許容差
+### 浮動小数点正数の下界パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_positive_high_number_lower_bound.ids
 Comparison tolerance for floating point positive high number lower bound pass
 Entity: ''IFCWALL''
@@ -2386,7 +2386,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''100000.''
 ```
 
-### 浮動小数点正数の下限がfail-した場合の比較許容度
+### 浮動小数点正数の下限が失敗した場合の比較許容度
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_positive_high_number_lower_bound.ids
 Comparison tolerance for floating point positive high number lower bound fail
 Entity: ''IFCWALL''
@@ -2394,7 +2394,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''100000.''
 ```
 
-### 浮動小数点正数の上限パスの比較許容差
+### 浮動小数点正数の上限パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_positive_high_number_upper_bound.ids
 Comparison tolerance for floating point positive high number upper bound pass
 Entity: ''IFCWALL''
@@ -2402,7 +2402,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''100000.''
 ```
 
-### 浮動小数点正数の上限がfail-した場合の比較許容度
+### 浮動小数点正数の上限失敗の比較許容度
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_positive_high_number_upper_bound.ids
 Comparison tolerance for floating point positive high number upper bound fail
 Entity: ''IFCWALL''
@@ -2410,7 +2410,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''100000.''
 ```
 
-### 浮動小数点数の下限が1つ失敗した場合の比較の許容範囲
+### 浮動小数点数の下限が1つ失敗した場合の比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_one_lower_bound.ids
 Comparison tolerance for floating point one lower bound fail
 Entity: ''IFCWALL''
@@ -2418,7 +2418,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''1.''
 ```
 
-### 浮動小数点1下限パスの比較許容差
+### 浮動小数点1下界パスの比較許容差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_one_lower_bound.ids
 Comparison tolerance for floating point one lower bound pass
 Entity: ''IFCWALL''
@@ -2434,7 +2434,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''1.''
 ```
 
-### 浮動小数点数の比較許容誤差の上限が1つ失敗した場合
+### 浮動小数点数の1つの上限が失敗した場合の比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_one_upper_bound.ids
 Comparison tolerance for floating point one upper bound fail
 Entity: ''IFCWALL''
@@ -2442,7 +2442,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''1.''
 ```
 
-### 浮動小数点正の少数点下界の比較許容誤差が fail- となる
+### 浮動小数点正の少数点下界不合格時の比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_positive_low_number_lower_bound.ids
 Comparison tolerance for floating point positive low number lower bound fail
 Entity: ''IFCWALL''
@@ -2450,7 +2450,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.0000001''
 ```
 
-### 浮動小数点正の少数点下界パスの比較許容差
+### 浮動小数点正数下界パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_positive_low_number_lower_bound.ids
 Comparison tolerance for floating point positive low number lower bound pass
 Entity: ''IFCWALL''
@@ -2466,7 +2466,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.0000001''
 ```
 
-### 浮動小数点正の少数点上限値の比較許容誤差が fail- となる
+### 浮動小数点正の少数点上限失敗の比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_positive_low_number_upper_bound.ids
 Comparison tolerance for floating point positive low number upper bound fail
 Entity: ''IFCWALL''
@@ -2482,7 +2482,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.''
 ```
 
-### 浮動小数点ゼロ下界パスの比較許容差
+### 浮動小数点ゼロ下界パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_zero_lower_bound.ids
 Comparison tolerance for floating point zero lower bound pass
 Entity: ''IFCWALL''
@@ -2490,7 +2490,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.''
 ```
 
-### 浮動小数点ゼロ上限パスの比較許容差
+### 浮動小数点ゼロ上限パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_zero_upper_bound.ids
 Comparison tolerance for floating point zero upper bound pass
 Entity: ''IFCWALL''
@@ -2498,7 +2498,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.''
 ```
 
-### 浮動小数点ゼロ上限フェイルの比較許容範囲
+### 浮動小数点ゼロ上限失敗の比較許容範囲
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_zero_upper_bound.ids
 Comparison tolerance for floating point zero upper bound fail
 Entity: ''IFCWALL''
@@ -2506,7 +2506,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.''
 ```
 
-### 浮動小数点負の少数点下界の比較許容誤差が fail- になる
+### 浮動小数点負数下限失敗の比較許容範囲
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_low_number_lower_bound.ids
 Comparison tolerance for floating point negative low number lower bound fail
 Entity: ''IFCWALL''
@@ -2514,7 +2514,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-0.0000001''
 ```
 
-### 浮動小数点負数下界パスの比較許容差
+### 浮動小数点負数下界パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_negative_low_number_lower_bound.ids
 Comparison tolerance for floating point negative low number lower bound pass
 Entity: ''IFCWALL''
@@ -2530,7 +2530,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-0.0000001''
 ```
 
-### 浮動小数点負の少数点上限値failの比較許容差
+### 浮動小数点負数の上限失敗の比較許容範囲
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_low_number_upper_bound.ids
 Comparison tolerance for floating point negative low number upper bound fail
 Entity: ''IFCWALL''
@@ -2538,7 +2538,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-0.0000001''
 ```
 
-### 浮動小数点負の1下界の比較許容誤差は fail- です
+### 浮動小数点負の1下限が失敗した場合の比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_one_lower_bound.ids
 Comparison tolerance for floating point negative one lower bound fail
 Entity: ''IFCWALL''
@@ -2554,7 +2554,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-1.''
 ```
 
-### 浮動小数点負の1上限パスの比較許容差
+### 浮動小数点負の1上限パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_negative_one_upper_bound.ids
 Comparison tolerance for floating point negative one upper bound pass
 Entity: ''IFCWALL''
@@ -2562,7 +2562,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-1.''
 ```
 
-### 浮動小数点負数1上限値failの比較許容差
+### 浮動小数点負1上限失敗の比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_one_upper_bound.ids
 Comparison tolerance for floating point negative one upper bound fail
 Entity: ''IFCWALL''
@@ -2570,7 +2570,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-1.''
 ```
 
-### 浮動小数点負の高数値の下限がfail-した場合の比較許容度
+### 浮動小数点負の高数値の下限が失敗した場合の比較許容度
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_high_number_lower_bound.ids
 Comparison tolerance for floating point negative high number lower bound fail
 Entity: ''IFCWALL''
@@ -2578,7 +2578,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-1000000.''
 ```
 
-### 浮動小数点負の高数値下界パスの比較許容差
+### 浮動小数点負の高数値下界パスの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_negative_high_number_lower_bound.ids
 Comparison tolerance for floating point negative high number lower bound pass
 Entity: ''IFCWALL''
@@ -2594,7 +2594,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-1000000.''
 ```
 
-### 浮動小数点負の高数値の上限がfailする場合の比較許容度
+### 浮動小数点負の高数値上限失敗の比較許容範囲
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_high_number_upper_bound.ids
 Comparison tolerance for floating point negative high number upper bound fail
 Entity: ''IFCWALL''
@@ -2602,7 +2602,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-1000000.''
 ```
 
-### ゼロより大きい浮動小数点レンジの比較許容誤差は排他的失敗である
+### ゼロより大きい浮動小数点レンジの比較許容誤差は排他的失敗となる
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_range_greater_than_zero_exclusive.ids
 Comparison tolerance for floating point range greater than zero exclusive fail
 Entity: ''IFCWALL''
@@ -2618,7 +2618,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,xs:double MinExclusive(''0.'')
 ```
 
-### ゼロより大きい浮動小数点範囲に対する比較許容誤差はfail
+### ゼロより大きい浮動小数点レンジの比較許容誤差は失敗する
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_range_greater_than_zero_inclusive.ids
 Comparison tolerance for floating point range greater than zero inclusive fail
 Entity: ''IFCWALL''
@@ -2626,7 +2626,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,xs:double MinInclusive(''0.'')
 ```
 
-### ゼロより大きい浮動小数点範囲に対する比較許容誤差
+### ゼロより大きい浮動小数点レンジの比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_range_greater_than_zero_inclusive.ids
 Comparison tolerance for floating point range greater than zero inclusive pass
 Entity: ''IFCWALL''
@@ -2634,7 +2634,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,xs:double MinInclusive(''0.'')
 ```
 
-### ゼロより小さい浮動小数点レンジの比較許容誤差はfail-となる
+### ゼロより小さい浮動小数点レンジの比較許容誤差は排他的に失敗する
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_range_lower_than_zero_exclusive.ids
 Comparison tolerance for floating point range lower than zero exclusive fail
 Entity: ''IFCWALL''
@@ -2642,7 +2642,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,xs:double MaxExclusive(''0.'')
 ```
 
-### ゼロより低い浮動小数点レンジの比較許容差排他的パス
+### ゼロより小さい浮動小数点レンジの比較許容差排他的パス
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_range_lower_than_zero_exclusive.ids
 Comparison tolerance for floating point range lower than zero exclusive pass
 Entity: ''IFCWALL''
@@ -2650,7 +2650,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,xs:double MaxExclusive(''0.'')
 ```
 
-### ゼロより小さい浮動小数点範囲に対する比較許容誤差は fail- を含む
+### ゼロより小さい浮動小数点レンジの比較許容誤差は失敗する
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_range_lower_than_zero_inclusive.ids
 Comparison tolerance for floating point range lower than zero inclusive fail
 Entity: ''IFCWALL''
@@ -2658,7 +2658,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,xs:double MaxInclusive(''0.'')
 ```
 
-### 浮動小数点の範囲がゼロより小さい場合の比較の許容範囲
+### 浮動小数点の範囲がゼロより小さい場合の比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_range_lower_than_zero_inclusive.ids
 Comparison tolerance for floating point range lower than zero inclusive pass
 Entity: ''IFCWALL''

@@ -45,7 +45,7 @@ IFCスキーマのドキュメントには、標準的な定義済み型のリ�
 
  1. 有効な**定義済み型の**リストは表に示されている。
 
-**定義済みタイプが**必要な場合は、標準のリストから選択することを強く推奨する。しかし、プロジェクトに適用されない場合は、任意のカスタム値を指定することができます。
+**定義済みタイプが**必要な場合は、標準のリストから選択することを強く推奨する。ただし、プロジェクトに適用されない場合は、任意のカスタム値を指定することができます。
 
 ### IFCファイル内の`predefinedType` を識別するためのロジック：
 - **IF**: [オブジェクトが](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm) [型によって](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcTypeObject.htm)定義されている ([IfcRelDefinesByType](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRelDefinesByType.htm)リレーションを探す)
@@ -104,7 +104,7 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ────── ────────IfcDoorStandardCase |  | 🚫 |  |
 | ──── IfcEarthworksElement |  |  | ✅ |
 | ────── ────IfcEarthworksFill |  |  | ✅ |
-| ────── ─────────────────IfcReinforcedSoil |  |  | ✅ |
+| ────── ───────────────IfcReinforcedSoil |  |  | ✅ |
 | ──── ──IfcFooting | ✅ | ✅ | ✅ |
 | ──── ──IfcKerb |  |  | ✅ |
 | ──── ──IfcMember | ✅ | ✅ | ✅ |
@@ -127,7 +127,7 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ──── ──IfcStairFlight | ✅ | ✅ | ✅ |
 | ──── IfcTrackElement |  |  | ✅ |
 | ──── ──IfcWall | ✅ | ✅ | ✅ |
-| ────── ──────────IfcWallElementedCase |  | 🚫 |  |
+| ────── ─────────IfcWallElementedCase |  | 🚫 |  |
 | ────── ─────────IfcWallStandardCase |  | 🚫 | 🚫 |
 | ──── ──IfcWindow | ✅ | ✅ | ✅ |
 | ──────   ──────────────IfcWindowStandardCase |  | 🚫 |  |
@@ -149,7 +149,7 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ──────── ───────IfcEvaporator |  | ✅ | ✅ |
 | ──────── ──────IfcHeatExchanger |  | ✅ | ✅ |
 | ──────── ─────────IfcHumidifier |  | ✅ | ✅ |
-| ────────   ─────────────IfcMotorConnection |  | ✅ | ✅ |
+| ────────   ──────────────IfcMotorConnection |  | ✅ | ✅ |
 | ──────── ────IfcSolarDevice |  | ✅ | ✅ |
 | ──────── ───────────────IfcTransformer |  | ✅ | ✅ |
 | ──────── ─IfcTubeBundle |  | ✅ | ✅ |
@@ -157,7 +157,7 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ──────   ───────────────IfcDistributionChamberElement | ✅ | ✅ |  |
 | ────── ──IfcFlowController | ✅ | ⚠️ | ✅ |
 | ──────── ────IfcAirTerminalBox |  | ✅ | ✅ |
-| ──────── ───────IfcDamper |  | ✅ | ✅ |
+| ──────── ──────イフクダンパー |  | ✅ | ✅ |
 | ────────   ─────────IfcDistributionBoard |  |  | ✅ |
 | ────────   ────────────────────────────────IfcElectricDistributionBoard | ✅ | 🚫 | 🚫 |
 | ────────   ─────────────────────────────────────────────IfcElectricTimeControl | ✅ | ✅ |  |
@@ -166,7 +166,7 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ────────   ────────IfcSwitchingDevice |  | ✅ | ✅ |
 | ──────── ────IfcValve |  | ✅ | ✅ |
 | ────── ──IfcFlowFitting | ✅ | ⚠️ | ✅ |
-| ────────   ─────────────────IfcCableCarrierFitting | ✅ | ✅ |  |
+| ────────   ──────────────────IfcCableCarrierFitting | ✅ | ✅ |  |
 | ──────── ───────────────────────────────────────────────────IfcCableFitting |  | ✅ | ✅ |
 | ──────── ────────IfcDuctFitting |  | ✅ | ✅ |
 | ──────── ──IfcJunctionBox |  | ✅ | ✅ |
@@ -179,9 +179,9 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ────────   ───────────────IfcCableCarrierSegment | ✅ | ✅ |  |
 | ──────── ────────────IfcCableSegment |  | ✅ | ✅ |
 | ────────   ──────────────IfcConveyorSegment |  | ✅ |  |
-| ──────── ────────────IfcDuctSegment |  | ✅ | ✅ |
+| ──────── ───────────IfcDuctSegment |  | ✅ | ✅ |
 | ──────── ────────────────IfcPipeSegment |  | ✅ | ✅ |
-| ────── ──────────IfcFlowStorageDevice | ✅ | ⚠️ | ✅ |
+| ────── ───────────IfcFlowStorageDevice | ✅ | ⚠️ | ✅ |
 | ────────   ─────────────────────────────IfcElectricFlowStorageDevice | ✅ | ✅ |  |
 | ──────── IfcTank |  | ✅ | ✅ |
 | ────── ────────IfcFlowTerminal | ✅ | ⚠️ | ✅ |
@@ -202,7 +202,7 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ──────── ────────IfcStackTerminal |  | ✅ | ✅ |
 | ──────── ──────────IfcWasteTerminal |  | ✅ | ✅ |
 | ──────   ──────────IfcFlowTreatmentDevice | ✅ | ⚠️ | ✅ |
-| ──────── ────────IfcDuctSilencer |  | ✅ | ✅ |
+| ──────── ───────IfcDuctSilencer |  | ✅ | ✅ |
 | ────────   IfcElectricFlowTreatmentDevice |  | ✅ |  |
 | ──────── ────────IfcFilter |  | ✅ | ✅ |
 | ──────── ────IfcInterceptor |  | ✅ | ✅ |
@@ -222,13 +222,13 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ──── ──イフクリート・アクセサリー |  | ✅ | ✅ |
 | ──── ──Ifcファスナー |  | ✅ | ✅ |
 | ────   IfcImpactProtectionDevice |  |  | ✅ |
-| ──── ────IfcMechanicalFastener |  | ✅ | ✅ |
+| ──── ───────────IfcMechanicalFastener |  | ✅ | ✅ |
 | ──── ──────────────IfcReinforcingElement |  | ⚠️ | ⚠️ |
-| ────── ─────────IfcReinforcingBar |  | ✅ | ✅ |
+| ────── ───────────IfcReinforcingBar |  | ✅ | ✅ |
 | ────── IfcReinforcingMesh |  | ✅ | ✅ |
 | ────── ────IfcTendon |  | ✅ | ✅ |
 | ────── IfcTendonAnchor |  | ✅ | ✅ |
-| ────── ────IfcTendonConduit |  |  | ✅ |
+| ────── ─────IfcTendonConduit |  |  | ✅ |
 | ──── ──IfcSign |  |  | ✅ |
 | ──── IfcVibrationDamper |  |  | ✅ |
 | ──── ──IfcVibrationIsolator（イフシー・バイブレーション・アイソレーター） |  | ✅ | ✅ |
@@ -257,9 +257,9 @@ IDS のエンティティ・ファセット解釈には、自動継承はない�
 | ── IfcElectricalElement | 🚫 |  |  |
 | ── IfcEquipmentElement | ✅ |  |  |
 
-✅ - IFCバージョンに含まれています。  
-⚠️ - 含まれているが抽象的。  
-🚫 - 非推奨
+✅ - IFCバージョンに含まれる ✅ ⚠️ - 含まれるが抽象的、インスタンス化できない 🚫 - 非推奨
+
+
 
 ### 異なるIFCバージョンにおけるIfcElementサブ・エンティティのリスト
 以下に、IfcElementのサブエンティティのリストを、IDSファイルにコピーペーストしやすい形で示します。簡単のため、このリストにはTypeオブジェクトは含まれていない。

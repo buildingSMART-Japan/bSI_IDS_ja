@@ -21,7 +21,7 @@
 | イフクールドビーム | Ifcエネルギー変換装置 | IfcCooledBeamType |
 | 冷却塔 | Ifcエネルギー変換装置 | IfcCoolingTowerType |
 | Ifc発電機 | Ifcエネルギー変換装置 | Ifc発電機タイプ |
-| Ifc電気モーター | Ifcエネルギー変換装置 | Ifc電気モータータイプ |
+| Ifc電気モーター | Ifcエネルギー変換装置 | IfcElectricMotorType |
 | Ifc蒸発冷却器 | Ifcエネルギー変換装置 | Ifc蒸発冷却器タイプ |
 | Ifcエバポレーター | Ifcエネルギー変換装置 | IfcEvaporatorType |
 | Ifc熱交換器 | Ifcエネルギー変換装置 | IfcHeatExchangerType |
@@ -65,9 +65,9 @@
 | IfcVibrationIsolator | IfcEquipmentElement | IfcVibrationIsolatorタイプ |
 
 ## 例
-たとえば、IDS適用可能ファセットをエンティティ `IfcFilter`を持つIDS適用可能性ファセットを定義すると `IfcFlowTreatmentDevice`タイプ `IfcFilterType`.
+たとえば、エンティティ `IfcFilter`持つIDS適用性ファセットの定義では、すべての `IfcFlowTreatmentDevice`型に関連するすべての識別する。 `IfcFilterType`.
 
-同様に、エンティティ名 `IfcFilter`を持つ要件の定義は、エンティティタイプが `IfcFlowTreatmentDevice`と異なる場合、またはその型が `IfcFilterType`.
+同様に、エンティティ名 `IfcFilter`持つ要件の定義も同様です。 `IfcFlowTreatmentDevice`と異なる、またはそのタイプが `IfcFilterType`.
 
 ## 備考
 これらの合意の歴史は[116号で](https://github.com/buildingSMART/IDS/issues/116)辿ることができる。
