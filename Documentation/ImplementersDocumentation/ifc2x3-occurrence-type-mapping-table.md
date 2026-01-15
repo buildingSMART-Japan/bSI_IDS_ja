@@ -1,73 +1,73 @@
-# IFC2X3エンティティマッピング
-以下の表は、IFC2X3モデルのチェックに関するすべての特別なケースの一覧です。モデルのサブセットの識別は、タイプオブジェクトによってさらに制限されます。
+# IFC2X3エニシティ・マッピング
+次の表は、IFC2X3モデルのサブセットの識別をチェックするためのすべての特別なケースをリストしたものです。
 
 最初の列は、IDSエンティティ・ファセットで使用される名前を示す。  
-2列目と3列目は、一致するIFC2X3のエンティティとタイプのペアのプロパティを定義します。
+2列目と3列目は、一致するIFC2X3エンティティとタイプのペアのプロパティを定義します。
 
-| IDSファセットの名前 | 発生エンティティ | タイプ・エンティティ |
+| IDSファセットの名前 | 発生主体 | タイプ・エンティティ |
 | ---------------------------- | ----------------------------- | -------------------------------- |
-| Ifc家具 | IfcFurnishingElement | 家具タイプ |
-| IfcSystemFurnitureElement | IfcFurnishingElement | IfcSystem家具要素タイプ |
-| IfcActuator | IfcDistributionControl要素 | IfcActuatorType |
-| IfcAlarm | IfcDistributionControl要素 | IfcAlarmType |
-| IfcController | IfcDistributionControl要素 | IfcControllerType |
-| IfcFlowInstrument | IfcDistributionControl要素 | IfcFlowInstrumentType |
-| Ifcセンサー | IfcDistributionControl要素 | IfcSensorType |
-| IfcAirToAirHeatRecovery | Ifcエネルギー変換装置 | IfcAirToAirHeatRecoveryタイプ |
-| Ifcボイラー | Ifcエネルギー変換装置 | IfcBoilerType |
-| イフチラー | Ifcエネルギー変換装置 | IfcChillerType |
-| イフコイル | Ifcエネルギー変換装置 | コイルタイプ |
-| イフコンデンサー | Ifcエネルギー変換装置 | IfcCondenserType |
-| イフクールドビーム | Ifcエネルギー変換装置 | IfcCooledBeamType |
-| 冷却塔 | Ifcエネルギー変換装置 | IfcCoolingTowerType |
-| Ifc発電機 | Ifcエネルギー変換装置 | Ifc発電機タイプ |
-| Ifc電気モーター | Ifcエネルギー変換装置 | IfcElectricMotorType |
-| Ifc蒸発冷却器 | Ifcエネルギー変換装置 | Ifc蒸発冷却器タイプ |
-| Ifcエバポレーター | Ifcエネルギー変換装置 | IfcEvaporatorType |
-| Ifc熱交換器 | Ifcエネルギー変換装置 | IfcHeatExchangerType |
-| Ifc加湿器 | Ifcエネルギー変換装置 | IfcHumidifierType |
-| IfcMotorConnection | Ifcエネルギー変換装置 | IfcMotorConnectionType |
-| Ifcスペースヒーター | Ifcエネルギー変換装置 | IfcSpaceHeaterType |
-| IfcTransformer | Ifcエネルギー変換装置 | IfcTransformerType |
-| IfcTubeバンドル | Ifcエネルギー変換装置 | IfcTubeBundleType |
-| Ifcユニタリー機器 | Ifcエネルギー変換装置 | Ifcユニタリー機器タイプ |
+| IfcFurniture | IfcFurnishingElement | IfcFurnitureType |
+| IfcSystemFurnitureElement | IfcFurnishingElement | IfcSystemFurnitureElementType |
+| IfcActuator | IfcDistributionControlElement | IfcActuatorType |
+| IfcAlarm | IfcDistributionControlElement | IfcAlarmType |
+| IfcController | IfcDistributionControlElement | IfcControllerType |
+| IfcFlowInstrument | IfcDistributionControlElement | IfcFlowInstrumentType |
+| IfcSensor | IfcDistributionControlElement | IfcSensorType |
+| IfcAirToAirHeatRecovery | IfcEnergyConversionDevice | IfcAirToAirHeatRecoveryType |
+| IfcBoiler | IfcEnergyConversionDevice | IfcBoilerType |
+| IfcChiller | IfcEnergyConversionDevice | IfcChillerType |
+| IfcCoil | IfcEnergyConversionDevice | IfcCoilType |
+| IfcCondenser | IfcEnergyConversionDevice | IfcCondenserType |
+| IfcCooledBeam | IfcEnergyConversionDevice | IfcCooledBeamType |
+| IfcCoolingTower | IfcEnergyConversionDevice | IfcCoolingTowerType |
+| IfcElectricGenerator | IfcEnergyConversionDevice | IfcElectricGeneratorType |
+| IfcElectricMotor | IfcEnergyConversionDevice | IfcElectricMotorType |
+| IfcEvaporativeCooler | IfcEnergyConversionDevice | IfcEvaporativeCoolerType |
+| IfcEvaporator | IfcEnergyConversionDevice | IfcEvaporatorType |
+| IfcHeatExchanger | IfcEnergyConversionDevice | IfcHeatExchangerType |
+| IfcHumidifier | IfcEnergyConversionDevice | IfcHumidifierType |
+| IfcMotorConnection | IfcEnergyConversionDevice | IfcMotorConnectionType |
+| IfcTransformer | IfcEnergyConversionDevice | IfcTransformerType |
+| IfcTubeBundle | IfcEnergyConversionDevice | IfcTubeBundleType |
+| IfcUnitaryEquipment | IfcEnergyConversionDevice | IfcUnitaryEquipmentType |
 | IfcAirTerminalBox | IfcFlowController | IfcAirTerminalBoxType |
-| イフクダンパー | IfcFlowController | IfcDamperタイプ |
-| Ifc電気時間制御 | IfcFlowController | Ifc電気時間制御タイプ |
+| IfcDamper | IfcFlowController | IfcDamperType |
+| IfcElectricTimeControl | IfcFlowController | IfcElectricTimeControlType |
 | IfcFlowMeter | IfcFlowController | IfcFlowMeterType |
 | IfcProtectiveDevice | IfcFlowController | IfcProtectiveDeviceType |
 | IfcSwitchingDevice | IfcFlowController | IfcSwitchingDeviceType |
-| Ifcバルブ | IfcFlowController | IfcValveType |
-| ケーブルキャリアフィッティング | IfcFlowFitting | IfcCableCarrierFittingType（ケーブル・キャリア・フィッティング・タイプ） |
-| ダクト・フィッティング | IfcFlowFitting | ダクト・フィッティング・タイプ |
-| Ifcジャンクションボックス | IfcFlowFitting | IfcJunctionBoxType |
-| Ifcパイプフィッティング | IfcFlowFitting | IfcPipeFittingType |
-| コンプレッサー | IfcFlowMovingDevice。 | IfcCompressorType |
-| Ifcファン | IfcFlowMovingDevice。 | IfcFanType |
-| Ifcポンプ | IfcFlowMovingDevice。 | IfcPumpType |
-| IfcCableCarrierセグメント | IfcFlowSegment | IfcCableCarrierSegmentType（ケーブル・キャリア・セグメント・タイプ） |
+| IfcValve | IfcFlowController | IfcValveType |
+| IfcCableCarrierFitting | IfcFlowFitting | IfcCableCarrierFittingType |
+| IfcDuctFitting | IfcFlowFitting | IfcDuctFittingType |
+| IfcJunctionBox | IfcFlowFitting | IfcJunctionBoxType |
+| IfcPipeFitting | IfcFlowFitting | IfcPipeFittingType |
+| IfcCompressor | IfcFlowMovingDevice | IfcCompressorType |
+| IfcFan | IfcFlowMovingDevice | IfcFanType |
+| IfcPump | IfcFlowMovingDevice | IfcPumpType |
+| IfcCableCarrierSegment | IfcFlowSegment | IfcCableCarrierSegmentType |
 | IfcCableSegment | IfcFlowSegment | IfcCableSegmentType |
-| IfcDuctセグメント | IfcFlowSegment | IfcDuctSegmentType |
+| IfcDuctSegment | IfcFlowSegment | IfcDuctSegmentType |
 | IfcPipeSegment | IfcFlowSegment | IfcPipeSegmentType |
-| Ifc電気流体貯蔵装置 | IfcFlowStorageDevice | IfcElectricFlowStorageDeviceType。 |
-| Ifcタンク | IfcFlowStorageDevice | Ifcタンクタイプ |
+| IfcElectricFlowStorageDevice | IfcFlowStorageDevice | IfcElectricFlowStorageDeviceType |
+| IfcTank | IfcFlowStorageDevice | IfcTankType |
 | IfcAirTerminal | IfcFlowTerminal | IfcAirTerminalType |
-| IfcElectricアプライアンス | IfcFlowTerminal | IfcElectricApplianceType |
-| Ifc火災抑制ターミナル | IfcFlowTerminal | IfcFireSuppressionターミナルタイプ |
-| イフクランプ | IfcFlowTerminal | ランプタイプ |
+| IfcElectricAppliance | IfcFlowTerminal | IfcElectricApplianceType |
+| IfcFireSuppressionTerminal | IfcFlowTerminal | IfcFireSuppressionTerminalType |
+| IfcLamp | IfcFlowTerminal | IfcLampType |
 | IfcLightFixture | IfcFlowTerminal | IfcLightFixtureType |
-| Ifcアウトレット | IfcFlowTerminal | Ifcアウトレットタイプ |
-| Ifcサニタリーターミナル | IfcFlowTerminal | IfcSanitaryTerminalType（サニタリーターミナルタイプ） |
-| Ifcスタックターミナル | IfcFlowTerminal | IfcStackTerminalType |
-| IfcWasteターミナル | IfcFlowTerminal | IfcWasteTerminalType |
-| ダクトサイレンサー | IfcFlowトリートメントデバイス | ダクトサイレンサータイプ |
-| ifcFilter | IfcFlowトリートメントデバイス | IfcFilterType |
-| IfcVibrationIsolator | IfcEquipmentElement | IfcVibrationIsolatorタイプ |
+| IfcOutlet | IfcFlowTerminal | IfcOutletType |
+| IfcSanitaryTerminal | IfcFlowTerminal | IfcSanitaryTerminalType |
+| IfcSpaceHeater | IfcFlowTerminal | IfcSpaceHeaterType |
+| IfcStackTerminal | IfcFlowTerminal | IfcStackTerminalType |
+| IfcWasteTerminal | IfcFlowTerminal | IfcWasteTerminalType |
+| IfcDuctSilencer | IfcFlowTreatmentDevice | IfcDuctSilencerType |
+| IfcFilter | IfcFlowTreatmentDevice | IfcFilterType |
+| IfcVibrationIsolator | IfcElementComponent | IfcVibrationIsolatorType |
 
 ## 例
-たとえば、エンティティ `IfcFilter`持つIDS適用性ファセットの定義では、すべての `IfcFlowTreatmentDevice`型に関連するすべての識別する。 `IfcFilterType`.
+例えば、エンティティ `IfcFilter`持つIDS適用可能ファセットを定義すると、`IfcFilterType`に関連付けられたすべての `IfcFlowTreatmentDevice`の特定を結果として識別します。 
 
-同様に、エンティティ名 `IfcFilter`持つ要件の定義も同様です。 `IfcFlowTreatmentDevice`と異なる、またはそのタイプが `IfcFilterType`.
+同様に、エンティティ名 `IfcFilter`持つ要件の定義は、エンティティ・タイプが `IfcFlowTreatmentDevice`と異なるか、またはその型が `IfcFilterType`.
 
 ## 備考
 これらの合意の歴史は[116号で](https://github.com/buildingSMART/IDS/issues/116)辿ることができる。
