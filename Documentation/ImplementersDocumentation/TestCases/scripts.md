@@ -15,7 +15,7 @@
 
 IDSファイルは、リポジトリ内の`CreateTestCases`ターゲットを実行するこのスクリプトのデータから生成されます。
 
-IFCのファイルは、[IfcOpenShellリポジトリ](https://blenderbim.org/docs-python/ifctester.html)で以前に行われた作業からインポートされ、必要に応じて修正が加えられました。
+IFCファイルは、[IfcOpenShellリポジトリ](https://blenderbim.org/docs-python/ifctester.html)で以前に行われた作業からインポートされ、必要に応じて修正が加えられました。
 
 ## 属性
 ### 禁止ファセットは、必須ファセットとは逆の結果を返します
@@ -51,7 +51,7 @@ Requirements:
 Attribute: Optional,''Name'', ''Foobar''
 ```
 
-### オプションの属性は、空の場合、エラーとなります
+### オプションの属性は、空の場合、失敗となります
 ``` ids attribute/fail-an_optional_attribute_fails_if_empty.ids
 An optional attribute fails if empty
 Entity: ''IFCWALL''
@@ -92,7 +92,7 @@ Requirements:
 Attribute: ''Name'',''Foobar''
 ```
 
-### ブール値が「false」の属性は合格となる
+### ブール値が「false」の属性は通過するはずである
 ``` ids attribute/pass-attributes_with_a_boolean_false_should_pass.ids
 Attributes with a boolean false should pass
 IFC4
@@ -118,7 +118,7 @@ Requirements:
 Attribute: ''LayerOn''
 ```
 
-### プリミティブを参照するselectを持つ属性は、通過する必要があります
+### プリミティブを参照するselectを持つ属性は、次の条件を満たす必要があります
 ``` ids attribute/pass-attributes_with_a_select_referencing_a_primitive_should_pass.ids
 Attributes with a select referencing a primitive should pass
 Entity: ''IFCSURFACESTYLERENDERING''
@@ -142,7 +142,7 @@ Requirements:
 Attribute: ''Name''
 ```
 
-### 持続時間がゼロの属性は通過すべきである
+### 持続時間がゼロの属性は通過すべきです
 ``` ids attribute/pass-attributes_with_a_zero_duration_should_pass.ids
 Attributes with a zero duration should pass
 IFC4
@@ -276,7 +276,7 @@ Requirements:
 Attribute: ''Identification'',''123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345_extra_characters''
 ```
 
-### 整数は、数値と同じルールに従います
+### 整数は、数字と同じルールに従います
 ``` ids attribute/pass-integers_follow_the_same_rules_as_numbers.ids
 Integers follow the same rules as numbers
 IFC4
@@ -294,7 +294,7 @@ Requirements:
 Attribute: ''NumberOfRisers'',''42.0''
 ```
 
-### 無効な属性名は常に失敗します
+### 無効な属性名は常にエラーとなります
 IFCWALL型のエンティティには、ActingRole 属性がありません。
 
 ``` ids attribute/invalid-invalid_attribute_names_always_fail.ids
@@ -328,7 +328,7 @@ Requirements:
 Attribute: Enumeration(''Name'',''Description'')
 ```
 
-### 名前の制限条件に一致する結果が 件あります 3/3
+### 名前の制限条件に一致する結果が3件中3件見つかりました 3/3
 ``` ids attribute/pass-name_restrictions_will_match_any_result_3_3.ids
 Name restrictions will match any result 3/3
 Entity: ''IFCWALL''
@@ -409,7 +409,7 @@ Attribute: ''RefractionIndex'',''1.2345E3''
 ```
 
 ### 値が整数である場合に浮動小数点を指定することは無効です
-IFC4では、属性名「`NumberOfRiser`」が「`NumberOfRisers`」に変更されたことにご留意ください。
+IFC4では、属性名「`NumberOfRiser`」が「`NumberOfRisers`」に変更されている点にご注意ください。
 
 ``` ids attribute/invalid-specifying_a_float_when_the_value_is_an_integer_is_invalid.ids
 Specifying a float when the value is an integer is invalid
@@ -427,7 +427,7 @@ Requirements:
 Attribute: ''RefractionIndex'',xs:double MinInclusive(''42'') MaxInclusive(''42'')
 ```
 
-### 列挙型の制限条件内でも、型チェックが行われる場合があります
+### 列挙型の制約内でも型チェックが行われる場合があります
 列挙型で定義された型は、dataType と互換性がある必要があります。  
 アトリビュートファセットの場合、dataType は IDS スキーマから取得されます。
 
@@ -448,7 +448,7 @@ Requirements:
 Attribute: ''Coordinates'',''Foobar''
 ```
 
-### オブジェクトに対する値のチェックは常に失敗する
+### オブジェクトに対する値のチェックは常に失敗します
 ``` ids attribute/invalid-value_checks_always_fail_for_objects.ids
 Value checks always fail for objects
 IFC4
@@ -457,7 +457,7 @@ Requirements:
 Attribute: ''TaskTime'',''Foobar''
 ```
 
-### SELECT文では、値のチェックは常に失敗します
+### SELECT文では、値のチェックは常に失敗する
 ``` ids attribute/invalid-value_checks_always_fail_for_selects.ids
 Value checks always fail for selects
 Entity: ''IFCSURFACESTYLERENDERING''
@@ -546,7 +546,7 @@ Requirements:
 Classification: Optional,Pattern(''\w+''),''ExpectedValue''
 ```
 
-### オプションの分類値がnullの場合、その値は有効とみなされます
+### オプションの分類値がnullの場合、その値は通過する
 ``` ids classification/pass-an_optional_classification_value_passes_if_null.ids
 An optional classification value passes if null
 Entity: ''IFCWALL''
@@ -791,7 +791,7 @@ Requirements:
 Entity: ''IFCWALL'',''SOLIDWALL''
 ```
 
-### 指定されたクラスに一致しないエンティティは失敗すべきである
+### 指定されたクラスに一致しないエンティティは失敗するべきである
 ``` ids entity/invalid-an_entity_not_matching_the_specified_class_should_fail.ids
 An entity not matching the specified class should fail
 Entity: ''IFCSLAB''
@@ -853,6 +853,116 @@ Entities must be specified as uppercase strings
 Entity: ''IFCWALL''
 Requirements:
 Entity: ''IfcWall''
+```
+
+### IFC2X3では、タイプマッピングテーブル を通じて、AirTerminal を名前で照会することができます 1/2
+[IFC2X3の発生およびタイプマッピングテーブル](../ifc2x3-occurrence-type-mapping-table.md)を使用すると、IFC2X3モデルを、IFC4のエンティティ名 `IfcAirTerminal`に対して直接検証を行うことができます。適用性は `IFCAIRTERMINAL`自体に対して表現され、これは実際のIFC2X3発生クラス `IfcFlowTerminal`（型指定元： `IfcAirTerminalType`、実際のIFC2X3オカレンスクラスに解決されます。実世界での一般的な要件である命名については、解決されたオカレンスに対してチェックが行われます。"すべてのAirTerminalは、AIR-XXXのような形式で命名される必要があります"）。
+
+
+
+
+
+
+
+``` ids entity/pass-in_ifc2x3_an_airterminal_can_be_checked_by_name_via_the_type_mapping_table_1_2.ids
+In IFC2X3 an AirTerminal can be checked by name via the type mapping table 1/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+Requirements:
+Attribute: ''Name'',Pattern(''AIR-.*'')
+```
+
+### IFC2X3では、タイプマッピングテーブル を通じて、AirTerminal を名前で照会することができます 2/2
+上記のケースと同じ仕様で、 `IfcFlowTerminal`（ `IfcAirTerminalType`定義されたIfcFlowTerminalに対して実行した結果、`Name`パターンと一致しないため、この失敗は適用可能性が未解決であることではなく、名称の不一致によるものです）。
+
+
+
+``` ids entity/fail-in_ifc2x3_an_airterminal_can_be_checked_by_name_via_the_type_mapping_table_2_2.ids
+In IFC2X3 an AirTerminal can be checked by name via the type mapping table 2/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+Requirements:
+Attribute: ''Name'',Pattern(''AIR-.*'')
+```
+
+### IFC2X3では、タイプマッピングテーブル に基づき、AirTerminal が 1 つ存在しなければならない 1/2
+適用性だけで、"モデル内にAirTerminalsが存在しなければならない"という条件を表現できます。仕様のデフォルトのカーディナリティは"必須"であるため、タイプマッピングテーブルを通じて `IFCAIRTERMINAL`に対して解決される要素がない場合、別途要件を定義する必要なく、この仕様は失敗となります。
+
+
+
+
+``` ids entity/pass-in_ifc2x3_there_must_be_an_airterminal_per_the_type_mapping_table_1_2.ids
+In IFC2X3 there must be an AirTerminal per the type mapping table 1/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+```
+
+### IFC2X3では、タイプマッピングテーブル に基づき、AirTerminal が 1 つ存在しなければならない 2/2
+上記のケースと同じ仕様で、以下の要素を含まないモデルに対して実行する `IfcFlowTerminal`が `IfcAirTerminalType`タイプが一切含まれていないモデルに対して実行したため、要件の不適合ではなく、適用可能なエンティティがゼロであるという理由で仕様が失敗します。
+
+
+
+
+``` ids entity/fail-in_ifc2x3_there_must_be_an_airterminal_per_the_type_mapping_table_2_2.ids
+In IFC2X3 there must be an AirTerminal per the type mapping table 2/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+```
+
+### IFC2X3において、AirTerminal の定義済みタイプは、タイプマッピングテーブル を通じて解決されます 1/2
+IFC2X3では、事前定義された型はインスタンスではなく、型オブジェクト上に存在します。適用性は、 `IFCAIRTERMINAL`型マッピングテーブルを通じて解決され、要件チェック `IfcAirTerminalType.PredefinedType`、名前付き列挙値に対してチェックされます。
+
+
+
+
+``` ids entity/pass-in_ifc2x3_an_airterminal_predefined_type_resolves_via_the_type_mapping_table_1_2.ids
+In IFC2X3 an AirTerminal predefined type resolves via the type mapping table 1/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+Requirements:
+Entity: ''IFCAIRTERMINAL'',''DIFFUSER''
+```
+
+### IFC2X3において、AirTerminal の定義済み型は、型マッピングテーブル を通じて解決されます 2/2
+上記のケースと同じ仕様で、 `IfcAirTerminalType``PredefinedType`異なる列挙値（`GRILLE`）実行したため、この失敗は未解決の適用可能性の問題ではなく、事前定義されたタイプの不一致によるものです。
+
+
+
+
+``` ids entity/fail-in_ifc2x3_an_airterminal_predefined_type_resolves_via_the_type_mapping_table_2_2.ids
+In IFC2X3 an AirTerminal predefined type resolves via the type mapping table 2/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+Requirements:
+Entity: ''IFCAIRTERMINAL'',''DIFFUSER''
+```
+
+### IFC2X3において、ユーザー定義の AirTerminal 事前定義型は、型マッピングテーブル を通じて解決されます 1/2
+`USERDEFINED` IFC2X3 では、の事前定義型には独自のニュアンスがあります。カスタムラベルは `IfcAirTerminalType.ElementType`、オカレンスの`ObjectType`には存在しません。この要件では、`PredefinedType`自体が`USERDEFINED`であるかどうかのみがチェックされます。
+
+
+
+
+``` ids entity/pass-in_ifc2x3_a_user_defined_airterminal_predefined_type_resolves_via_the_type_mapping_table_1_2.ids
+In IFC2X3 a user-defined AirTerminal predefined type resolves via the type mapping table 1/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+Requirements:
+Entity: ''IFCAIRTERMINAL'',''USERDEFINED''
+```
+
+### IFC2X3において、ユーザー定義の AirTerminal 事前定義型は、型マッピングテーブル を通じて解決されます 2/2
+上記のケースと同じ仕様で、 `IfcAirTerminalType`実行し、`USERDEFINED`代わりに`PredefinedType`（`DIFFUSER`）を使用した場合、この失敗は未解決の適用可能性の問題ではなく、事前定義されたタイプの不一致によるものです。
+
+
+
+
+``` ids entity/fail-in_ifc2x3_a_user_defined_airterminal_predefined_type_resolves_via_the_type_mapping_table_2_2.ids
+In IFC2X3 a user-defined AirTerminal predefined type resolves via the type mapping table 2/2
+IFC2X3
+Entity: ''IFCAIRTERMINAL''
+Requirements:
+Entity: ''IFCAIRTERMINAL'',''USERDEFINED''
 ```
 
 ### 継承された定義済み型は、次の条件を満たす必要があります
@@ -1148,7 +1258,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### 構成セット内のどのマテリアルカテゴリであっても、値のチェックに合格します
+### 構成セット内のどのマテリアルカテゴリも、値のチェックに合格します
 ``` ids material/pass-any_material_category_in_a_constituent_set_will_pass_a_value_check.ids
 Any material Category in a constituent set will pass a value check
 Entity: ''IFCWALL''
@@ -1188,7 +1298,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### レイヤーセット内の「Name」という名前の素材はすべて、値のチェックに合格します
+### レイヤーセット内の任意のマテリアル名は、値のチェックに合格します
 ``` ids material/pass-any_material_name_in_a_layer_set_will_pass_a_value_check.ids
 Any material Name in a layer set will pass a value check
 Entity: ''IFCWALL''
@@ -1196,7 +1306,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### リスト内の任意の「Name」という名前の項目は、値のチェックに合格します
+### リスト内の任意の「Name」という名前の項目は、値のチェックを通過します
 ``` ids material/pass-any_material_name_in_a_list_will_pass_a_value_check.ids
 Any material Name in a list will pass a value check
 Entity: ''IFCWALL''
@@ -1228,7 +1338,7 @@ Requirements:
 Material: ''Foo''
 ```
 
-### 任意のマテリアルを持つ要素は、空のマテリアルファセットを通過します
+### 任意のマテリアルを持つエレメントは、空のマテリアルファセットを通過します
 ``` ids material/pass-elements_with_any_material_will_pass_an_empty_material_facet.ids
 Elements with any material will pass an empty material facet
 Entity: ''IFCWALL''
@@ -1285,7 +1395,7 @@ Requirements:
 PartOf: ''IFCGROUP'',IFCRELASSIGNSTOGROUP
 ```
 
-### グループエンティティは、 と完全に一致する必要があります 2/2
+### グループ内のエンティティは、 と完全に一致しなければならない 2/2
 ``` ids partof/pass-a_group_entity_must_match_exactly_2_2.ids
 A group entity must match exactly 2/2
 Entity: ''IFCELEMENTASSEMBLY''
@@ -1374,7 +1484,7 @@ Requirements:
 PartOf: ''IFCWALL'',IFCRELAGGREGATES
 ```
 
-### 集約型は、全体に対する事前定義された型を指定することができます 1/2
+### 集約型は、全体に対する事前定義された型を指定できる 1/2
 ``` ids partof/pass-an_aggregate_may_specify_the_predefined_type_of_the_whole_1_2.ids
 An aggregate may specify the predefined type of the whole 1/2
 Entity: ''IFCBEAM''
@@ -1472,7 +1582,7 @@ Requirements:
 PartOf: Pattern(''.*''),IFCRELCONTAINEDINSPATIALSTRUCTURE
 ```
 
-### コンテナは、指定された関係 を用いて関連付けられる必要があります 1/2
+### コンテナは、指定された関係 を用いて関連付けられなければなりません 1/2
 ``` ids partof/pass-the_container_must_be_related_using_specified_relation_1_2.ids
 The container must be related using specified relation 1/2
 Entity: ''IFCBEAM''
@@ -1626,7 +1736,7 @@ Property: ''Foo_Bar'',''Foo'',IFCLABEL
 ```
 
 ### 持続時間がゼロの時間が経過する
-IFCDURATION は IFC2x3では利用できません
+IFCDURATION は IFC2x3には含まれていません
 
 ``` ids property/pass-a_zero_duration_will_pass.ids
 A zero duration will pass
@@ -1660,7 +1770,7 @@ Requirements:
 Property: ''Foo_Bar'',Pattern(''Foo.*''),IFCLABEL,''x''
 ```
 
-### 一致するすべてのプロパティセットは、要件 を満たさなければならない 1/3
+### 条件に合致するすべての物件セットは、要件 を満たさなければならない 1/3
 ``` ids property/pass-all_matching_property_sets_must_satisfy_requirements_1_3.ids
 All matching property sets must satisfy requirements 1/3
 Entity: ''IFCWALL''
@@ -1716,7 +1826,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLENGTHMEASURE,''1''
 ```
 
-### 範囲指定されたプロパティ内で一致する値があれば、 を通過する 2/4
+### 範囲指定されたプロパティ内で一致する値があれば、 を通過します 2/4
 ``` ids property/pass-any_matching_value_in_a_bounded_property_will_pass_2_4.ids
 Any matching value in a bounded property will pass 2/4
 Entity: ''IFCWALL''
@@ -1740,7 +1850,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLENGTHMEASURE,''2''
 ```
 
-### リストのプロパティ内の一致する値は、すべて を返します 1/3
+### リストプロパティ内の一致する値はすべて、 を返します 1/3
 ``` ids property/pass-any_matching_value_in_a_list_property_will_pass_1_3.ids
 Any matching value in a list property will pass 1/3
 Entity: ''IFCWALL''
@@ -1756,7 +1866,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCLABEL,''Y''
 ```
 
-### リストプロパティ内の一致する値はすべて、 をクリアします 3/3
+### リストのプロパティ内の一致する値はすべて、 を通過します 3/3
 ``` ids property/fail-any_matching_value_in_a_list_property_will_pass_3_3.ids
 Any matching value in a list property will pass 3/3
 Entity: ''IFCWALL''
@@ -1874,7 +1984,7 @@ Property: ''Foo_Bar'',''Foo'',IFCDATE,''2022-01-01''
 ```
 
 ### 持続時間は文字列として扱われる 1/2
-IFCDURATION は IFC2x3では利用できません
+IFCDURATION は IFC2x3には含まれていません
 
 ``` ids property/fail-durations_are_treated_as_strings_1_2.ids
 Durations are treated as strings 1/2
@@ -1885,7 +1995,7 @@ Property: ''Foo_Bar'',''Foo'',IFCDURATION,''PT16H''
 ```
 
 ### 持続時間は文字列として扱われる 2/2
-IFCDURATION は IFC2x3では利用できません
+IFCDURATION は IFC2x3には含まれていません
 
 ``` ids property/pass-durations_are_treated_as_strings_2_2.ids
 Durations are treated as strings 2/2
@@ -1928,7 +2038,7 @@ Requirements:
 Property: ''Foo_Bar'',Pattern(''Foo.*''),IFCLABEL,Enumeration(''x'',''y'')
 ```
 
-### 複数のプロパティが一致する場合、すべての値が要件 を満たす必要があります 2/2
+### 複数のプロパティが一致する場合、すべての値が要件 を満たしている必要があります 2/2
 ``` ids property/fail-if_multiple_properties_are_matched__all_values_must_satisfy_requirements_2_2.ids
 If multiple properties are matched, all values must satisfy requirements 2/2
 Entity: ''IFCWALL''
@@ -1969,7 +2079,7 @@ Property: ''Foo_Bar'',''Foo'',IFCINTEGER,''42.3''
 ```
 
 ### IFC2X3では、拡張材料プロパティを通じて材料プロパティがサポートされています
-Issue #435と併せて提案されました。IFC2X3の`IfcMaterial`、 `IfcExtendedMaterialProperties`を通じてプロパティを引き継いでおり、 `IfcMaterialProperties`（そのエンティティが使用可能なプロパティリストを取得したのはIFC4 からです）。このケースは、IFC2X3 において、一般的なプロパティの仕組みがマテリアルにまで適用されていることを示す検証例です。
+Issue #435と併せて提案されました。IFC2X3の`IfcMaterial`、 `IfcExtendedMaterialProperties`を通じてプロパティを引き継いでいますが、 `IfcMaterialProperties`（そのエンティティが使用可能なプロパティリストを取得したのはIFC4 からです）。このケースは、IFC2X3 において、一般的なプロパティの仕組みが材料にまで適用されることを示す検証例です。
 
 
 
@@ -1996,8 +2106,8 @@ Requirements:
 Property: ''Custom_Pset'',''Foo'',IFCLABEL
 ```
 
-### 材料特性は、IFC4を通じてIfcMaterialPropertiesでサポートされています
-Issue #435と併せて提案されました。上記の2つのケースに対応するIFC4では、 `IfcMaterialDefinition`のプロパティが `IfcMaterialProperties`を通じてアクセス可能であることを確認するものです。
+### 材料特性は、IFC_PH_0_D2A466Bを通じてIfcMaterialPropertiesでサポートされています
+Issue #435と併せて提案されたものです。上記の2つのケースに対応するIFC4では、 `IfcMaterialDefinition`のプロパティが `IfcMaterialProperties`を通じてIFC4 のプロパティにアクセスできることを確認する。
 
 
 
@@ -2091,7 +2201,7 @@ Property: ''Foo_Bar'',''PanelOperation'',IFCDOORPANELOPERATIONENUM,''SWONGING''
 ```
 
 ### IFC4では、IfcContextを通じてプロジェクトプロパティがサポートされています
-Issue #435 と同時に提案されました。 `IfcProject`は、 `IfcObject` IFC2X3内のから、IFC4 内の新しい `IfcContext`のサブタイプとして変更されました。 `IfcContext`、独自の`IsDefinedBy`属性を個別に宣言しているため、プロパティ検索において `IfcObject`プロパティ検索の特例として扱う実装は、 `IfcContext`カバーしない場合、IFC4`IfcProject` 上のプロパティを見つけることはできません。
+Issue #435 と同時に提案されました。 `IfcProject`は、 `IfcObject` IFC2X3内のから、IFC4 内の新しい `IfcContext`のサブタイプとして変更されました。 `IfcContext`、独自の`IsDefinedBy`個別に宣言しているため、プロパティ検索のために `IfcObject`プロパティ検索の特例として扱う実装であっても、 `IfcContext`カバーしない場合、IFC4上のプロパティを見つけることはできません。 `IfcProject` 上のプロパティを見つけることはできません。
 
 
 
@@ -2106,7 +2216,7 @@ Requirements:
 Property: ''Custom_Pset'',''Foo'',IFCLABEL
 ```
 
-### 存在しないプロジェクトプロパティは、IfcContextを通じてIFC4のエラーとなる
+### 存在しないプロジェクトプロパティは、IFC4経由でIfcContextによりエラーとなります
 上記のケースと同じ仕様で、プロパティのないプロジェクトに対して実行したため、誤った「合格」が、正しくチェックされた「なし」と混同されることはなかった。
 
 
@@ -2120,7 +2230,7 @@ Property: ''Custom_Pset'',''Foo'',IFCLABEL
 ```
 
 ### IFC2X3では、IfcObjectを通じてプロジェクトプロパティがサポートされています
-上記の2つのケースに対するIFC2X3の制御： `IfcProject`は単なる `IfcObject`であるため、これはすでに動作しているはずのケースであり、IFC4のケースこそが注目すべきものであることを裏付けています。
+上記の2つのケースにおけるIFC2X3コントロール： `IfcProject`は単なる `IfcObject`と同じであるため、これはすでに動作しているはずのケースであり、IFC4のケースこそが注目すべきものであることを裏付けています。
 
 
 
@@ -2262,10 +2372,10 @@ Property: ''Foo_Bar'',''Foo'',IFCLENGTHMEASURE,''2''
 ```
 
 ### プロパティは、関連するオブジェクト型に関連付けることができます
-この監査ツールは、予約済みプレフィックス「`Pset_`」で始まるプロパティを適切なオブジェクトに限定していますが、これらのプロパティは関連するタイプにも関連付けることができます。例えば、 `Pset_WallCommon`IF_PH_1_FC15C822上の `IFCWALLTYPE`。
+この監査ツールは、予約済みプレフィックス「`Pset_`」で始まるプロパティを適切なオブジェクトに限定していますが、これらのプロパティは関連するタイプにも関連付けることができます。例えば、 `Pset_WallCommon`. `IFCWALLTYPE` 上の Pset_WallCommon。
 
 
-指定されたIFCは、プロパティセットの 1 つで無効な値「`FOOBAR`」が定義されているため、エラーとなります。
+提供されたIFCは、プロパティセットの 1 つで無効な値「`FOOBAR`」が定義されているため、エラーとなります。
 
 ``` ids property/fail-properties_can_be_associated_to_relevant_object_types.ids
 Properties can be associated to relevant object types
@@ -2285,7 +2395,7 @@ Requirements:
 Attribute: ''RefractionIndex'',xs:double MinExclusive(''0'') MaxExclusive(''10'')
 ```
 
-### 区間には、 を含むものもある 1/4
+### 区間には を含むものもある 1/4
 ``` ids restriction/pass-a_bound_can_be_inclusive_1_4.ids
 A bound can be inclusive 1/4
 Entity: ''IFCSURFACESTYLEREFRACTION''
@@ -2317,7 +2427,7 @@ Requirements:
 Attribute: ''RefractionIndex'',xs:double MinExclusive(''0'') MaxExclusive(''10'')
 ```
 
-### 区間には「 」を含むものもある 3/4
+### 区間には、 を含むものもある 3/4
 ``` ids restriction/pass-a_bound_can_be_inclusive_3_4.ids
 A bound can be inclusive 3/4
 Entity: ''IFCSURFACESTYLEREFRACTION''
@@ -2341,7 +2451,7 @@ Requirements:
 Attribute: ''Name'',Enumeration(''Foo'',''Bar'')
 ```
 
-### 列挙では、大文字と小文字を区別して一致します 2/3
+### 列挙では、大文字と小文字が区別されます 2/3
 ``` ids restriction/pass-an_enumeration_matches_case_sensitively_2_3.ids
 An enumeration matches case sensitively 2/3
 Entity: ''IFCWALL''
@@ -2438,7 +2548,7 @@ Requirements:
 Attribute: ''Name'',Pattern(''[A-Z]{2}[0-9]{2}'')
 ```
 
-### 正規表現パターンは の場面で使用できます 2/3
+### 正規表現パターンは まで使用できます 2/3
 ``` ids restriction/pass-regex_patterns_can_be_used_2_3.ids
 Regex patterns can be used 2/3
 Entity: ''IFCWALL''
@@ -2575,7 +2685,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.0000001''
 ```
 
-### 浮動小数点数の下限がゼロである場合の許容誤差の比較
+### 浮動小数点数の下限がゼロである場合の比較許容誤差の違反
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_zero_lower_bound.ids
 Comparison tolerance for floating point zero lower bound fail
 Entity: ''IFCWALL''
@@ -2591,7 +2701,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''0.''
 ```
 
-### 浮動小数点ゼロの上限通過に対する許容誤差の比較
+### 浮動小数点ゼロの上限通過に対する比較許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_zero_upper_bound.ids
 Comparison tolerance for floating point zero upper bound pass
 Entity: ''IFCWALL''
@@ -2615,7 +2725,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-0.0000001''
 ```
 
-### 浮動小数点負の小さい数値の下限通過に関する許容誤差の比較
+### 浮動小数点負の低数値の下限通過に対する許容誤差
 ``` ids tolerance/pass-comparison_tolerance_for_floating_point_negative_low_number_lower_bound.ids
 Comparison tolerance for floating point negative low number lower bound pass
 Entity: ''IFCWALL''
@@ -2639,7 +2749,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-0.0000001''
 ```
 
-### 浮動小数点数の負の1の下限逸脱に対する許容誤差の比較
+### 浮動小数点数の負の1の下限逸脱に対する比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_one_lower_bound.ids
 Comparison tolerance for floating point negative one lower bound fail
 Entity: ''IFCWALL''
@@ -2671,7 +2781,7 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCREAL,''-1.''
 ```
 
-### 浮動小数点負の大きな数値の下限値の許容誤差の比較失敗
+### 浮動小数点負の大きな数値の下限超過に関する比較許容誤差
 ``` ids tolerance/fail-comparison_tolerance_for_floating_point_negative_high_number_lower_bound.ids
 Comparison tolerance for floating point negative high number lower bound fail
 Entity: ''IFCWALL''
