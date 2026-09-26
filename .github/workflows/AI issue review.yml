@@ -29,12 +29,14 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [[ ! "$ISSUE_NUMBER" =~ ^[0-9]+$ ]]; then
-            echo "Issue number must be numeric."
+          if [[ ! "$ISSUE_NUMBER" =~ ^[1-9][0-9]*$ ]]; then
+            echo "Issue number must be a positive integer."
             exit 1
           fi
 
-          gh issue view "$ISSUE_NUMBER" --json number >/dev/null
+          gh issue view "$ISSUE_NUMBER" \
+            --repo "$GH_REPO" \
+            --json number >/dev/null
 
       - name: Fetch issue and all comments
         shell: bash
@@ -44,12 +46,14 @@ jobs:
           {
             echo "TITLE:"
             gh issue view "$ISSUE_NUMBER" \
+              --repo "$GH_REPO" \
               --json title \
               --jq '.title'
 
             echo
             echo "ISSUE BODY:"
             gh issue view "$ISSUE_NUMBER" \
+              --repo "$GH_REPO" \
               --json body \
               --jq '.body // ""'
 
@@ -57,6 +61,7 @@ jobs:
             echo "COMMENTS:"
 
             gh api --paginate \
+              --repo "$GH_REPO" \
               "repos/{owner}/{repo}/issues/$ISSUE_NUMBER/comments?per_page=100" \
               --jq '
                 .[]
@@ -158,12 +163,15 @@ jobs:
 
       - name: Run AI inference
         id: inference
-        uses: actions/ai-inference@v3
-        with:
-          prompt-file: prompt.txt
-          model: gpt-4.1
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          copilot explain --target file --input prompt.txt > response.json 2>&1
+
+          echo "response-file=response.json" >> "$GITHUB_OUTPUT"
 
       - name: Validate AI response
         id: result
@@ -278,6 +286,7 @@ jobs:
           set -euo pipefail
 
           CURRENT_LABELS=$(gh issue view "$ISSUE_NUMBER" \
+            --repo "$GH_REPO" \
             --json labels \
             --jq '.labels[].name')
 
@@ -290,12 +299,14 @@ jobs:
                grep -Fxq "$LABEL" <<< "$CURRENT_LABELS"; then
 
               gh issue edit "$ISSUE_NUMBER" \
+                --repo "$GH_REPO" \
                 --remove-label "$LABEL"
             fi
           done
 
           if ! grep -Fxq "$STATUS" <<< "$CURRENT_LABELS"; then
             gh issue edit "$ISSUE_NUMBER" \
+              --repo "$GH_REPO" \
               --add-label "$STATUS"
           fi
 
@@ -303,4 +314,5 @@ jobs:
         shell: bash
         run: |
           gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GH_REPO" \
             --body-file comment.md
